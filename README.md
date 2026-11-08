@@ -10,8 +10,8 @@ E-commerce de perfumes com identidade rosa e branca e painel administrativo.
 |---|---|
 | 1. Diagnóstico e engenharia reversa | ✅ [docs/FASE-1-DIAGNOSTICO.md](docs/FASE-1-DIAGNOSTICO.md) |
 | 2. Design system e fundação | ✅ Tokens, componentes base, layouts da loja e do admin, mapa de rotas, testes configurados |
-| 3. Catálogo público | ⏳ Próxima |
-| 4. Supabase: modelo, migrations e seed de 40+ produtos | ⏳ Depende do projeto Supabase (ver abaixo) |
+| 3. Catálogo público | ✅ Listagem, busca, filtros, ordenação, paginação, marca e categoria, detalhe do produto, SEO (sitemap, robots, JSON-LD). Lê só do Supabase |
+| 4. Supabase: modelo, migrations e seed de 45 produtos | 🟡 Migrations e seed **preparados e testados localmente** (PGlite); **não aplicados** no Supabase remoto (aguardando autorização) |
 | 5 a 8, 10 e 11 | ⏳ Planejadas |
 | 9. IA (Consultor de Fragrâncias e RAG) | ⏸️ Suspensa até a venda do projeto; ver [PENDENCIAS_COMERCIAIS.md §6](docs/PENDENCIAS_COMERCIAIS.md) |
 
@@ -56,6 +56,9 @@ Ver [.env.example](.env.example). Sem as variáveis do Supabase, a aplicação s
 | `npm test` | Vitest (relatório JUnit em `test-results/`) |
 | `npm run e2e` | Playwright em desktop e mobile (faz o build e sobe na porta 3100; relatório em `playwright-report/`, traces de falhas em `test-results/`) |
 | `npm run check` | Lint + typecheck + testes unitários |
+| `node scripts/catalog/build-seed-data.mjs` | Recoleta os dados de referência e verifica as imagens (gera `supabase/seed/catalog.json`) |
+| `node scripts/catalog/generate-seed-sql.mjs` | Gera o seed SQL idempotente |
+| `node --env-file=.env.local scripts/catalog/verify-remote.mjs` | Verifica a carga no Supabase como visitante (somente leitura) |
 
 ## Estrutura
 ```
@@ -76,9 +79,12 @@ docs/                diagnóstico, decisões e pendências comerciais
 - [Diagnóstico e plano (Fase 1)](docs/FASE-1-DIAGNOSTICO.md)
 - [Registro de decisões](docs/DECISOES.md)
 - [Pendências para operação comercial](docs/PENDENCIAS_COMERCIAIS.md)
-- ARCHITECTURE.md, DATA_MODEL.md, SECURITY.md, AI_ARCHITECTURE.md, PRODUCT_CATALOG.md e COST_ESTIMATE.md serão criados nas fases correspondentes.
+- [Modelo de dados](docs/DATA_MODEL.md)
+- [Catálogo inicial e fontes](docs/PRODUCT_CATALOG.md)
+- ARCHITECTURE.md, SECURITY.md e COST_ESTIMATE.md serão criados nas fases correspondentes.
 
 ## Limitações atuais
-- Nenhum dado de catálogo ainda: o banco e o seed entram nas Fases 3 e 4.
+- O catálogo remoto fica vazio até a carga ser autorizada. Até lá, a loja mostra "catálogo indisponível" e os E2E do catálogo aparecem como pulados.
+- Os testes de banco usam PGlite com um shim de `auth`/`storage` (`tests/db/supabase-shim.sql`). Eles validam o SQL, a RLS e o seed, mas não substituem um teste no Supabase real.
 - A checagem de papel administrativo no servidor entra na Fase 5. Hoje o painel não tem nenhuma operação real.
 - A CSP completa entra na Fase 10.

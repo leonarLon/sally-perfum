@@ -1,0 +1,1025 @@
+{
+  "_about": "Fatos curados manualmente a partir das descrições da fonte de referência (Época Cosméticos, API pública VTEX, consultada em 08/11/2026). Notas olfativas só foram preenchidas quando a fonte as lista explicitamente; null = não confirmado. 'highlights' = ingredientes citados no texto quando não há pirâmide confiável. 'tagline' é texto próprio da Sally.",
+  "products": [
+    {
+      "key": "la-vie-est-belle",
+      "name": "La Vie Est Belle",
+      "brand": "Lancôme",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Floral Oriental Gourmand",
+      "top": [
+        "Pera",
+        "Cassis"
+      ],
+      "heart": [
+        "Íris",
+        "Jasmim",
+        "Flor de Laranjeira"
+      ],
+      "base": [
+        "Patchouli",
+        "Fava Tonka",
+        "Baunilha",
+        "Pralinê"
+      ],
+      "tagline": "Doce e luminoso, com íris e pralinê para qualquer ocasião.",
+      "occasion": "Qualquer ocasião"
+    },
+    {
+      "key": "good-girl",
+      "name": "Good Girl",
+      "brand": "Carolina Herrera",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Oriental Floral",
+      "top": null,
+      "heart": null,
+      "base": null,
+      "tagline": "Oriental floral marcante, no icônico frasco em forma de salto."
+    },
+    {
+      "key": "paradoxe",
+      "name": "Paradoxe",
+      "brand": "Prada",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Floral Ambarado",
+      "top": [
+        "Botão de Neroli"
+      ],
+      "heart": [
+        "Âmbar (Ambrofi)"
+      ],
+      "base": [
+        "Almíscar (Serenolide)"
+      ],
+      "tagline": "Floral ambarado moderno, em frasco refilável."
+    },
+    {
+      "key": "chloe-edp",
+      "name": "Chloé",
+      "brand": "Chloé",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": null,
+      "top": [
+        "Lichia",
+        "Peônia",
+        "Frésia"
+      ],
+      "heart": [
+        "Rosa",
+        "Magnólia",
+        "Lírio-do-vale"
+      ],
+      "base": [
+        "Cedro",
+        "Âmbar",
+        "Mel"
+      ],
+      "tagline": "Buquê de rosas delicado com toque de mel."
+    },
+    {
+      "key": "idole",
+      "name": "Idôle",
+      "brand": "Lancôme",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Chipre Floral",
+      "top": [
+        "Pera",
+        "Bergamota",
+        "Jasmim Sambac",
+        "Jasmim Grandiflorum"
+      ],
+      "heart": [
+        "Rosa Centifolia",
+        "Rosa Damascena"
+      ],
+      "base": [
+        "Acorde Chipre",
+        "Almíscar Branco"
+      ],
+      "tagline": "Rosas limpas e luminosas, num chipre floral contemporâneo."
+    },
+    {
+      "key": "libre",
+      "name": "Libre",
+      "brand": "Yves Saint Laurent",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Floral Fougère",
+      "top": [
+        "Lavanda",
+        "Mandarina",
+        "Cassis",
+        "Petitgrain"
+      ],
+      "heart": [
+        "Flor de Laranjeira",
+        "Lavanda",
+        "Jasmim"
+      ],
+      "base": [
+        "Baunilha de Madagascar",
+        "Almíscar",
+        "Cedro",
+        "Âmbar-cinzento"
+      ],
+      "tagline": "Lavanda e flor de laranjeira em equilíbrio entre frescor e sensualidade."
+    },
+    {
+      "key": "miss-dior-parfum",
+      "name": "Miss Dior Parfum",
+      "brand": "Dior",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Parfum",
+      "family": "Chipre Floral Frutado Amadeirado",
+      "top": [
+        "Tangerina"
+      ],
+      "heart": [
+        "Jasmim"
+      ],
+      "base": [
+        "Madeiras Ambaradas"
+      ],
+      "tagline": "Jasmim radiante sobre madeiras ambaradas, para momentos especiais.",
+      "occasion": "Eventos especiais"
+    },
+    {
+      "key": "si",
+      "name": "Sì",
+      "brand": "Giorgio Armani",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Chipre Frutado",
+      "top": [
+        "Groselha Negra"
+      ],
+      "heart": [
+        "Frésia",
+        "Rosa de Maio"
+      ],
+      "base": [
+        "Madeira Clara Almiscarada"
+      ],
+      "tagline": "Cassis e rosa em um chipre frutado elegante."
+    },
+    {
+      "key": "light-blue",
+      "name": "Light Blue",
+      "brand": "Dolce&Gabbana",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": null,
+      "top": [
+        "Limão Siciliano"
+      ],
+      "heart": [
+        "Maçã Granny Smith"
+      ],
+      "base": [
+        "Cedro"
+      ],
+      "tagline": "Limão siciliano e maçã verde: o frescor do verão mediterrâneo.",
+      "occasion": "Dias quentes"
+    },
+    {
+      "key": "burberry-her",
+      "name": "Her",
+      "brand": "Burberry",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Gourmand",
+      "top": [
+        "Framboesa",
+        "Morango",
+        "Cereja Amarga",
+        "Amora",
+        "Cassis",
+        "Limão Siciliano"
+      ],
+      "heart": [
+        "Jasmim",
+        "Violeta"
+      ],
+      "base": [
+        "Âmbar",
+        "Musgo de Carvalho",
+        "Almíscar",
+        "Patchouli",
+        "Baunilha",
+        "Cashmeran"
+      ],
+      "tagline": "Frutas vermelhas suculentas com fundo amadeirado suave.",
+      "occasion": "Trabalho ou lazer"
+    },
+    {
+      "key": "daisy",
+      "name": "Daisy",
+      "brand": "Marc Jacobs",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Floral",
+      "top": [
+        "Morango",
+        "Folhas de Violeta",
+        "Grapefruit Vermelho"
+      ],
+      "heart": [
+        "Gardênia",
+        "Pétalas de Violeta"
+      ],
+      "base": [
+        "Almíscar",
+        "Baunilha",
+        "Madeiras Brancas"
+      ],
+      "tagline": "Floral leve e alegre, perfeito para o dia a dia."
+    },
+    {
+      "key": "scandal",
+      "name": "Scandal",
+      "brand": "Jean Paul Gaultier",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Chipre Gourmand",
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Mel"
+      ],
+      "tagline": "Gourmand cremoso com coração intenso de mel."
+    },
+    {
+      "key": "212-vip-rose",
+      "name": "212 VIP Rosé",
+      "brand": "Carolina Herrera",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Floral Frutal",
+      "top": [
+        "Notas Frutadas",
+        "Champagne"
+      ],
+      "heart": [
+        "Flor de Pêssego"
+      ],
+      "base": [
+        "Notas Amadeiradas",
+        "Âmbar",
+        "Almíscar Branco"
+      ],
+      "tagline": "Champagne e flor de pêssego para noites de festa.",
+      "occasion": "Noite"
+    },
+    {
+      "key": "yara",
+      "name": "Yara",
+      "brand": "Lattafa",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Âmbar Baunilha",
+      "top": [
+        "Heliotrópio",
+        "Orquídea",
+        "Tangerina"
+      ],
+      "heart": [
+        "Acorde Gourmand",
+        "Frutas Tropicais"
+      ],
+      "base": [
+        "Baunilha",
+        "Almíscar",
+        "Sândalo"
+      ],
+      "tagline": "Baunilha cremosa e frutas tropicais, um árabe doce e envolvente."
+    },
+    {
+      "key": "born-in-roma-donna",
+      "name": "Born in Roma Donna",
+      "brand": "Valentino",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Floral Amadeirado",
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Jasmim",
+        "Baunilha Bourbon",
+        "Cashmeran"
+      ],
+      "tagline": "Jasmim e baunilha bourbon com um toque amadeirado ousado."
+    },
+    {
+      "key": "the-one-dg",
+      "name": "The One",
+      "brand": "Dolce&Gabbana",
+      "gender": "feminino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Floral Oriental",
+      "top": [
+        "Pêssego",
+        "Lichia",
+        "Mandarina",
+        "Bergamota"
+      ],
+      "heart": [
+        "Lírio",
+        "Ameixa",
+        "Jasmim",
+        "Lírio-do-vale"
+      ],
+      "base": [
+        "Baunilha",
+        "Âmbar",
+        "Almíscar",
+        "Vetiver"
+      ],
+      "tagline": "Floral oriental caloroso para encontros à noite.",
+      "occasion": "Noite"
+    },
+    {
+      "key": "floratta-red-passion",
+      "name": "Floratta Red Passion",
+      "brand": "O Boticário",
+      "gender": "feminino",
+      "origin": "nacional",
+      "concentration": "Eau de Parfum",
+      "family": null,
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Pera",
+        "Mandarina",
+        "Frutas Vermelhas",
+        "Gardênia",
+        "Jasmim",
+        "Baunilha",
+        "Licor de Maçã"
+      ],
+      "tagline": "Versão intensa de Floratta Red com frutas vermelhas e flores brancas.",
+      "_note": "Pirâmide da fonte parece invertida (madeiras no corpo, flores no fundo); não estruturada."
+    },
+    {
+      "key": "floratta-rose-sucree",
+      "name": "Floratta Rose Sucrée",
+      "brand": "O Boticário",
+      "gender": "feminino",
+      "origin": "nacional",
+      "concentration": "Eau de Parfum",
+      "family": null,
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Rosa Damascena",
+        "Gardênia",
+        "Framboesa",
+        "Lichia",
+        "Água de Rosas"
+      ],
+      "tagline": "Rosas açucaradas inspiradas na confeitaria parisiense."
+    },
+    {
+      "key": "sauvage-edt",
+      "name": "Sauvage",
+      "brand": "Dior",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Aromático Cítrico Amadeirado",
+      "top": [
+        "Bergamota da Calábria"
+      ],
+      "heart": [
+        "Pimenta de Sichuan",
+        "Lavanda",
+        "Elemi"
+      ],
+      "base": [
+        "Ambroxan",
+        "Notas Amadeiradas Secas"
+      ],
+      "tagline": "Bergamota vibrante e ambroxan: fresco, intenso e duradouro."
+    },
+    {
+      "key": "1-million",
+      "name": "1 Million",
+      "brand": "Rabanne",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Amadeirado Especiado",
+      "top": [
+        "Mandarina Sanguínea",
+        "Grapefruit",
+        "Hortelã"
+      ],
+      "heart": [
+        "Canela",
+        "Notas Especiadas",
+        "Rosa"
+      ],
+      "base": [
+        "Âmbar",
+        "Couro",
+        "Notas Amadeiradas",
+        "Patchouli"
+      ],
+      "tagline": "Especiado e quente, com canela, couro e âmbar.",
+      "occasion": "Noite e eventos especiais"
+    },
+    {
+      "key": "invictus",
+      "name": "Invictus",
+      "brand": "Rabanne",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Aquático Amadeirado",
+      "top": [
+        "Toranja",
+        "Notas Marinhas",
+        "Mandarina"
+      ],
+      "heart": [
+        "Folha de Louro",
+        "Jasmim"
+      ],
+      "base": [
+        "Madeira Guaiac",
+        "Patchouli",
+        "Âmbar-cinzento",
+        "Musgo de Carvalho"
+      ],
+      "tagline": "Aquático e energizante, ideal para o dia a dia e dias quentes.",
+      "occasion": "Uso diário"
+    },
+    {
+      "key": "acqua-di-gio-edp",
+      "name": "Acqua di Giò",
+      "brand": "Giorgio Armani",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Aquático Floral",
+      "top": [
+        "Jasmim",
+        "Hedione"
+      ],
+      "heart": [
+        "Acorde Marinho"
+      ],
+      "base": [
+        "Cedro",
+        "Almíscar",
+        "Patchouli"
+      ],
+      "tagline": "Frescor marinho clássico em frasco refilável."
+    },
+    {
+      "key": "wanted",
+      "name": "Wanted",
+      "brand": "Azzaro",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Aromático Especiado Amadeirado",
+      "top": [
+        "Limão Siciliano",
+        "Gengibre"
+      ],
+      "heart": [
+        "Cardamomo",
+        "Zimbro"
+      ],
+      "base": [
+        "Vetiver",
+        "Fava Tonka"
+      ],
+      "tagline": "Limão e gengibre sobre vetiver: magnético e versátil."
+    },
+    {
+      "key": "le-male",
+      "name": "Le Male",
+      "brand": "Jean Paul Gaultier",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Fougère Oriental",
+      "top": [
+        "Menta",
+        "Artemísia",
+        "Cardamomo",
+        "Bergamota"
+      ],
+      "heart": [
+        "Lavanda",
+        "Flor de Laranjeira",
+        "Canela",
+        "Cominho"
+      ],
+      "base": [
+        "Sândalo",
+        "Baunilha",
+        "Cedro",
+        "Fava Tonka",
+        "Âmbar"
+      ],
+      "tagline": "Clássico de menta, lavanda e baunilha."
+    },
+    {
+      "key": "explorer",
+      "name": "Explorer",
+      "brand": "Montblanc",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": null,
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Bergamota",
+        "Vetiver",
+        "Patchouli"
+      ],
+      "tagline": "Bergamota, vetiver e patchouli com elegância casual."
+    },
+    {
+      "key": "eros",
+      "name": "Eros",
+      "brand": "Versace",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Aromático Amadeirado",
+      "top": [
+        "Menta",
+        "Limão",
+        "Maçã Verde"
+      ],
+      "heart": [
+        "Fava Tonka",
+        "Ambroxan",
+        "Gerânio"
+      ],
+      "base": [
+        "Baunilha de Madagascar",
+        "Vetiver"
+      ],
+      "tagline": "Menta e baunilha, intenso e sedutor para a noite.",
+      "occasion": "Noite"
+    },
+    {
+      "key": "212-vip-men",
+      "name": "212 VIP Men",
+      "brand": "Carolina Herrera",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Amadeirado Oriental",
+      "top": [
+        "Lima Caviar",
+        "Hortelã",
+        "Pimenta Preta"
+      ],
+      "heart": [
+        "Acorde de Vodka",
+        "Gengibre",
+        "Maçã"
+      ],
+      "base": [
+        "Fava Tonka",
+        "Âmbar",
+        "Madeiras"
+      ],
+      "tagline": "Vodka gelada e gengibre para noites de festa.",
+      "occasion": "Noite"
+    },
+    {
+      "key": "bad-boy",
+      "name": "Bad Boy",
+      "brand": "Carolina Herrera",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Oriental Amadeirado",
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Sálvia",
+        "Pimenta Preta",
+        "Pimenta Branca",
+        "Bergamota",
+        "Fava Tonka",
+        "Cacau",
+        "Âmbar"
+      ],
+      "tagline": "Contraste entre pimentas luminosas e cacau com fava tonka.",
+      "_note": "Lista de notas da fonte inconsistente; usados apenas ingredientes do texto narrativo."
+    },
+    {
+      "key": "polo-blue-parfum",
+      "name": "Polo Blue Parfum",
+      "brand": "Ralph Lauren",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Parfum",
+      "family": "Aquático",
+      "top": [
+        "Mandarina",
+        "Cardamomo",
+        "Pimenta Rosa"
+      ],
+      "heart": [
+        "Vetiver",
+        "Sálvia Esclareia",
+        "Lavanda",
+        "Jasmim"
+      ],
+      "base": [
+        "Madeira de Carvalho",
+        "Olíbano",
+        "Patchouli"
+      ],
+      "tagline": "Frescor aquático com profundidade amadeirada."
+    },
+    {
+      "key": "boss-bottled",
+      "name": "Boss Bottled",
+      "brand": "Hugo Boss",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Amadeirado",
+      "top": null,
+      "heart": null,
+      "base": null,
+      "tagline": "Amadeirado clássico e elegante para o dia a dia."
+    },
+    {
+      "key": "born-in-roma-uomo",
+      "name": "Born in Roma Uomo",
+      "brand": "Valentino",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Aromático Amadeirado",
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Violeta",
+        "Sal Mineral",
+        "Gengibre",
+        "Sálvia",
+        "Vetiver Defumado"
+      ],
+      "tagline": "Violeta, sálvia e vetiver defumado em assinatura moderna."
+    },
+    {
+      "key": "club-de-nuit-intense",
+      "name": "Club de Nuit Intense Man",
+      "brand": "Armaf",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": null,
+      "top": [
+        "Limão",
+        "Maçã",
+        "Bergamota",
+        "Groselha Preta",
+        "Abacaxi"
+      ],
+      "heart": [
+        "Rosa",
+        "Jasmim",
+        "Bétula"
+      ],
+      "base": [
+        "Almíscar",
+        "Âmbar-cinzento",
+        "Patchouli",
+        "Baunilha"
+      ],
+      "tagline": "Abacaxi e bétula defumada, intenso e duradouro."
+    },
+    {
+      "key": "asad",
+      "name": "Asad",
+      "brand": "Lattafa",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": "Ambarado Oriental",
+      "top": [
+        "Pimenta-do-reino",
+        "Abacaxi"
+      ],
+      "heart": [
+        "Café",
+        "Íris",
+        "Patchouli"
+      ],
+      "base": [
+        "Âmbar",
+        "Baunilha",
+        "Madeiras Secas",
+        "Benjoim",
+        "Ládano"
+      ],
+      "tagline": "Pimenta, café e baunilha num ambarado potente."
+    },
+    {
+      "key": "dylan-blue",
+      "name": "Dylan Blue Pour Homme",
+      "brand": "Versace",
+      "gender": "masculino",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": null,
+      "top": null,
+      "heart": null,
+      "base": null,
+      "tagline": "Fragrância masculina da linha Dylan Blue."
+    },
+    {
+      "key": "ck-one",
+      "name": "CK One",
+      "brand": "Calvin Klein",
+      "gender": "unissex",
+      "origin": "importado",
+      "concentration": "Eau de Toilette",
+      "family": "Aromático Cítrico",
+      "top": [
+        "Bergamota",
+        "Cardamomo",
+        "Tangerina",
+        "Frésia",
+        "Lavanda"
+      ],
+      "heart": [
+        "Chá Verde",
+        "Violeta",
+        "Rosa",
+        "Flor de Laranjeira"
+      ],
+      "base": [
+        "Âmbar",
+        "Almíscar"
+      ],
+      "tagline": "Cítrico leve e compartilhável para dias quentes.",
+      "occasion": "Dia a dia"
+    },
+    {
+      "key": "wood-sage-sea-salt",
+      "name": "Wood Sage & Sea Salt",
+      "brand": "Jo Malone London",
+      "gender": "unissex",
+      "origin": "importado",
+      "concentration": "Cologne",
+      "family": "Amadeirado Fresco",
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Sálvia",
+        "Sal Marinho"
+      ],
+      "tagline": "Sálvia e sal marinho: a brisa do litoral inglês."
+    },
+    {
+      "key": "khamrah",
+      "name": "Khamrah",
+      "brand": "Lattafa",
+      "gender": "unissex",
+      "origin": "importado",
+      "concentration": "Eau de Parfum",
+      "family": null,
+      "top": null,
+      "heart": null,
+      "base": null,
+      "tagline": "Árabe unissex marcante e duradouro."
+    },
+    {
+      "key": "liz-flora",
+      "name": "Liz Flora",
+      "brand": "O Boticário",
+      "gender": "feminino",
+      "origin": "nacional",
+      "concentration": "Desodorante Colônia",
+      "family": "Amadeirado Floral",
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Flor de Jacarandá",
+        "Íris"
+      ],
+      "tagline": "Flor de jacarandá e íris sobre a assinatura amadeirada de Liz."
+    },
+    {
+      "key": "egeo-choc",
+      "name": "Egeo Choc",
+      "brand": "O Boticário",
+      "gender": "feminino",
+      "origin": "nacional",
+      "concentration": "Desodorante Colônia",
+      "family": null,
+      "top": [
+        "Acorde de Chantilly",
+        "Pêssego",
+        "Limão Siciliano",
+        "Frutas Silvestres"
+      ],
+      "heart": [
+        "Almíscar",
+        "Baunilha",
+        "Benjoim",
+        "Madeiras Cremosas",
+        "Âmbar",
+        "Sândalo"
+      ],
+      "base": [
+        "Flor de Laranjeira",
+        "Pêssego",
+        "Acorde de Chocolate",
+        "Creme de Leite"
+      ],
+      "tagline": "Chocolate e chantilly num gourmand divertido."
+    },
+    {
+      "key": "malbec-edp",
+      "name": "Malbec Eau de Parfum",
+      "brand": "O Boticário",
+      "gender": "masculino",
+      "origin": "nacional",
+      "concentration": "Eau de Parfum",
+      "family": "Amadeirado Aromático",
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Madeira de Barril",
+        "Frutas Vermelhas",
+        "Especiarias"
+      ],
+      "tagline": "Madeira de barril e frutas vermelhas, intenso e sofisticado."
+    },
+    {
+      "key": "malbec-gold",
+      "name": "Malbec Gold",
+      "brand": "O Boticário",
+      "gender": "masculino",
+      "origin": "nacional",
+      "concentration": "Desodorante Colônia",
+      "family": "Amadeirado Ambarado",
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Flor de Laranjeira",
+        "Couro",
+        "Madeiras"
+      ],
+      "tagline": "Amadeirado ambarado quente com couro e flor de laranjeira."
+    },
+    {
+      "key": "kaiak",
+      "name": "Kaiak",
+      "brand": "Natura",
+      "gender": "masculino",
+      "origin": "nacional",
+      "concentration": "Desodorante Colônia",
+      "family": "Aromático",
+      "top": [
+        "Bergamota",
+        "Diidromircenol",
+        "Manjericão"
+      ],
+      "heart": [
+        "Madeiras Transparentes",
+        "Flor de Laranjeira",
+        "Muguet"
+      ],
+      "base": [
+        "Almíscar",
+        "Sândalo",
+        "Agulhas de Pinho"
+      ],
+      "tagline": "Clássico aquático brasileiro, fresco e versátil."
+    },
+    {
+      "key": "essencial-exclusivo",
+      "name": "Essencial Exclusivo Feminino",
+      "brand": "Natura",
+      "gender": "feminino",
+      "origin": "nacional",
+      "concentration": "Deo Parfum",
+      "family": null,
+      "top": [
+        "Mandarina",
+        "Laranja",
+        "Maçã",
+        "Framboesa",
+        "Frutas Vermelhas",
+        "Cassis"
+      ],
+      "heart": [
+        "Rosa",
+        "Magnólia",
+        "Jasmim",
+        "Frésia",
+        "Lírio"
+      ],
+      "base": [
+        "Madeiras Preciosas",
+        "Âmbar",
+        "Almíscar",
+        "Sândalo",
+        "Pêssego",
+        "Vetiver"
+      ],
+      "tagline": "Buquê de rosa e magnólia com frutas vermelhas."
+    },
+    {
+      "key": "essencial-classico",
+      "name": "Essencial Clássico Masculino",
+      "brand": "Natura",
+      "gender": "masculino",
+      "origin": "nacional",
+      "concentration": "Deo Parfum",
+      "family": null,
+      "top": [
+        "Bergamota",
+        "Lavanda",
+        "Gálbano",
+        "Zimbro",
+        "Noz-moscada",
+        "Grapefruit",
+        "Manjericão"
+      ],
+      "heart": [
+        "Gerânio",
+        "Patchouli",
+        "Alecrim",
+        "Sálvia",
+        "Jasmim"
+      ],
+      "base": [
+        "Cedro",
+        "Almíscar",
+        "Musgo de Carvalho",
+        "Sândalo",
+        "Âmbar",
+        "Bálsamo de Abeto",
+        "Mirra"
+      ],
+      "tagline": "Verde e amadeirado, um clássico elegante brasileiro."
+    },
+    {
+      "key": "luna-classico",
+      "name": "Luna Clássico",
+      "brand": "Natura",
+      "gender": "feminino",
+      "origin": "nacional",
+      "concentration": "Desodorante Colônia",
+      "family": "Chipre Frutal",
+      "top": null,
+      "heart": null,
+      "base": null,
+      "highlights": [
+        "Frutas Vermelhas",
+        "Notas Florais",
+        "Fundo Amadeirado"
+      ],
+      "tagline": "Chipre frutal icônico da perfumaria brasileira."
+    }
+  ]
+}

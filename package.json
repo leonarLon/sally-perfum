@@ -44,9 +44,9 @@
     "eslint-config-next": "16.4.5",
     "jsdom": "^31.0.0",
     "msw": "^3.0.4",
+    "supabase": "^3.0.0",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^5.1.0"
   },
   "engines": {

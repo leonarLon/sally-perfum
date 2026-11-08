@@ -15,4 +15,9 @@
 | 08/11/2026 | Técnica | Proteção de rotas com `src/proxy.ts` (antigo middleware) apenas para UX; autorização real no servidor e na RLS | Engenharia |
 | 08/11/2026 | Técnica | Testes de banco sem Docker: **PGlite** (Postgres em WASM) para validar migrations, RLS, concorrência e seed localmente | Engenharia |
 | 08/11/2026 | D4 (revisada) | **Consultor de IA retirado do site** até a venda do projeto (a API é paga). Implementação descrita em `PENDENCIAS_COMERCIAIS.md` §6. A Fase 9 fica suspensa | Usuário |
-| — | D2 | **Pendente:** projeto Supabase Free (o usuário cria e coloca as chaves no `.env.local`) | Aguardando |
+| 08/11/2026 | Técnica | Catálogo de 45 produtos com dados de referência da API pública de catálogo da Época Cosméticos (VTEX). Notas olfativas só quando explícitas na fonte; descrições próprias; imagem conferida visualmente (Olympéa excluída por imagem não confirmada) | Engenharia |
+| 08/11/2026 | Técnica | Cada volume é um SKU (`product_variants`); estoque 1:1 por variante; o público vê só o `stock_status` (privilégio de coluna) | Engenharia |
+| 08/11/2026 | Técnica | Busca, filtros e paginação em RPCs SQL `SECURITY INVOKER`, testáveis em PGlite e protegidas pela RLS | Engenharia |
+| 08/11/2026 | Técnica | Imagens: `external_url` como fallback até o upload ao Storage (`upload-images.mjs`, com validação por magic bytes) | Engenharia |
+| 08/11/2026 | D2 | Projeto Supabase Free criado pelo usuário; chaves no `.env.local` (conexão verificada) | Usuário |
+| — | D10 | **Pendente:** autorização para aplicar migrations, seed e imagens no Supabase remoto | Aguardando |

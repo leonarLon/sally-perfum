@@ -1,0 +1,163 @@
+{
+  "_about": "IDs de produto na API pública de catálogo da Época Cosméticos (VTEX). Vários IDs = anúncios do mesmo perfume em volumes diferentes, agrupados como variantes.",
+  "baseUrl": "https://www.epocacosmeticos.com.br",
+  "sources": {
+    "la-vie-est-belle": [
+      320071,
+      320072
+    ],
+    "good-girl": [
+      304241,
+      304244,
+      304245
+    ],
+    "paradoxe": [
+      56197
+    ],
+    "chloe-edp": [
+      164414
+    ],
+    "idole": [
+      283600,
+      299206,
+      288781
+    ],
+    "libre": [
+      38871
+    ],
+    "miss-dior-parfum": [
+      63156
+    ],
+    "si": [
+      5919
+    ],
+    "light-blue": [
+      909
+    ],
+    "burberry-her": [
+      106177
+    ],
+    "daisy": [
+      3480
+    ],
+    "scandal": [
+      240113,
+      237953,
+      237981
+    ],
+    "212-vip-rose": [
+      269518,
+      269528
+    ],
+    "yara": [
+      164510
+    ],
+    "born-in-roma-donna": [
+      84857
+    ],
+    "the-one-dg": [
+      178745
+    ],
+    "floratta-red-passion": [
+      241814
+    ],
+    "floratta-rose-sucree": [
+      241811
+    ],
+    "sauvage-edt": [
+      10340
+    ],
+    "1-million": [
+      323995,
+      324050,
+      324268
+    ],
+    "invictus": [
+      324291,
+      323967,
+      324568
+    ],
+    "acqua-di-gio-edp": [
+      52940
+    ],
+    "wanted": [
+      13168
+    ],
+    "le-male": [
+      845
+    ],
+    "explorer": [
+      31175
+    ],
+    "eros": [
+      233464,
+      272106,
+      238055
+    ],
+    "212-vip-men": [
+      2563
+    ],
+    "bad-boy": [
+      283140,
+      283137
+    ],
+    "polo-blue-parfum": [
+      264134
+    ],
+    "boss-bottled": [
+      300283,
+      299635,
+      232871
+    ],
+    "born-in-roma-uomo": [
+      85004
+    ],
+    "club-de-nuit-intense": [
+      238917
+    ],
+    "asad": [
+      263955
+    ],
+    "dylan-blue": [
+      261515,
+      307884
+    ],
+    "ck-one": [
+      284491,
+      288640
+    ],
+    "wood-sage-sea-salt": [
+      56991
+    ],
+    "khamrah": [
+      193927
+    ],
+    "liz-flora": [
+      303809
+    ],
+    "egeo-choc": [
+      264879
+    ],
+    "malbec-edp": [
+      264723
+    ],
+    "malbec-gold": [
+      194532
+    ],
+    "kaiak": [
+      279402
+    ],
+    "essencial-exclusivo": [
+      194521
+    ],
+    "essencial-classico": [
+      194522
+    ],
+    "luna-classico": [
+      298813
+    ]
+  },
+  "_excluded": {
+    "olympea": "Imagem principal da fonte mostrava frasco não confirmado como Olympéa Parfum (verificação visual em 08/11/2026)."
+  }
+}

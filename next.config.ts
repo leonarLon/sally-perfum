@@ -25,9 +25,13 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
-    remotePatterns: supabaseHost
-      ? [{ protocol: "https", hostname: supabaseHost, pathname: "/storage/v1/object/public/**" }]
-      : [],
+    remotePatterns: [
+      ...(supabaseHost
+        ? [{ protocol: "https" as const, hostname: supabaseHost, pathname: "/storage/v1/object/public/**" }]
+        : []),
+      // Fallback da carga inicial (imagens de referência, projeto de estudo) até o upload ao Storage.
+      { protocol: "https", hostname: "epocacosmeticos.vteximg.com.br", pathname: "/arquivos/ids/**" },
+    ],
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];

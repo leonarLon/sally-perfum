@@ -1,6 +1,7 @@
 import { QrCode, ShieldCheck, Truck } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { FeaturedProducts } from "@/components/catalog/featured-products";
 import { Container } from "@/components/ui/card";
 
 const entradas = [
@@ -62,6 +63,10 @@ export default function HomePage() {
           </ul>
         </Container>
       </section>
+
+      <Container className="pb-12">
+        <FeaturedProducts />
+      </Container>
 
       <section aria-label="Vantagens" className="border-y border-border">
         <Container className="grid gap-6 py-10 sm:grid-cols-3">

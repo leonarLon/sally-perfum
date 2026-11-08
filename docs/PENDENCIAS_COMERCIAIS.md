@@ -21,6 +21,10 @@ Mantenha a lista atualizada a cada fase. Os itens novos entram na seção corres
 - [ ] Trocar o **estoque de demonstração** pelas quantidades reais e desligar o selo "quantidade de demonstração" item a item.
 - [ ] Revisar descrições, notas olfativas e concentrações com a loja; marcar como "verificado".
 - [ ] Revisar os códigos de barras (EAN) reais de cada SKU.
+- [ ] Remover a URL externa das imagens do seed (`product_images.external_url`) e o domínio `epocacosmeticos.vteximg.com.br` de `images.remotePatterns` em `next.config.ts`.
+- [ ] Completar as pirâmides olfativas marcadas como "não confirmadas" (16 produtos), com fonte oficial.
+- [ ] Revisar a pirâmide do Floratta Red Passion e as notas do Bad Boy: a fonte de referência trazia dados inconsistentes, por isso ficaram como "destaques".
+- [ ] Revisar a regra de parcelamento exibida (demonstração: até 10x, parcela mínima de R$ 50) conforme o gateway contratado.
 
 ## 3. Pagamentos
 - [ ] Escolher o gateway (recomendação em `FASE-1-DIAGNOSTICO.md` §11) e **confirmar as taxas atuais** com ele.

@@ -1,0 +1,3169 @@
+{
+  "products": [
+    {
+      "key": "la-vie-est-belle",
+      "slug": "la-vie-est-belle-lancome",
+      "name": "La Vie Est Belle",
+      "brand": "Lancôme",
+      "brand_slug": "lancome",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Floral Oriental Gourmand",
+      "top_notes": [
+        "Pera",
+        "Cassis"
+      ],
+      "heart_notes": [
+        "Íris",
+        "Jasmim",
+        "Flor de Laranjeira"
+      ],
+      "base_notes": [
+        "Patchouli",
+        "Fava Tonka",
+        "Baunilha",
+        "Pralinê"
+      ],
+      "highlights": null,
+      "short_description": "Doce e luminoso, com íris e pralinê para qualquer ocasião.",
+      "occasion": "Qualquer ocasião",
+      "variants": [
+        {
+          "sku": "SLY-LA-VIE-EST-BELLE-030",
+          "volume_ml": 30,
+          "barcode": "3605532612690",
+          "price_cents": 32590,
+          "compare_at_cents": 52900,
+          "demo_stock": 5,
+          "price_source_url": "https://www.epocacosmeticos.com.br/lancome-la-vie-est-belle-eau-de-parfum-320071/p"
+        },
+        {
+          "sku": "SLY-LA-VIE-EST-BELLE-050",
+          "volume_ml": 50,
+          "barcode": "3605532612768",
+          "price_cents": 48990,
+          "compare_at_cents": 79900,
+          "demo_stock": 23,
+          "price_source_url": "https://www.epocacosmeticos.com.br/lancome-la-vie-est-belle-eau-de-parfum-320072/p"
+        },
+        {
+          "sku": "SLY-LA-VIE-EST-BELLE-100",
+          "volume_ml": 100,
+          "barcode": "3614273749381",
+          "price_cents": 65490,
+          "compare_at_cents": 87900,
+          "demo_stock": 15,
+          "price_source_url": "https://www.epocacosmeticos.com.br/lancome-la-vie-est-belle-eau-de-parfum-320071/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3776131-800-800/17931244798812.jpg",
+          "bytes": 27837,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3776129-800-800/17931244825869.jpg",
+          "bytes": 80892,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3776130-800-800/17931244849753.jpg",
+          "bytes": 51041,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/lancome-la-vie-est-belle-eau-de-parfum-320071/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "good-girl",
+      "slug": "good-girl-carolina-herrera",
+      "name": "Good Girl",
+      "brand": "Carolina Herrera",
+      "brand_slug": "carolina-herrera",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Oriental Floral",
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": null,
+      "short_description": "Oriental floral marcante, no icônico frasco em forma de salto.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-GOOD-GIRL-030",
+          "volume_ml": 30,
+          "barcode": "8411061823514",
+          "price_cents": 42800,
+          "compare_at_cents": 51360,
+          "demo_stock": 13,
+          "price_source_url": "https://www.epocacosmeticos.com.br/good-girl--eau-de-parfum-feminino--30-ml-304241/p"
+        },
+        {
+          "sku": "SLY-GOOD-GIRL-050",
+          "volume_ml": 50,
+          "barcode": "8411061819838",
+          "price_cents": 54100,
+          "compare_at_cents": 64920,
+          "demo_stock": 9,
+          "price_source_url": "https://www.epocacosmeticos.com.br/good-girl--eau-de-parfum-feminino--50-ml-304244/p"
+        },
+        {
+          "sku": "SLY-GOOD-GIRL-150",
+          "volume_ml": 150,
+          "barcode": "8411061958483",
+          "price_cents": 79300,
+          "compare_at_cents": 95160,
+          "demo_stock": 24,
+          "price_source_url": "https://www.epocacosmeticos.com.br/good-girl--eau-de-parfum-feminino--150-ml-304245/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3438281-800-800/17788805478423.jpg",
+          "bytes": 18868,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3438282-800-800/17788805502205.jpg",
+          "bytes": 48249,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3438285-800-800/17788805488950.jpg",
+          "bytes": 18868,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/good-girl--eau-de-parfum-feminino--30-ml-304241/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "paradoxe",
+      "slug": "paradoxe-prada",
+      "name": "Paradoxe",
+      "brand": "Prada",
+      "brand_slug": "prada",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Floral Ambarado",
+      "top_notes": [
+        "Botão de Neroli"
+      ],
+      "heart_notes": [
+        "Âmbar (Ambrofi)"
+      ],
+      "base_notes": [
+        "Almíscar (Serenolide)"
+      ],
+      "highlights": null,
+      "short_description": "Floral ambarado moderno, em frasco refilável.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-PARADOXE-030",
+          "volume_ml": 30,
+          "barcode": "3614273760713",
+          "price_cents": 48900,
+          "compare_at_cents": 69899,
+          "demo_stock": 25,
+          "price_source_url": "https://www.epocacosmeticos.com.br/prada-paradoxe-perfume-feminino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-PARADOXE-050",
+          "volume_ml": 50,
+          "barcode": "3614273760652",
+          "price_cents": 76700,
+          "compare_at_cents": 99899,
+          "demo_stock": 21,
+          "price_source_url": "https://www.epocacosmeticos.com.br/prada-paradoxe-perfume-feminino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-PARADOXE-090",
+          "volume_ml": 90,
+          "barcode": "3614273760164",
+          "price_cents": 92100,
+          "compare_at_cents": 119900,
+          "demo_stock": 13,
+          "price_source_url": "https://www.epocacosmeticos.com.br/prada-paradoxe-perfume-feminino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-PARADOXE-100",
+          "volume_ml": 100,
+          "barcode": "3614273760201",
+          "price_cents": 67000,
+          "compare_at_cents": 95899,
+          "demo_stock": 13,
+          "price_source_url": "https://www.epocacosmeticos.com.br/prada-paradoxe-perfume-feminino-eau-de-parfum/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3060660-800-800/3614273760713.01.jpg",
+          "bytes": 73916,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3060661-800-800/3614273760713.2.jpg",
+          "bytes": 134847,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3060662-800-800/3614273760164-3614273760201-3614273760652-3614273760713.03.jpg",
+          "bytes": 92382,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/prada-paradoxe-perfume-feminino-eau-de-parfum/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "chloe-edp",
+      "slug": "chloe-chloe",
+      "name": "Chloé",
+      "brand": "Chloé",
+      "brand_slug": "chloe",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": null,
+      "top_notes": [
+        "Lichia",
+        "Peônia",
+        "Frésia"
+      ],
+      "heart_notes": [
+        "Rosa",
+        "Magnólia",
+        "Lírio-do-vale"
+      ],
+      "base_notes": [
+        "Cedro",
+        "Âmbar",
+        "Mel"
+      ],
+      "highlights": null,
+      "short_description": "Buquê de rosas delicado com toque de mel.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-CHLOE-EDP-030",
+          "volume_ml": 30,
+          "barcode": "0688575201901",
+          "price_cents": 34030,
+          "compare_at_cents": 56800,
+          "demo_stock": 14,
+          "price_source_url": "https://www.epocacosmeticos.com.br/chloe-de-chloe-eau-de-parfum-feminino-164414/p"
+        },
+        {
+          "sku": "SLY-CHLOE-EDP-050",
+          "volume_ml": 50,
+          "barcode": "3607346232347",
+          "price_cents": 54780,
+          "compare_at_cents": 80500,
+          "demo_stock": 10,
+          "price_source_url": "https://www.epocacosmeticos.com.br/chloe-de-chloe-eau-de-parfum-feminino-164414/p"
+        },
+        {
+          "sku": "SLY-CHLOE-EDP-075",
+          "volume_ml": 75,
+          "barcode": "3607346232385",
+          "price_cents": 68060,
+          "compare_at_cents": 93500,
+          "demo_stock": 11,
+          "price_source_url": "https://www.epocacosmeticos.com.br/chloe-de-chloe-eau-de-parfum-feminino-164414/p"
+        },
+        {
+          "sku": "SLY-CHLOE-EDP-100",
+          "volume_ml": 100,
+          "barcode": "3616302038633",
+          "price_cents": 78020,
+          "compare_at_cents": 99800,
+          "demo_stock": 24,
+          "price_source_url": "https://www.epocacosmeticos.com.br/chloe-de-chloe-eau-de-parfum-feminino-164414/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1194079-800-800/17619462261126.jpg",
+          "bytes": 47232,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1194078-800-800/17619462258625.jpg",
+          "bytes": 47232,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1204584-800-800/17619462266850.jpg",
+          "bytes": 47232,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/chloe-de-chloe-eau-de-parfum-feminino-164414/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "idole",
+      "slug": "idole-lancome",
+      "name": "Idôle",
+      "brand": "Lancôme",
+      "brand_slug": "lancome",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Chipre Floral",
+      "top_notes": [
+        "Pera",
+        "Bergamota",
+        "Jasmim Sambac",
+        "Jasmim Grandiflorum"
+      ],
+      "heart_notes": [
+        "Rosa Centifolia",
+        "Rosa Damascena"
+      ],
+      "base_notes": [
+        "Acorde Chipre",
+        "Almíscar Branco"
+      ],
+      "highlights": null,
+      "short_description": "Rosas limpas e luminosas, num chipre floral contemporâneo.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-IDOLE-025",
+          "volume_ml": 25,
+          "barcode": "7893844721872",
+          "price_cents": 52900,
+          "compare_at_cents": null,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/idole-lancome-feminino-eau-de-parfum-25ml-283600/p"
+        },
+        {
+          "sku": "SLY-IDOLE-050",
+          "volume_ml": 50,
+          "barcode": "7891881345280",
+          "price_cents": 80900,
+          "compare_at_cents": null,
+          "demo_stock": 22,
+          "price_source_url": "https://www.epocacosmeticos.com.br/idole-lancome-feminino-eau-de-parfum-50ml-299206/p"
+        },
+        {
+          "sku": "SLY-IDOLE-100",
+          "volume_ml": 100,
+          "barcode": "7893721017791",
+          "price_cents": 110900,
+          "compare_at_cents": null,
+          "demo_stock": 14,
+          "price_source_url": "https://www.epocacosmeticos.com.br/idole-lancome-feminino-eau-de-parfum-100ml-288781/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3118462-800-800/17882811401626.jpg",
+          "bytes": 19282,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3302832-800-800/17882812139337.jpg",
+          "bytes": 23037,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3184270-800-800/17882810941402.jpg",
+          "bytes": 27132,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/idole-lancome-feminino-eau-de-parfum-25ml-283600/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "libre",
+      "slug": "libre-yves-saint-laurent",
+      "name": "Libre",
+      "brand": "Yves Saint Laurent",
+      "brand_slug": "yves-saint-laurent",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Floral Fougère",
+      "top_notes": [
+        "Lavanda",
+        "Mandarina",
+        "Cassis",
+        "Petitgrain"
+      ],
+      "heart_notes": [
+        "Flor de Laranjeira",
+        "Lavanda",
+        "Jasmim"
+      ],
+      "base_notes": [
+        "Baunilha de Madagascar",
+        "Almíscar",
+        "Cedro",
+        "Âmbar-cinzento"
+      ],
+      "highlights": null,
+      "short_description": "Lavanda e flor de laranjeira em equilíbrio entre frescor e sensualidade.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-LIBRE-030",
+          "volume_ml": 30,
+          "barcode": "3614272648401",
+          "price_cents": 47900,
+          "compare_at_cents": 69899,
+          "demo_stock": 7,
+          "price_source_url": "https://www.epocacosmeticos.com.br/libre-yves-saint-laurent-perfume-feminino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-LIBRE-050",
+          "volume_ml": 50,
+          "barcode": "3614272648418",
+          "price_cents": 69900,
+          "compare_at_cents": 99899,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/libre-yves-saint-laurent-perfume-feminino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-LIBRE-090",
+          "volume_ml": 90,
+          "barcode": "3614272648425",
+          "price_cents": 85446,
+          "compare_at_cents": 119899,
+          "demo_stock": 17,
+          "price_source_url": "https://www.epocacosmeticos.com.br/libre-yves-saint-laurent-perfume-feminino-eau-de-parfum/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1400238-800-800/libre-yves-saint-laurent-perfume-feminino-eau-de-parfum-30ml--1-.jpg",
+          "bytes": 48877,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1400239-800-800/libre-yves-saint-laurent-perfume-feminino-eau-de-parfum-30ml--2-.jpg",
+          "bytes": 82378,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1400240-800-800/libre-yves-saint-laurent-perfume-feminino-eau-de-parfum--4-.jpg",
+          "bytes": 199026,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/libre-yves-saint-laurent-perfume-feminino-eau-de-parfum/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "miss-dior-parfum",
+      "slug": "miss-dior-parfum-dior",
+      "name": "Miss Dior Parfum",
+      "brand": "Dior",
+      "brand_slug": "dior",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Parfum",
+      "olfactory_family": "Chipre Floral Frutado Amadeirado",
+      "top_notes": [
+        "Tangerina"
+      ],
+      "heart_notes": [
+        "Jasmim"
+      ],
+      "base_notes": [
+        "Madeiras Ambaradas"
+      ],
+      "highlights": null,
+      "short_description": "Jasmim radiante sobre madeiras ambaradas, para momentos especiais.",
+      "occasion": "Eventos especiais",
+      "variants": [
+        {
+          "sku": "SLY-MISS-DIOR-PARFUM-035",
+          "volume_ml": 35,
+          "barcode": "3348901708944",
+          "price_cents": 68900,
+          "compare_at_cents": null,
+          "demo_stock": 9,
+          "price_source_url": "https://www.epocacosmeticos.com.br/miss-dior-perfume-feminino-parfum/p"
+        },
+        {
+          "sku": "SLY-MISS-DIOR-PARFUM-050",
+          "volume_ml": 50,
+          "barcode": "3348901708937",
+          "price_cents": 94900,
+          "compare_at_cents": null,
+          "demo_stock": 22,
+          "price_source_url": "https://www.epocacosmeticos.com.br/miss-dior-perfume-feminino-parfum/p"
+        },
+        {
+          "sku": "SLY-MISS-DIOR-PARFUM-080",
+          "volume_ml": 80,
+          "barcode": "3348901708920",
+          "price_cents": 112900,
+          "compare_at_cents": null,
+          "demo_stock": 5,
+          "price_source_url": "https://www.epocacosmeticos.com.br/miss-dior-perfume-feminino-parfum/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3131926-800-800/3348901708944_1.jpg",
+          "bytes": 85367,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3131927-800-800/3348901708944_2.jpg",
+          "bytes": 48451,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3131928-800-800/3348901708920 -3348901708937_3.jpg",
+          "bytes": 131654,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/miss-dior-perfume-feminino-parfum/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "si",
+      "slug": "si-giorgio-armani",
+      "name": "Sì",
+      "brand": "Giorgio Armani",
+      "brand_slug": "giorgio-armani",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Chipre Frutado",
+      "top_notes": [
+        "Groselha Negra"
+      ],
+      "heart_notes": [
+        "Frésia",
+        "Rosa de Maio"
+      ],
+      "base_notes": [
+        "Madeira Clara Almiscarada"
+      ],
+      "highlights": null,
+      "short_description": "Cassis e rosa em um chipre frutado elegante.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-SI-030",
+          "volume_ml": 30,
+          "barcode": "3605521816511",
+          "price_cents": 45000,
+          "compare_at_cents": 59900,
+          "demo_stock": 9,
+          "price_source_url": "https://www.epocacosmeticos.com.br/si-eau-de-parfum-giorgio-armani-perfume-feminino/p"
+        },
+        {
+          "sku": "SLY-SI-050",
+          "volume_ml": 50,
+          "barcode": "3605521816580",
+          "price_cents": 65614,
+          "compare_at_cents": 87900,
+          "demo_stock": 5,
+          "price_source_url": "https://www.epocacosmeticos.com.br/si-eau-de-parfum-giorgio-armani-perfume-feminino/p"
+        },
+        {
+          "sku": "SLY-SI-100",
+          "volume_ml": 100,
+          "barcode": "3605521816658",
+          "price_cents": 79600,
+          "compare_at_cents": 109900,
+          "demo_stock": 19,
+          "price_source_url": "https://www.epocacosmeticos.com.br/si-eau-de-parfum-giorgio-armani-perfume-feminino/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1361387-800-800/si-eau-de-parfum-giorgio-armani-perfume-feminino--1-.jpg",
+          "bytes": 33543,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1361388-800-800/si-eau-de-parfum-giorgio-armani-perfume-feminino--3-.jpg",
+          "bytes": 47078,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1361389-800-800/si-eau-de-parfum-giorgio-armani-perfume-feminino--8-.jpg",
+          "bytes": 69341,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/si-eau-de-parfum-giorgio-armani-perfume-feminino/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "light-blue",
+      "slug": "light-blue-dolce-e-gabbana",
+      "name": "Light Blue",
+      "brand": "Dolce&Gabbana",
+      "brand_slug": "dolce-e-gabbana",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": null,
+      "top_notes": [
+        "Limão Siciliano"
+      ],
+      "heart_notes": [
+        "Maçã Granny Smith"
+      ],
+      "base_notes": [
+        "Cedro"
+      ],
+      "highlights": null,
+      "short_description": "Limão siciliano e maçã verde: o frescor do verão mediterrâneo.",
+      "occasion": "Dias quentes",
+      "variants": [
+        {
+          "sku": "SLY-LIGHT-BLUE-030",
+          "volume_ml": 30,
+          "barcode": "8057971188178",
+          "price_cents": 37147,
+          "compare_at_cents": 54900,
+          "demo_stock": 14,
+          "price_source_url": "https://www.epocacosmeticos.com.br/light-blue-eau-de-toilette-dolce-gabbana-perfume-feminino/p"
+        },
+        {
+          "sku": "SLY-LIGHT-BLUE-050",
+          "volume_ml": 50,
+          "barcode": "8057971188185",
+          "price_cents": 49410,
+          "compare_at_cents": 73500,
+          "demo_stock": 10,
+          "price_source_url": "https://www.epocacosmeticos.com.br/light-blue-eau-de-toilette-dolce-gabbana-perfume-feminino/p"
+        },
+        {
+          "sku": "SLY-LIGHT-BLUE-100",
+          "volume_ml": 100,
+          "barcode": "8057971188192",
+          "price_cents": 75619,
+          "compare_at_cents": 97899,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/light-blue-eau-de-toilette-dolce-gabbana-perfume-feminino/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/891080-800-800/light-blue-eau-de-toilette-dolce-gabbana-perfume-feminino--1-.jpg",
+          "bytes": 19125,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/891081-800-800/light-blue-eau-de-toilette-dolce-gabbana-perfume-feminino--8-.jpg",
+          "bytes": 58064,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/891082-800-800/light-blue-eau-de-toilette-dolce-gabbana-perfume-feminino--2-.jpg",
+          "bytes": 50413,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/light-blue-eau-de-toilette-dolce-gabbana-perfume-feminino/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "burberry-her",
+      "slug": "her-burberry",
+      "name": "Her",
+      "brand": "Burberry",
+      "brand_slug": "burberry",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Gourmand",
+      "top_notes": [
+        "Framboesa",
+        "Morango",
+        "Cereja Amarga",
+        "Amora",
+        "Cassis",
+        "Limão Siciliano"
+      ],
+      "heart_notes": [
+        "Jasmim",
+        "Violeta"
+      ],
+      "base_notes": [
+        "Âmbar",
+        "Musgo de Carvalho",
+        "Almíscar",
+        "Patchouli",
+        "Baunilha",
+        "Cashmeran"
+      ],
+      "highlights": null,
+      "short_description": "Frutas vermelhas suculentas com fundo amadeirado suave.",
+      "occasion": "Trabalho ou lazer",
+      "variants": [
+        {
+          "sku": "SLY-BURBERRY-HER-030",
+          "volume_ml": 30,
+          "barcode": "3614227693241",
+          "price_cents": 48390,
+          "compare_at_cents": 56990,
+          "demo_stock": 16,
+          "price_source_url": "https://www.epocacosmeticos.com.br/burberry-her-eau-de-parfum-106177/p"
+        },
+        {
+          "sku": "SLY-BURBERRY-HER-050",
+          "volume_ml": 50,
+          "barcode": "3614227693920",
+          "price_cents": 67890,
+          "compare_at_cents": 74900,
+          "demo_stock": 12,
+          "price_source_url": "https://www.epocacosmeticos.com.br/burberry-her-eau-de-parfum-106177/p"
+        },
+        {
+          "sku": "SLY-BURBERRY-HER-100",
+          "volume_ml": 100,
+          "barcode": "3614227693876",
+          "price_cents": 87390,
+          "compare_at_cents": 99990,
+          "demo_stock": 4,
+          "price_source_url": "https://www.epocacosmeticos.com.br/burberry-her-eau-de-parfum-106177/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/828552-800-800/17443113816582.jpg",
+          "bytes": 25058,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/828555-800-800/17443113845709.jpg",
+          "bytes": 161443,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/828554-800-800/17443113868679.jpg",
+          "bytes": 92385,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/burberry-her-eau-de-parfum-106177/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "daisy",
+      "slug": "daisy-marc-jacobs",
+      "name": "Daisy",
+      "brand": "Marc Jacobs",
+      "brand_slug": "marc-jacobs",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Floral",
+      "top_notes": [
+        "Morango",
+        "Folhas de Violeta",
+        "Grapefruit Vermelho"
+      ],
+      "heart_notes": [
+        "Gardênia",
+        "Pétalas de Violeta"
+      ],
+      "base_notes": [
+        "Almíscar",
+        "Baunilha",
+        "Madeiras Brancas"
+      ],
+      "highlights": null,
+      "short_description": "Floral leve e alegre, perfeito para o dia a dia.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-DAISY-050",
+          "volume_ml": 50,
+          "barcode": "0031655513027",
+          "price_cents": 44115,
+          "compare_at_cents": 51900,
+          "demo_stock": 23,
+          "price_source_url": "https://www.epocacosmeticos.com.br/daisy-eau-de-toilette-marc-jacobs-perfume-feminino/p"
+        },
+        {
+          "sku": "SLY-DAISY-100",
+          "volume_ml": 100,
+          "barcode": "0031655513034",
+          "price_cents": 70900,
+          "compare_at_cents": null,
+          "demo_stock": 15,
+          "price_source_url": "https://www.epocacosmeticos.com.br/daisy-eau-de-toilette-marc-jacobs-perfume-feminino/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/403808-800-800/daisy-eau-de-toilette-marc-jacobs-perfume-feminino-50ml--2-.jpg",
+          "bytes": 30582,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/403809-800-800/daisy-eau-de-toilette-marc-jacobs-perfume-feminino-50ml--1-.jpg",
+          "bytes": 60971,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/403810-800-800/daisy-eau-de-toilette-marc-jacobs-perfume-feminino--1-.jpg",
+          "bytes": 82040,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/daisy-eau-de-toilette-marc-jacobs-perfume-feminino/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "scandal",
+      "slug": "scandal-jean-paul-gaultier",
+      "name": "Scandal",
+      "brand": "Jean Paul Gaultier",
+      "brand_slug": "jean-paul-gaultier",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Chipre Gourmand",
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Mel"
+      ],
+      "short_description": "Gourmand cremoso com coração intenso de mel.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-SCANDAL-030",
+          "volume_ml": 30,
+          "barcode": "8435415018463",
+          "price_cents": 40600,
+          "compare_at_cents": 48720,
+          "demo_stock": 21,
+          "price_source_url": "https://www.epocacosmeticos.com.br/scandal-jean-paul-gaultier-eau-de-parfum-feminino-30-ml-240113/p"
+        },
+        {
+          "sku": "SLY-SCANDAL-050",
+          "volume_ml": 50,
+          "barcode": "8435415059077",
+          "price_cents": 56400,
+          "compare_at_cents": 67680,
+          "demo_stock": 17,
+          "price_source_url": "https://www.epocacosmeticos.com.br/scandal-jean-paul-gaultier-eau-de-parfum-feminino-50-ml-237953/p"
+        },
+        {
+          "sku": "SLY-SCANDAL-080",
+          "volume_ml": 80,
+          "barcode": "8435415059060",
+          "price_cents": 65700,
+          "compare_at_cents": 78840,
+          "demo_stock": 22,
+          "price_source_url": "https://www.epocacosmeticos.com.br/scandal-jean-paul-gaultier-eau-de-parfum-feminino-80-ml-237981/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2322131-800-800/17805105429059.jpg",
+          "bytes": 33399,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2322101-800-800/17805105447090.jpg",
+          "bytes": 45377,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2249989-800-800/17799012211550.jpg",
+          "bytes": 33399,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/scandal-jean-paul-gaultier-eau-de-parfum-feminino-30-ml-240113/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "212-vip-rose",
+      "slug": "212-vip-rose-carolina-herrera",
+      "name": "212 VIP Rosé",
+      "brand": "Carolina Herrera",
+      "brand_slug": "carolina-herrera",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Floral Frutal",
+      "top_notes": [
+        "Notas Frutadas",
+        "Champagne"
+      ],
+      "heart_notes": [
+        "Flor de Pêssego"
+      ],
+      "base_notes": [
+        "Notas Amadeiradas",
+        "Âmbar",
+        "Almíscar Branco"
+      ],
+      "highlights": null,
+      "short_description": "Champagne e flor de pêssego para noites de festa.",
+      "occasion": "Noite",
+      "variants": [
+        {
+          "sku": "SLY-212-VIP-ROSE-030",
+          "volume_ml": 30,
+          "barcode": "8411061120583",
+          "price_cents": 52999,
+          "compare_at_cents": null,
+          "demo_stock": 6,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-212-vip-rose-edp-feminino-30ml-269518/p"
+        },
+        {
+          "sku": "SLY-212-VIP-ROSE-125",
+          "volume_ml": 125,
+          "barcode": "8411061838778",
+          "price_cents": 93999,
+          "compare_at_cents": null,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-212-vip-rose-edp--feminino-125ml-269528/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2922528-800-800/17865581716325.jpg",
+          "bytes": 28348,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2922527-800-800/17865581731761.jpg",
+          "bytes": 38736,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2922536-800-800/17865581748728.jpg",
+          "bytes": 50631,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/perfume-212-vip-rose-edp-feminino-30ml-269518/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "yara",
+      "slug": "yara-lattafa",
+      "name": "Yara",
+      "brand": "Lattafa",
+      "brand_slug": "lattafa",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Âmbar Baunilha",
+      "top_notes": [
+        "Heliotrópio",
+        "Orquídea",
+        "Tangerina"
+      ],
+      "heart_notes": [
+        "Acorde Gourmand",
+        "Frutas Tropicais"
+      ],
+      "base_notes": [
+        "Baunilha",
+        "Almíscar",
+        "Sândalo"
+      ],
+      "highlights": null,
+      "short_description": "Baunilha cremosa e frutas tropicais, um árabe doce e envolvente.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-YARA-100",
+          "volume_ml": 100,
+          "barcode": "6291108730515",
+          "price_cents": 28220,
+          "compare_at_cents": 48000,
+          "demo_stock": 18,
+          "price_source_url": "https://www.epocacosmeticos.com.br/yara-lattafa-eau-de-parfum-feminino-164510/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1194389-800-800/17619467354822.jpg",
+          "bytes": 50753,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1194387-800-800/17619467352259.jpg",
+          "bytes": 50753,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/yara-lattafa-eau-de-parfum-feminino-164510/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "born-in-roma-donna",
+      "slug": "born-in-roma-donna-valentino",
+      "name": "Born in Roma Donna",
+      "brand": "Valentino",
+      "brand_slug": "valentino",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Floral Amadeirado",
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Jasmim",
+        "Baunilha Bourbon",
+        "Cashmeran"
+      ],
+      "short_description": "Jasmim e baunilha bourbon com um toque amadeirado ousado.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-BORN-IN-ROMA-DONNA-030",
+          "volume_ml": 30,
+          "barcode": "3614272761421",
+          "price_cents": 54550,
+          "compare_at_cents": 66900,
+          "demo_stock": 23,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-valentino-born-in-roma-donna-feminino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-BORN-IN-ROMA-DONNA-050",
+          "volume_ml": 50,
+          "barcode": "3614272761438",
+          "price_cents": 78787,
+          "compare_at_cents": 97900,
+          "demo_stock": 19,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-valentino-born-in-roma-donna-feminino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-BORN-IN-ROMA-DONNA-100",
+          "volume_ml": 100,
+          "barcode": "3614272761445",
+          "price_cents": 96425,
+          "compare_at_cents": 118900,
+          "demo_stock": 11,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-valentino-born-in-roma-donna-feminino-eau-de-parfum/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3186833-800-800/3614272761421.01.jpg",
+          "bytes": 98446,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3186834-800-800/3614272761421.02.jpg",
+          "bytes": 70039,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3186835-800-800/3614272761445-3614272761421-3614272761438.03.jpg",
+          "bytes": 100043,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/perfume-valentino-born-in-roma-donna-feminino-eau-de-parfum/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "the-one-dg",
+      "slug": "the-one-dolce-e-gabbana",
+      "name": "The One",
+      "brand": "Dolce&Gabbana",
+      "brand_slug": "dolce-e-gabbana",
+      "gender": "feminino",
+      "origin": "importado",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Floral Oriental",
+      "top_notes": [
+        "Pêssego",
+        "Lichia",
+        "Mandarina",
+        "Bergamota"
+      ],
+      "heart_notes": [
+        "Lírio",
+        "Ameixa",
+        "Jasmim",
+        "Lírio-do-vale"
+      ],
+      "base_notes": [
+        "Baunilha",
+        "Âmbar",
+        "Almíscar",
+        "Vetiver"
+      ],
+      "highlights": null,
+      "short_description": "Floral oriental caloroso para encontros à noite.",
+      "occasion": "Noite",
+      "variants": [
+        {
+          "sku": "SLY-THE-ONE-DG-030",
+          "volume_ml": 30,
+          "barcode": "0737052020815",
+          "price_cents": 48970,
+          "compare_at_cents": 59800,
+          "demo_stock": 13,
+          "price_source_url": "https://www.epocacosmeticos.com.br/the-one-by-dolce-gabbana-eau-de-parfum-feminino-178745/p"
+        },
+        {
+          "sku": "SLY-THE-ONE-DG-075",
+          "volume_ml": 75,
+          "barcode": "3423473021001",
+          "price_cents": 82917,
+          "compare_at_cents": 115000,
+          "demo_stock": 10,
+          "price_source_url": "https://www.epocacosmeticos.com.br/the-one-by-dolce-gabbana-eau-de-parfum-feminino-178745/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1322659-800-800/17634829077162.jpg",
+          "bytes": 54772,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1322662-800-800/17634829069343.jpg",
+          "bytes": 54772,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1322710-800-800/17634829071745.jpg",
+          "bytes": 54772,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/the-one-by-dolce-gabbana-eau-de-parfum-feminino-178745/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "floratta-red-passion",
+      "slug": "floratta-red-passion-o-boticario",
+      "name": "Floratta Red Passion",
+      "brand": "O Boticário",
+      "brand_slug": "o-boticario",
+      "gender": "feminino",
+      "origin": "nacional",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": null,
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Pera",
+        "Mandarina",
+        "Frutas Vermelhas",
+        "Gardênia",
+        "Jasmim",
+        "Baunilha",
+        "Licor de Maçã"
+      ],
+      "short_description": "Versão intensa de Floratta Red com frutas vermelhas e flores brancas.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-FLORATTA-RED-PASSION-075",
+          "volume_ml": 75,
+          "barcode": "7891033593064",
+          "price_cents": 36990,
+          "compare_at_cents": 42900,
+          "demo_stock": 21,
+          "price_source_url": "https://www.epocacosmeticos.com.br/floratta-red-passion-eau-de-parfum-75ml-241814/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2357086-800-800/17806630849901.jpg",
+          "bytes": 35155,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2357080-800-800/17806630856165.jpg",
+          "bytes": 40444,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2357085-800-800/17806630862468.jpg",
+          "bytes": 69957,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/floratta-red-passion-eau-de-parfum-75ml-241814/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "floratta-rose-sucree",
+      "slug": "floratta-rose-sucree-o-boticario",
+      "name": "Floratta Rose Sucrée",
+      "brand": "O Boticário",
+      "brand_slug": "o-boticario",
+      "gender": "feminino",
+      "origin": "nacional",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": null,
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Rosa Damascena",
+        "Gardênia",
+        "Framboesa",
+        "Lichia",
+        "Água de Rosas"
+      ],
+      "short_description": "Rosas açucaradas inspiradas na confeitaria parisiense.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-FLORATTA-ROSE-SUCREE-075",
+          "volume_ml": 75,
+          "barcode": "7891033519804",
+          "price_cents": 33210,
+          "compare_at_cents": 46990,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/floratta-rose-sucree-eau-de-parfum-75ml-|-o-boticario-241811/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2357056-800-800/17799811671721.jpg",
+          "bytes": 39150,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2357057-800-800/17799811697801.jpg",
+          "bytes": 72099,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2357083-800-800/17799811706100.jpg",
+          "bytes": 73576,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/floratta-rose-sucree-eau-de-parfum-75ml-|-o-boticario-241811/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "sauvage-edt",
+      "slug": "sauvage-dior",
+      "name": "Sauvage",
+      "brand": "Dior",
+      "brand_slug": "dior",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Aromático Cítrico Amadeirado",
+      "top_notes": [
+        "Bergamota da Calábria"
+      ],
+      "heart_notes": [
+        "Pimenta de Sichuan",
+        "Lavanda",
+        "Elemi"
+      ],
+      "base_notes": [
+        "Ambroxan",
+        "Notas Amadeiradas Secas"
+      ],
+      "highlights": null,
+      "short_description": "Bergamota vibrante e ambroxan: fresco, intenso e duradouro.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-SAUVAGE-EDT-030",
+          "volume_ml": 30,
+          "barcode": "3348901520195",
+          "price_cents": 63500,
+          "compare_at_cents": null,
+          "demo_stock": 17,
+          "price_source_url": "https://www.epocacosmeticos.com.br/sauvage-eau-de-toilette-dior-perfume-masculino/p"
+        },
+        {
+          "sku": "SLY-SAUVAGE-EDT-060",
+          "volume_ml": 60,
+          "barcode": "3348901250153",
+          "price_cents": 72900,
+          "compare_at_cents": null,
+          "demo_stock": 22,
+          "price_source_url": "https://www.epocacosmeticos.com.br/sauvage-eau-de-toilette-dior-perfume-masculino/p"
+        },
+        {
+          "sku": "SLY-SAUVAGE-EDT-100",
+          "volume_ml": 100,
+          "barcode": "3348901250146",
+          "price_cents": 86900,
+          "compare_at_cents": null,
+          "demo_stock": 5,
+          "price_source_url": "https://www.epocacosmeticos.com.br/sauvage-eau-de-toilette-dior-perfume-masculino/p"
+        },
+        {
+          "sku": "SLY-SAUVAGE-EDT-200",
+          "volume_ml": 200,
+          "barcode": "3348901321129",
+          "price_cents": 126900,
+          "compare_at_cents": null,
+          "demo_stock": 20,
+          "price_source_url": "https://www.epocacosmeticos.com.br/sauvage-eau-de-toilette-dior-perfume-masculino/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3304276-800-800/3348901250146_1.jpg",
+          "bytes": 36394,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3304277-800-800/3348901250146-3348901250153-3348901321129_2-3348901520195_3.jpg",
+          "bytes": 142864,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3304278-800-800/3348901250146-3348901250153-3348901321129_3-3348901520195_4.jpg",
+          "bytes": 113842,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/sauvage-eau-de-toilette-dior-perfume-masculino/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "1-million",
+      "slug": "1-million-rabanne",
+      "name": "1 Million",
+      "brand": "Rabanne",
+      "brand_slug": "rabanne",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Amadeirado Especiado",
+      "top_notes": [
+        "Mandarina Sanguínea",
+        "Grapefruit",
+        "Hortelã"
+      ],
+      "heart_notes": [
+        "Canela",
+        "Notas Especiadas",
+        "Rosa"
+      ],
+      "base_notes": [
+        "Âmbar",
+        "Couro",
+        "Notas Amadeiradas",
+        "Patchouli"
+      ],
+      "highlights": null,
+      "short_description": "Especiado e quente, com canela, couro e âmbar.",
+      "occasion": "Noite e eventos especiais",
+      "variants": [
+        {
+          "sku": "SLY-1-MILLION-050",
+          "volume_ml": 50,
+          "barcode": "3349668612598",
+          "price_cents": 55800,
+          "compare_at_cents": 64900,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/rabanne-1-million-eau-de-toilette---perfume-masculino-323995/p"
+        },
+        {
+          "sku": "SLY-1-MILLION-100",
+          "volume_ml": 100,
+          "barcode": "3349666007921",
+          "price_cents": 70600,
+          "compare_at_cents": 84900,
+          "demo_stock": 25,
+          "price_source_url": "https://www.epocacosmeticos.com.br/rabanne-1-million-eau-de-toilette---perfume-masculino-324050/p"
+        },
+        {
+          "sku": "SLY-1-MILLION-200",
+          "volume_ml": 200,
+          "barcode": "3349668566372",
+          "price_cents": 93700,
+          "compare_at_cents": 118900,
+          "demo_stock": 18,
+          "price_source_url": "https://www.epocacosmeticos.com.br/rabanne-1-million-eau-de-toilette---perfume-masculino-324268/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3930022-800-800/17937775646812.jpg",
+          "bytes": 36955,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3930047-800-800/17937775706038.jpg",
+          "bytes": 54673,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3930050-800-800/17937775735347.jpg",
+          "bytes": 90597,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/rabanne-1-million-eau-de-toilette---perfume-masculino-323995/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "invictus",
+      "slug": "invictus-rabanne",
+      "name": "Invictus",
+      "brand": "Rabanne",
+      "brand_slug": "rabanne",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Aquático Amadeirado",
+      "top_notes": [
+        "Toranja",
+        "Notas Marinhas",
+        "Mandarina"
+      ],
+      "heart_notes": [
+        "Folha de Louro",
+        "Jasmim"
+      ],
+      "base_notes": [
+        "Madeira Guaiac",
+        "Patchouli",
+        "Âmbar-cinzento",
+        "Musgo de Carvalho"
+      ],
+      "highlights": null,
+      "short_description": "Aquático e energizante, ideal para o dia a dia e dias quentes.",
+      "occasion": "Uso diário",
+      "variants": [
+        {
+          "sku": "SLY-INVICTUS-050",
+          "volume_ml": 50,
+          "barcode": "3349668515653",
+          "price_cents": 56000,
+          "compare_at_cents": 71900,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/rabanne-invictus-eau-de-toilette---perfume-masculino-324291/p"
+        },
+        {
+          "sku": "SLY-INVICTUS-100",
+          "volume_ml": 100,
+          "barcode": "3349668515660",
+          "price_cents": 70700,
+          "compare_at_cents": 84900,
+          "demo_stock": 18,
+          "price_source_url": "https://www.epocacosmeticos.com.br/rabanne-invictus-eau-de-toilette---perfume-masculino-323967/p"
+        },
+        {
+          "sku": "SLY-INVICTUS-200",
+          "volume_ml": 200,
+          "barcode": "3349668589678",
+          "price_cents": 71000,
+          "compare_at_cents": 102900,
+          "demo_stock": 11,
+          "price_source_url": "https://www.epocacosmeticos.com.br/rabanne-invictus-eau-de-toilette---perfume-masculino-324568/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3933260-800-800/17937776672891.jpg",
+          "bytes": 40515,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3933319-800-800/17937776751358.jpg",
+          "bytes": 45265,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3933356-800-800/17937776801044.jpg",
+          "bytes": 74771,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/rabanne-invictus-eau-de-toilette---perfume-masculino-324291/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "acqua-di-gio-edp",
+      "slug": "acqua-di-gio-giorgio-armani",
+      "name": "Acqua di Giò",
+      "brand": "Giorgio Armani",
+      "brand_slug": "giorgio-armani",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Aquático Floral",
+      "top_notes": [
+        "Jasmim",
+        "Hedione"
+      ],
+      "heart_notes": [
+        "Acorde Marinho"
+      ],
+      "base_notes": [
+        "Cedro",
+        "Almíscar",
+        "Patchouli"
+      ],
+      "highlights": null,
+      "short_description": "Frescor marinho clássico em frasco refilável.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-ACQUA-DI-GIO-EDP-040",
+          "volume_ml": 40,
+          "barcode": "3614273662499",
+          "price_cents": 49900,
+          "compare_at_cents": null,
+          "demo_stock": 21,
+          "price_source_url": "https://www.epocacosmeticos.com.br/acqua-di-gio-refilavel-giorgio-armani-perfume-masculino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-ACQUA-DI-GIO-EDP-050",
+          "volume_ml": 50,
+          "barcode": "3614273955416",
+          "price_cents": 60552,
+          "compare_at_cents": 69900,
+          "demo_stock": 8,
+          "price_source_url": "https://www.epocacosmeticos.com.br/acqua-di-gio-refilavel-giorgio-armani-perfume-masculino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-ACQUA-DI-GIO-EDP-075",
+          "volume_ml": 75,
+          "barcode": "3614273662475",
+          "price_cents": 67900,
+          "compare_at_cents": null,
+          "demo_stock": 9,
+          "price_source_url": "https://www.epocacosmeticos.com.br/acqua-di-gio-refilavel-giorgio-armani-perfume-masculino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-ACQUA-DI-GIO-EDP-100",
+          "volume_ml": 100,
+          "barcode": "3614273954341",
+          "price_cents": 73900,
+          "compare_at_cents": 89899,
+          "demo_stock": 22,
+          "price_source_url": "https://www.epocacosmeticos.com.br/acqua-di-gio-refilavel-giorgio-armani-perfume-masculino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-ACQUA-DI-GIO-EDP-125",
+          "volume_ml": 125,
+          "barcode": "3614273662420",
+          "price_cents": 84900,
+          "compare_at_cents": null,
+          "demo_stock": 23,
+          "price_source_url": "https://www.epocacosmeticos.com.br/acqua-di-gio-refilavel-giorgio-armani-perfume-masculino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-ACQUA-DI-GIO-EDP-200",
+          "volume_ml": 200,
+          "barcode": "3614273954297",
+          "price_cents": 129900,
+          "compare_at_cents": null,
+          "demo_stock": 15,
+          "price_source_url": "https://www.epocacosmeticos.com.br/acqua-di-gio-refilavel-giorgio-armani-perfume-masculino-eau-de-parfum/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/612436-800-800/acqua-di-gio-refilavel-giorgio-armani-perfume-masculino-eau-de-parfum--8-.jpg",
+          "bytes": 33541,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/612437-800-800/acqua-di-gio-refilavel-giorgio-armani-perfume-masculino-eau-de-parfum--7-.jpg",
+          "bytes": 44604,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/612438-800-800/acqua-di-gio-refilavel-giorgio-armani-perfume-masculino-eau-de-parfum--3-.jpg",
+          "bytes": 121865,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/acqua-di-gio-refilavel-giorgio-armani-perfume-masculino-eau-de-parfum/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "wanted",
+      "slug": "wanted-azzaro",
+      "name": "Wanted",
+      "brand": "Azzaro",
+      "brand_slug": "azzaro",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Aromático Especiado Amadeirado",
+      "top_notes": [
+        "Limão Siciliano",
+        "Gengibre"
+      ],
+      "heart_notes": [
+        "Cardamomo",
+        "Zimbro"
+      ],
+      "base_notes": [
+        "Vetiver",
+        "Fava Tonka"
+      ],
+      "highlights": null,
+      "short_description": "Limão e gengibre sobre vetiver: magnético e versátil.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-WANTED-050",
+          "volume_ml": 50,
+          "barcode": "3351500002696",
+          "price_cents": 55249,
+          "compare_at_cents": 61900,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/wanted-eau-de-toillete-azzaro-perfume-masculino/p"
+        },
+        {
+          "sku": "SLY-WANTED-100",
+          "volume_ml": 100,
+          "barcode": "3351500016617",
+          "price_cents": 62898,
+          "compare_at_cents": 80900,
+          "demo_stock": 10,
+          "price_source_url": "https://www.epocacosmeticos.com.br/wanted-eau-de-toillete-azzaro-perfume-masculino/p"
+        },
+        {
+          "sku": "SLY-WANTED-150",
+          "volume_ml": 150,
+          "barcode": "3351500016662",
+          "price_cents": 99900,
+          "compare_at_cents": null,
+          "demo_stock": 11,
+          "price_source_url": "https://www.epocacosmeticos.com.br/wanted-eau-de-toillete-azzaro-perfume-masculino/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3186525-800-800/3351500016617.01.jpg",
+          "bytes": 56361,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3186526-800-800/3351500016617.02.jpg",
+          "bytes": 82524,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3186527-800-800/3351500016617.03-3351500016600.03.jpg",
+          "bytes": 101311,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/wanted-eau-de-toillete-azzaro-perfume-masculino/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "le-male",
+      "slug": "le-male-jean-paul-gaultier",
+      "name": "Le Male",
+      "brand": "Jean Paul Gaultier",
+      "brand_slug": "jean-paul-gaultier",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Fougère Oriental",
+      "top_notes": [
+        "Menta",
+        "Artemísia",
+        "Cardamomo",
+        "Bergamota"
+      ],
+      "heart_notes": [
+        "Lavanda",
+        "Flor de Laranjeira",
+        "Canela",
+        "Cominho"
+      ],
+      "base_notes": [
+        "Sândalo",
+        "Baunilha",
+        "Cedro",
+        "Fava Tonka",
+        "Âmbar"
+      ],
+      "highlights": null,
+      "short_description": "Clássico de menta, lavanda e baunilha.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-LE-MALE-040",
+          "volume_ml": 40,
+          "barcode": "8435415111973",
+          "price_cents": 35891,
+          "compare_at_cents": 42900,
+          "demo_stock": 23,
+          "price_source_url": "https://www.epocacosmeticos.com.br/le-male-eau-de-toilette-jean-paul-gaultier-perfume-masculino/p"
+        },
+        {
+          "sku": "SLY-LE-MALE-075",
+          "volume_ml": 75,
+          "barcode": "8435415012638",
+          "price_cents": 51900,
+          "compare_at_cents": 63900,
+          "demo_stock": 11,
+          "price_source_url": "https://www.epocacosmeticos.com.br/le-male-eau-de-toilette-jean-paul-gaultier-perfume-masculino/p"
+        },
+        {
+          "sku": "SLY-LE-MALE-125",
+          "volume_ml": 125,
+          "barcode": "8435415012669",
+          "price_cents": 77900,
+          "compare_at_cents": null,
+          "demo_stock": 25,
+          "price_source_url": "https://www.epocacosmeticos.com.br/le-male-eau-de-toilette-jean-paul-gaultier-perfume-masculino/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/499165-800-800/Le-Male-Eau-De-Toilette-Jean-Paul-Gaultier---Perfume-Masculino--8-.jpg",
+          "bytes": 30229,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/499166-800-800/Le-Male-Eau-De-Toilette-Jean-Paul-Gaultier---Perfume-Masculino--9-.jpg",
+          "bytes": 55556,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/499167-800-800/Le-Male-Eau-De-Toilette-Jean-Paul-Gaultier---Perfume-Masculino--10-.jpg",
+          "bytes": 72225,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/le-male-eau-de-toilette-jean-paul-gaultier-perfume-masculino/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "explorer",
+      "slug": "explorer-montblanc",
+      "name": "Explorer",
+      "brand": "Montblanc",
+      "brand_slug": "montblanc",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": null,
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Bergamota",
+        "Vetiver",
+        "Patchouli"
+      ],
+      "short_description": "Bergamota, vetiver e patchouli com elegância casual.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-EXPLORER-030",
+          "volume_ml": 30,
+          "barcode": "3386460101059",
+          "price_cents": 44963,
+          "compare_at_cents": 54900,
+          "demo_stock": 10,
+          "price_source_url": "https://www.epocacosmeticos.com.br/explorer-montblanc-perfume-masculino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-EXPLORER-060",
+          "volume_ml": 60,
+          "barcode": "3386460101042",
+          "price_cents": 64969,
+          "compare_at_cents": 75900,
+          "demo_stock": 15,
+          "price_source_url": "https://www.epocacosmeticos.com.br/explorer-montblanc-perfume-masculino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-EXPLORER-100",
+          "volume_ml": 100,
+          "barcode": "3386460101035",
+          "price_cents": 72601,
+          "compare_at_cents": 94399,
+          "demo_stock": 0,
+          "price_source_url": "https://www.epocacosmeticos.com.br/explorer-montblanc-perfume-masculino-eau-de-parfum/p"
+        },
+        {
+          "sku": "SLY-EXPLORER-200",
+          "volume_ml": 200,
+          "barcode": "3386460118675",
+          "price_cents": 64857,
+          "compare_at_cents": 119900,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/explorer-montblanc-perfume-masculino-eau-de-parfum/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/737407-800-800/3386460101035.1.jpg.jpg",
+          "bytes": 72294,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/737408-800-800/3386460101035.2.jpg.jpg",
+          "bytes": 128025,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/737409-800-800/3386460101035.3.jpg.jpg",
+          "bytes": 116103,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/explorer-montblanc-perfume-masculino-eau-de-parfum/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "eros",
+      "slug": "eros-versace",
+      "name": "Eros",
+      "brand": "Versace",
+      "brand_slug": "versace",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Aromático Amadeirado",
+      "top_notes": [
+        "Menta",
+        "Limão",
+        "Maçã Verde"
+      ],
+      "heart_notes": [
+        "Fava Tonka",
+        "Ambroxan",
+        "Gerânio"
+      ],
+      "base_notes": [
+        "Baunilha de Madagascar",
+        "Vetiver"
+      ],
+      "highlights": null,
+      "short_description": "Menta e baunilha, intenso e sedutor para a noite.",
+      "occasion": "Noite",
+      "variants": [
+        {
+          "sku": "SLY-EROS-030",
+          "volume_ml": 30,
+          "barcode": "8011003809196",
+          "price_cents": 43900,
+          "compare_at_cents": null,
+          "demo_stock": 4,
+          "price_source_url": "https://www.epocacosmeticos.com.br/eros-versace-edt-masculino-30ml-233464/p"
+        },
+        {
+          "sku": "SLY-EROS-100",
+          "volume_ml": 100,
+          "barcode": "8011003809219",
+          "price_cents": 73900,
+          "compare_at_cents": null,
+          "demo_stock": 14,
+          "price_source_url": "https://www.epocacosmeticos.com.br/eros-versace-edt-masculino-100ml-272106/p"
+        },
+        {
+          "sku": "SLY-EROS-200",
+          "volume_ml": 200,
+          "barcode": "8011003813858",
+          "price_cents": 72400,
+          "compare_at_cents": 86880,
+          "demo_stock": 7,
+          "price_source_url": "https://www.epocacosmeticos.com.br/eros-versace--masculino-eau-de-toilette-200-ml-238055/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2199950-800-800/17794747785073.jpg",
+          "bytes": 92483,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2200029-800-800/17794747797542.jpg",
+          "bytes": 52859,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2200036-800-800/17794747811887.jpg",
+          "bytes": 68700,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/eros-versace-edt-masculino-30ml-233464/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "212-vip-men",
+      "slug": "212-vip-men-carolina-herrera",
+      "name": "212 VIP Men",
+      "brand": "Carolina Herrera",
+      "brand_slug": "carolina-herrera",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Amadeirado Oriental",
+      "top_notes": [
+        "Lima Caviar",
+        "Hortelã",
+        "Pimenta Preta"
+      ],
+      "heart_notes": [
+        "Acorde de Vodka",
+        "Gengibre",
+        "Maçã"
+      ],
+      "base_notes": [
+        "Fava Tonka",
+        "Âmbar",
+        "Madeiras"
+      ],
+      "highlights": null,
+      "short_description": "Vodka gelada e gengibre para noites de festa.",
+      "occasion": "Noite",
+      "variants": [
+        {
+          "sku": "SLY-212-VIP-MEN-050",
+          "volume_ml": 50,
+          "barcode": "8411061869253",
+          "price_cents": 59900,
+          "compare_at_cents": null,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/212-vip-men-eau-de-toilette-carolina-herrera-perfume-masculino/p"
+        },
+        {
+          "sku": "SLY-212-VIP-MEN-100",
+          "volume_ml": 100,
+          "barcode": "8411061088166",
+          "price_cents": 48400,
+          "compare_at_cents": 73900,
+          "demo_stock": 23,
+          "price_source_url": "https://www.epocacosmeticos.com.br/212-vip-men-eau-de-toilette-carolina-herrera-perfume-masculino/p"
+        },
+        {
+          "sku": "SLY-212-VIP-MEN-200",
+          "volume_ml": 200,
+          "barcode": "8411061782347",
+          "price_cents": 83711,
+          "compare_at_cents": 102900,
+          "demo_stock": 16,
+          "price_source_url": "https://www.epocacosmeticos.com.br/212-vip-men-eau-de-toilette-carolina-herrera-perfume-masculino/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/485820-800-800/212-vip-men-carolina-hererra-50ml--1-.jpg",
+          "bytes": 27924,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/485821-800-800/212-vip-men-carolina-hererra-50ml--2-.jpg",
+          "bytes": 45190,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/485822-800-800/212-vip-men-carolina-hererra-50ml--3-.jpg",
+          "bytes": 91978,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/212-vip-men-eau-de-toilette-carolina-herrera-perfume-masculino/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "bad-boy",
+      "slug": "bad-boy-carolina-herrera",
+      "name": "Bad Boy",
+      "brand": "Carolina Herrera",
+      "brand_slug": "carolina-herrera",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Oriental Amadeirado",
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Sálvia",
+        "Pimenta Preta",
+        "Pimenta Branca",
+        "Bergamota",
+        "Fava Tonka",
+        "Cacau",
+        "Âmbar"
+      ],
+      "short_description": "Contraste entre pimentas luminosas e cacau com fava tonka.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-BAD-BOY-100",
+          "volume_ml": 100,
+          "barcode": "8411061923245",
+          "price_cents": 74900,
+          "compare_at_cents": null,
+          "demo_stock": 21,
+          "price_source_url": "https://www.epocacosmeticos.com.br/bad-boy-carolina-herrera-masculino-eau-de-toilette-100ml-283140/p"
+        },
+        {
+          "sku": "SLY-BAD-BOY-150",
+          "volume_ml": 150,
+          "barcode": "8411061063392",
+          "price_cents": 88900,
+          "compare_at_cents": null,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/bad-boy-carolina-herrera-masculino-eau-de-toilette-150ml-283137/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3116988-800-800/17882696519533.jpg",
+          "bytes": 44500,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3116985-800-800/17882696905292.jpg",
+          "bytes": 19532,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/bad-boy-carolina-herrera-masculino-eau-de-toilette-100ml-283140/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "polo-blue-parfum",
+      "slug": "polo-blue-parfum-ralph-lauren",
+      "name": "Polo Blue Parfum",
+      "brand": "Ralph Lauren",
+      "brand_slug": "ralph-lauren",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Parfum",
+      "olfactory_family": "Aquático",
+      "top_notes": [
+        "Mandarina",
+        "Cardamomo",
+        "Pimenta Rosa"
+      ],
+      "heart_notes": [
+        "Vetiver",
+        "Sálvia Esclareia",
+        "Lavanda",
+        "Jasmim"
+      ],
+      "base_notes": [
+        "Madeira de Carvalho",
+        "Olíbano",
+        "Patchouli"
+      ],
+      "highlights": null,
+      "short_description": "Frescor aquático com profundidade amadeirada.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-POLO-BLUE-PARFUM-125",
+          "volume_ml": 125,
+          "barcode": "3605972696984",
+          "price_cents": 65404,
+          "compare_at_cents": 81000,
+          "demo_stock": 13,
+          "price_source_url": "https://www.epocacosmeticos.com.br/polo-blue-parfum-de-ralph-lauren-masculino-264134/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2833481-800-800/17619503554307.jpg",
+          "bytes": 39287,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2833476-800-800/17619503552362.jpg",
+          "bytes": 39287,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/polo-blue-parfum-de-ralph-lauren-masculino-264134/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "boss-bottled",
+      "slug": "boss-bottled-hugo-boss",
+      "name": "Boss Bottled",
+      "brand": "Hugo Boss",
+      "brand_slug": "hugo-boss",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Amadeirado",
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": null,
+      "short_description": "Amadeirado clássico e elegante para o dia a dia.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-BOSS-BOTTLED-030",
+          "volume_ml": 30,
+          "barcode": "737052351001",
+          "price_cents": 26990,
+          "compare_at_cents": 44990,
+          "demo_stock": 7,
+          "price_source_url": "https://www.epocacosmeticos.com.br/boss-bottled-edt-30ml-300283/p"
+        },
+        {
+          "sku": "SLY-BOSS-BOTTLED-050",
+          "volume_ml": 50,
+          "barcode": "737052351018",
+          "price_cents": 34490,
+          "compare_at_cents": 59990,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/boss-bottled-edt-50ml-299635/p"
+        },
+        {
+          "sku": "SLY-BOSS-BOTTLED-100",
+          "volume_ml": 100,
+          "barcode": "737052351100",
+          "price_cents": 69990,
+          "compare_at_cents": 79990,
+          "demo_stock": 17,
+          "price_source_url": "https://www.epocacosmeticos.com.br/boss-bottled-hugo-boss-eau-de-parfum-masculino-100ml-232871/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3309264-800-800/17912971022595.jpg",
+          "bytes": 37805,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3305873-800-800/17908931007123.jpg",
+          "bytes": 49552,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2189420-800-800/17797209945318.jpg",
+          "bytes": 33604,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/boss-bottled-edt-30ml-300283/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "born-in-roma-uomo",
+      "slug": "born-in-roma-uomo-valentino",
+      "name": "Born in Roma Uomo",
+      "brand": "Valentino",
+      "brand_slug": "valentino",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Aromático Amadeirado",
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Violeta",
+        "Sal Mineral",
+        "Gengibre",
+        "Sálvia",
+        "Vetiver Defumado"
+      ],
+      "short_description": "Violeta, sálvia e vetiver defumado em assinatura moderna.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-BORN-IN-ROMA-UOMO-050",
+          "volume_ml": 50,
+          "barcode": "3614272761452",
+          "price_cents": 48363,
+          "compare_at_cents": 78900,
+          "demo_stock": 21,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-valentino-born-in-roma-uomo-masculino-eau-de-tolitte/p"
+        },
+        {
+          "sku": "SLY-BORN-IN-ROMA-UOMO-100",
+          "volume_ml": 100,
+          "barcode": "3614272761469",
+          "price_cents": 69674,
+          "compare_at_cents": 91900,
+          "demo_stock": 13,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-valentino-born-in-roma-uomo-masculino-eau-de-tolitte/p"
+        },
+        {
+          "sku": "SLY-BORN-IN-ROMA-UOMO-150",
+          "volume_ml": 150,
+          "barcode": "3614273582612",
+          "price_cents": 81866,
+          "compare_at_cents": 107900,
+          "demo_stock": 14,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-valentino-born-in-roma-uomo-masculino-eau-de-tolitte/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3189688-800-800/3614272761469.01.jpg",
+          "bytes": 68325,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3189689-800-800/3614272761469.02.jpg",
+          "bytes": 69346,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3189690-800-800/3614272761469.03-3614273582612.03-3614272761452.03.jpg",
+          "bytes": 121666,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/perfume-valentino-born-in-roma-uomo-masculino-eau-de-tolitte/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "club-de-nuit-intense",
+      "slug": "club-de-nuit-intense-man-armaf",
+      "name": "Club de Nuit Intense Man",
+      "brand": "Armaf",
+      "brand_slug": "armaf",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": null,
+      "top_notes": [
+        "Limão",
+        "Maçã",
+        "Bergamota",
+        "Groselha Preta",
+        "Abacaxi"
+      ],
+      "heart_notes": [
+        "Rosa",
+        "Jasmim",
+        "Bétula"
+      ],
+      "base_notes": [
+        "Almíscar",
+        "Âmbar-cinzento",
+        "Patchouli",
+        "Baunilha"
+      ],
+      "highlights": null,
+      "short_description": "Abacaxi e bétula defumada, intenso e duradouro.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-CLUB-DE-NUIT-INTENSE-105",
+          "volume_ml": 105,
+          "barcode": "6085010044712",
+          "price_cents": 32800,
+          "compare_at_cents": 39360,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/club-de-nuit-intense-man-armaf-eau-de-toilette-105-ml-238917/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2282135-800-800/17799928218796.jpg",
+          "bytes": 27283,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2282139-800-800/17799928238170.jpg",
+          "bytes": 41187,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2282145-800-800/17799928256451.jpg",
+          "bytes": 56056,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/club-de-nuit-intense-man-armaf-eau-de-toilette-105-ml-238917/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "asad",
+      "slug": "asad-lattafa",
+      "name": "Asad",
+      "brand": "Lattafa",
+      "brand_slug": "lattafa",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Ambarado Oriental",
+      "top_notes": [
+        "Pimenta-do-reino",
+        "Abacaxi"
+      ],
+      "heart_notes": [
+        "Café",
+        "Íris",
+        "Patchouli"
+      ],
+      "base_notes": [
+        "Âmbar",
+        "Baunilha",
+        "Madeiras Secas",
+        "Benjoim",
+        "Ládano"
+      ],
+      "highlights": null,
+      "short_description": "Pimenta, café e baunilha num ambarado potente.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-ASAD-100",
+          "volume_ml": 100,
+          "barcode": "6291108735411",
+          "price_cents": 25990,
+          "compare_at_cents": 31990,
+          "demo_stock": 22,
+          "price_source_url": "https://www.epocacosmeticos.com.br/asad-lattafa-perfume-masculino-edp-100ml-263955/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2826136-800-800/17835904175183.jpg",
+          "bytes": 56922,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/asad-lattafa-perfume-masculino-edp-100ml-263955/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "dylan-blue",
+      "slug": "dylan-blue-pour-homme-versace",
+      "name": "Dylan Blue Pour Homme",
+      "brand": "Versace",
+      "brand_slug": "versace",
+      "gender": "masculino",
+      "origin": "importado",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": null,
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": null,
+      "short_description": "Fragrância masculina da linha Dylan Blue.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-DYLAN-BLUE-050",
+          "volume_ml": 50,
+          "barcode": "8011003825738",
+          "price_cents": 68408,
+          "compare_at_cents": 76009,
+          "demo_stock": 6,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-masculino-pour-homme-dylan-blue-versace-50-ml-eau-de-toilette-261515/p"
+        },
+        {
+          "sku": "SLY-DYLAN-BLUE-200",
+          "volume_ml": 200,
+          "barcode": "8011003826490",
+          "price_cents": 105653,
+          "compare_at_cents": 137349,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-masculino-pour-homme-dylan-blue-versace-200-ml-eau-de-toilette-307884/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2770304-800-800/17843223730381.jpg",
+          "bytes": 59688,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3537572-800-800/17922343629312.jpg",
+          "bytes": 61690,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3537408-800-800/17922343650593.jpg",
+          "bytes": 61690,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/perfume-masculino-pour-homme-dylan-blue-versace-50-ml-eau-de-toilette-261515/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "ck-one",
+      "slug": "ck-one-calvin-klein",
+      "name": "CK One",
+      "brand": "Calvin Klein",
+      "brand_slug": "calvin-klein",
+      "gender": "unissex",
+      "origin": "importado",
+      "category_slug": "perfumes-unissex",
+      "concentration": "Eau de Toilette",
+      "olfactory_family": "Aromático Cítrico",
+      "top_notes": [
+        "Bergamota",
+        "Cardamomo",
+        "Tangerina",
+        "Frésia",
+        "Lavanda"
+      ],
+      "heart_notes": [
+        "Chá Verde",
+        "Violeta",
+        "Rosa",
+        "Flor de Laranjeira"
+      ],
+      "base_notes": [
+        "Âmbar",
+        "Almíscar"
+      ],
+      "highlights": null,
+      "short_description": "Cítrico leve e compartilhável para dias quentes.",
+      "occasion": "Dia a dia",
+      "variants": [
+        {
+          "sku": "SLY-CK-ONE-100",
+          "volume_ml": 100,
+          "barcode": "088300107407",
+          "price_cents": 44195,
+          "compare_at_cents": null,
+          "demo_stock": 6,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-ck-one-eau-de-toilette-100ml-284491/p"
+        },
+        {
+          "sku": "SLY-CK-ONE-200",
+          "volume_ml": 200,
+          "barcode": "3607343811798",
+          "price_cents": 33900,
+          "compare_at_cents": 39900,
+          "demo_stock": 21,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-ck-one-eau-de-toilette-200ml-288640/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3126824-800-800/17890492596579.jpg",
+          "bytes": 32081,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3126829-800-800/17890492616209.jpg",
+          "bytes": 18315,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3126834-800-800/17890492639544.jpg",
+          "bytes": 41149,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/perfume-ck-one-eau-de-toilette-100ml-284491/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "wood-sage-sea-salt",
+      "slug": "wood-sage-e-sea-salt-jo-malone-london",
+      "name": "Wood Sage & Sea Salt",
+      "brand": "Jo Malone London",
+      "brand_slug": "jo-malone-london",
+      "gender": "unissex",
+      "origin": "importado",
+      "category_slug": "perfumes-unissex",
+      "concentration": "Cologne",
+      "olfactory_family": "Amadeirado Fresco",
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Sálvia",
+        "Sal Marinho"
+      ],
+      "short_description": "Sálvia e sal marinho: a brisa do litoral inglês.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-WOOD-SAGE-SEA-SALT-030",
+          "volume_ml": 30,
+          "barcode": "0690251182053",
+          "price_cents": 54500,
+          "compare_at_cents": 72500,
+          "demo_stock": 2,
+          "price_source_url": "https://www.epocacosmeticos.com.br/wood-sage-e-sea-salt-cologne-jo-malone-perfume-unissex/p"
+        },
+        {
+          "sku": "SLY-WOOD-SAGE-SEA-SALT-100",
+          "volume_ml": 100,
+          "barcode": "0690251179978",
+          "price_cents": 126234,
+          "compare_at_cents": 147500,
+          "demo_stock": 14,
+          "price_source_url": "https://www.epocacosmeticos.com.br/wood-sage-e-sea-salt-cologne-jo-malone-perfume-unissex/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2670184-800-800/wood-sage-e-sea-salt-cologne-jo-malone-perfume-unissex.jpg",
+          "bytes": 37205,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2670185-800-800/690251179978_1.jpg",
+          "bytes": 86525,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2670186-800-800/wood-sage-e-sea-salt-cologne-jo-malone-perfume-unissex--2-.jpg",
+          "bytes": 45099,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/wood-sage-e-sea-salt-cologne-jo-malone-perfume-unissex/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "khamrah",
+      "slug": "khamrah-lattafa",
+      "name": "Khamrah",
+      "brand": "Lattafa",
+      "brand_slug": "lattafa",
+      "gender": "unissex",
+      "origin": "importado",
+      "category_slug": "perfumes-unissex",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": null,
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": null,
+      "short_description": "Árabe unissex marcante e duradouro.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-KHAMRAH-100",
+          "volume_ml": 100,
+          "barcode": "6291108737194",
+          "price_cents": 20490,
+          "compare_at_cents": 26990,
+          "demo_stock": 25,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-khamrah-lattafa-edp-unissex-100ml-193927/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1562493-800-800/17720969369738.jpg",
+          "bytes": 79565,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1562500-800-800/17720969398554.jpg",
+          "bytes": 71580,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1562511-800-800/17720969428324.jpg",
+          "bytes": 51786,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/perfume-khamrah-lattafa-edp-unissex-100ml-193927/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "liz-flora",
+      "slug": "liz-flora-o-boticario",
+      "name": "Liz Flora",
+      "brand": "O Boticário",
+      "brand_slug": "o-boticario",
+      "gender": "feminino",
+      "origin": "nacional",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Desodorante Colônia",
+      "olfactory_family": "Amadeirado Floral",
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Flor de Jacarandá",
+        "Íris"
+      ],
+      "short_description": "Flor de jacarandá e íris sobre a assinatura amadeirada de Liz.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-LIZ-FLORA-100",
+          "volume_ml": 100,
+          "barcode": "7893596510168",
+          "price_cents": 11990,
+          "compare_at_cents": 17990,
+          "demo_stock": 19,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-feminino-o-boticario-liz-flora-100ml-303809/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3429273-800-800/17919197724206.jpg",
+          "bytes": 41191,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3429293-800-800/17919197752769.jpg",
+          "bytes": 59935,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3429251-800-800/17919197787236.jpg",
+          "bytes": 43103,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/perfume-feminino-o-boticario-liz-flora-100ml-303809/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "egeo-choc",
+      "slug": "egeo-choc-o-boticario",
+      "name": "Egeo Choc",
+      "brand": "O Boticário",
+      "brand_slug": "o-boticario",
+      "gender": "feminino",
+      "origin": "nacional",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Desodorante Colônia",
+      "olfactory_family": null,
+      "top_notes": [
+        "Acorde de Chantilly",
+        "Pêssego",
+        "Limão Siciliano",
+        "Frutas Silvestres"
+      ],
+      "heart_notes": [
+        "Almíscar",
+        "Baunilha",
+        "Benjoim",
+        "Madeiras Cremosas",
+        "Âmbar",
+        "Sândalo"
+      ],
+      "base_notes": [
+        "Flor de Laranjeira",
+        "Pêssego",
+        "Acorde de Chocolate",
+        "Creme de Leite"
+      ],
+      "highlights": null,
+      "short_description": "Chocolate e chantilly num gourmand divertido.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-EGEO-CHOC-090",
+          "volume_ml": 90,
+          "barcode": "7891033826896",
+          "price_cents": 24990,
+          "compare_at_cents": 32900,
+          "demo_stock": 13,
+          "price_source_url": "https://www.epocacosmeticos.com.br/egeo-choc-desodorante-colonia-90ml-|-original-264879/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2836361-800-800/17852076005060.jpg",
+          "bytes": 17296,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2836378-800-800/17852076014185.jpg",
+          "bytes": 53643,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2836363-800-800/17852076033223.jpg",
+          "bytes": 38929,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/egeo-choc-desodorante-colonia-90ml-|-original-264879/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "malbec-edp",
+      "slug": "malbec-eau-de-parfum-o-boticario",
+      "name": "Malbec Eau de Parfum",
+      "brand": "O Boticário",
+      "brand_slug": "o-boticario",
+      "gender": "masculino",
+      "origin": "nacional",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Eau de Parfum",
+      "olfactory_family": "Amadeirado Aromático",
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Madeira de Barril",
+        "Frutas Vermelhas",
+        "Especiarias"
+      ],
+      "short_description": "Madeira de barril e frutas vermelhas, intenso e sofisticado.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-MALBEC-EDP-090",
+          "volume_ml": 90,
+          "barcode": "7891033843855",
+          "price_cents": 46990,
+          "compare_at_cents": 59900,
+          "demo_stock": 25,
+          "price_source_url": "https://www.epocacosmeticos.com.br/malbec-eau-de-parfum-90ml-|-original-264723/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2835508-800-800/17852076010270.jpg",
+          "bytes": 25036,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2835511-800-800/17852076018801.jpg",
+          "bytes": 58186,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2835513-800-800/17852076029162.jpg",
+          "bytes": 71193,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/malbec-eau-de-parfum-90ml-|-original-264723/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "malbec-gold",
+      "slug": "malbec-gold-o-boticario",
+      "name": "Malbec Gold",
+      "brand": "O Boticário",
+      "brand_slug": "o-boticario",
+      "gender": "masculino",
+      "origin": "nacional",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Desodorante Colônia",
+      "olfactory_family": "Amadeirado Ambarado",
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Flor de Laranjeira",
+        "Couro",
+        "Madeiras"
+      ],
+      "short_description": "Amadeirado ambarado quente com couro e flor de laranjeira.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-MALBEC-GOLD-100",
+          "volume_ml": 100,
+          "barcode": "7891033738496",
+          "price_cents": 35991,
+          "compare_at_cents": 55000,
+          "demo_stock": 0,
+          "price_source_url": "https://www.epocacosmeticos.com.br/malbec-gold-desodorante-colonia-100ml-194532/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1570063-800-800/17726840971265.jpg",
+          "bytes": 39489,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1570066-800-800/17726840982622.jpg",
+          "bytes": 23300,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1570123-800-800/17726841029052.jpg",
+          "bytes": 34861,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/malbec-gold-desodorante-colonia-100ml-194532/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "kaiak",
+      "slug": "kaiak-natura",
+      "name": "Kaiak",
+      "brand": "Natura",
+      "brand_slug": "natura",
+      "gender": "masculino",
+      "origin": "nacional",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Desodorante Colônia",
+      "olfactory_family": "Aromático",
+      "top_notes": [
+        "Bergamota",
+        "Diidromircenol",
+        "Manjericão"
+      ],
+      "heart_notes": [
+        "Madeiras Transparentes",
+        "Flor de Laranjeira",
+        "Muguet"
+      ],
+      "base_notes": [
+        "Almíscar",
+        "Sândalo",
+        "Agulhas de Pinho"
+      ],
+      "highlights": null,
+      "short_description": "Clássico aquático brasileiro, fresco e versátil.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-KAIAK-100",
+          "volume_ml": 100,
+          "barcode": "7908371662755",
+          "price_cents": 17798,
+          "compare_at_cents": 19698,
+          "demo_stock": 20,
+          "price_source_url": "https://www.epocacosmeticos.com.br/desodorante-colonia-masculino-kaiak-tradicional-natura-100ml-279402/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3066528-800-800/17880955947389.jpg",
+          "bytes": 31492,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3066519-800-800/17880955972416.jpg",
+          "bytes": 62900,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3066532-800-800/17880956000116.jpg",
+          "bytes": 87894,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/desodorante-colonia-masculino-kaiak-tradicional-natura-100ml-279402/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "essencial-exclusivo",
+      "slug": "essencial-exclusivo-feminino-natura",
+      "name": "Essencial Exclusivo Feminino",
+      "brand": "Natura",
+      "brand_slug": "natura",
+      "gender": "feminino",
+      "origin": "nacional",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Deo Parfum",
+      "olfactory_family": null,
+      "top_notes": [
+        "Mandarina",
+        "Laranja",
+        "Maçã",
+        "Framboesa",
+        "Frutas Vermelhas",
+        "Cassis"
+      ],
+      "heart_notes": [
+        "Rosa",
+        "Magnólia",
+        "Jasmim",
+        "Frésia",
+        "Lírio"
+      ],
+      "base_notes": [
+        "Madeiras Preciosas",
+        "Âmbar",
+        "Almíscar",
+        "Sândalo",
+        "Pêssego",
+        "Vetiver"
+      ],
+      "highlights": null,
+      "short_description": "Buquê de rosa e magnólia com frutas vermelhas.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-ESSENCIAL-EXCLUSIVO-100",
+          "volume_ml": 100,
+          "barcode": "7908132288590",
+          "price_cents": 44990,
+          "compare_at_cents": 46900,
+          "demo_stock": 7,
+          "price_source_url": "https://www.epocacosmeticos.com.br/natura-essencial-exclusivo-deo-parfum-100-ml-194521/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1570058-800-800/17727885396111.jpg",
+          "bytes": 39129,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1570080-800-800/17727885411026.jpg",
+          "bytes": 25440,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1570057-800-800/17727885429274.jpg",
+          "bytes": 35077,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/natura-essencial-exclusivo-deo-parfum-100-ml-194521/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "essencial-classico",
+      "slug": "essencial-classico-masculino-natura",
+      "name": "Essencial Clássico Masculino",
+      "brand": "Natura",
+      "brand_slug": "natura",
+      "gender": "masculino",
+      "origin": "nacional",
+      "category_slug": "perfumes-masculinos",
+      "concentration": "Deo Parfum",
+      "olfactory_family": null,
+      "top_notes": [
+        "Bergamota",
+        "Lavanda",
+        "Gálbano",
+        "Zimbro",
+        "Noz-moscada",
+        "Grapefruit",
+        "Manjericão"
+      ],
+      "heart_notes": [
+        "Gerânio",
+        "Patchouli",
+        "Alecrim",
+        "Sálvia",
+        "Jasmim"
+      ],
+      "base_notes": [
+        "Cedro",
+        "Almíscar",
+        "Musgo de Carvalho",
+        "Sândalo",
+        "Âmbar",
+        "Bálsamo de Abeto",
+        "Mirra"
+      ],
+      "highlights": null,
+      "short_description": "Verde e amadeirado, um clássico elegante brasileiro.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-ESSENCIAL-CLASSICO-100",
+          "volume_ml": 100,
+          "barcode": "7899563210345",
+          "price_cents": 44990,
+          "compare_at_cents": 46900,
+          "demo_stock": 22,
+          "price_source_url": "https://www.epocacosmeticos.com.br/natura-deo-parfum-essencial-classico-masculino-100ml-194522/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1570061-800-800/17727885406086.jpg",
+          "bytes": 49664,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1570054-800-800/17727885417063.jpg",
+          "bytes": 49924,
+          "content_type": "image/jpeg"
+        },
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1570093-800-800/17727885467351.jpg",
+          "bytes": 151814,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/natura-deo-parfum-essencial-classico-masculino-100ml-194522/p",
+        "consulted_at": "2026-11-08"
+      }
+    },
+    {
+      "key": "luna-classico",
+      "slug": "luna-classico-natura",
+      "name": "Luna Clássico",
+      "brand": "Natura",
+      "brand_slug": "natura",
+      "gender": "feminino",
+      "origin": "nacional",
+      "category_slug": "perfumes-femininos",
+      "concentration": "Desodorante Colônia",
+      "olfactory_family": "Chipre Frutal",
+      "top_notes": null,
+      "heart_notes": null,
+      "base_notes": null,
+      "highlights": [
+        "Frutas Vermelhas",
+        "Notas Florais",
+        "Fundo Amadeirado"
+      ],
+      "short_description": "Chipre frutal icônico da perfumaria brasileira.",
+      "occasion": null,
+      "variants": [
+        {
+          "sku": "SLY-LUNA-CLASSICO-075",
+          "volume_ml": 75,
+          "barcode": "7893596516726",
+          "price_cents": 11990,
+          "compare_at_cents": 18590,
+          "demo_stock": 16,
+          "price_source_url": "https://www.epocacosmeticos.com.br/perfume-feminino-natura-luna-classico-75ml-298813/p"
+        }
+      ],
+      "images": [
+        {
+          "source_url": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/3300112-800-800/17908780829323.jpg",
+          "bytes": 14685,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "sources": {
+        "info": "https://www.epocacosmeticos.com.br/perfume-feminino-natura-luna-classico-75ml-298813/p",
+        "consulted_at": "2026-11-08"
+      }
+    }
+  ]
+}
