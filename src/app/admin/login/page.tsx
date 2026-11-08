@@ -1,10 +1,11 @@
 import { Suspense } from "react";
 import { Logo } from "@/components/layout/logo";
-import { AdminLoginForm } from "./login-form";
+import { AdminLoginForm, AdminLoginFormWithParams } from "./login-form";
 
 export const metadata = { title: "Acesso administrativo", robots: { index: false } };
 
-export default function AdminLoginPage({ searchParams }: PageProps<"/admin/login">) {
+/** Página estática (sem leitura de dados no servidor): ver o comentário em login-form.tsx. */
+export default function AdminLoginPage() {
   return (
     <main id="conteudo" className="flex flex-1 items-center justify-center bg-surface p-6">
       <div className="w-full max-w-sm rounded-card border border-border bg-background p-8">
@@ -14,24 +15,9 @@ export default function AdminLoginPage({ searchParams }: PageProps<"/admin/login
           <p className="mt-2 text-sm text-muted">Somente contas com papel de administrador.</p>
         </div>
         <Suspense fallback={<AdminLoginForm />}>
-          <LoginWithParams searchParams={searchParams} />
+          <AdminLoginFormWithParams />
         </Suspense>
       </div>
     </main>
-  );
-}
-
-async function LoginWithParams({ searchParams }: Pick<PageProps<"/admin/login">, "searchParams">) {
-  const sp = await searchParams;
-  const returnTo = typeof sp.returnTo === "string" ? sp.returnTo : undefined;
-  return (
-    <>
-      {sp.erro === "sem-permissao" && (
-        <p role="alert" className="mt-4 rounded-card bg-secondary p-3 text-sm text-secondary-foreground">
-          Sua conta não tem acesso ao painel. Entre com uma conta de administrador.
-        </p>
-      )}
-      <AdminLoginForm returnTo={returnTo} />
-    </>
   );
 }

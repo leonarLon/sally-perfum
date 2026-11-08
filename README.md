@@ -59,6 +59,7 @@ Ver [.env.example](.env.example). Sem as variáveis do Supabase, a aplicação s
 | `npm test` | Vitest (relatório JUnit em `test-results/`) |
 | `npm run e2e` | Playwright em desktop e mobile (faz o build e sobe na porta 3100; relatório em `playwright-report/`, traces de falhas em `test-results/`) |
 | `npm run check` | Lint + typecheck + testes unitários |
+| `E2E_ADMIN_WRITE=1 npx playwright test e2e/admin-escrita.spec.ts --project=desktop` | Grava de verdade no Supabase pelo painel (preço e imagem) e desfaz (**exige autorização**) |
 | `node scripts/catalog/build-seed-data.mjs` | Recoleta os dados de referência e verifica as imagens (gera `supabase/seed/catalog.json`) |
 | `node scripts/catalog/generate-seed-sql.mjs` | Gera o seed SQL idempotente |
 | `npx supabase db push --remote="$SUPABASE_DB_URL" --include-seed --dry-run` | Mostra migrations e seed pendentes no Supabase (sem `--dry-run` aplica; **exige autorização**) |
@@ -93,5 +94,6 @@ docs/                diagnóstico, decisões e pendências comerciais
 - Os E2E do catálogo rodam contra o Supabase configurado no `.env.local`, não contra um banco local. A suíte de banco (PGlite) é a parte determinística.
 - Os testes de banco usam PGlite com um shim de `auth`/`storage` (`tests/db/supabase-shim.sql`). Eles validam o SQL, a RLS e o seed, mas não substituem um teste no Supabase real.
 - Pedidos, cupons, clientes, relatórios e configurações do painel entram nas Fases 6 a 8.
+- Enviar um formulário do painel antes de o JavaScript carregar mostra uma tela em branco (limitação do Next com Cache Components em páginas dinâmicas). O login não tem esse problema.
 - O painel não tem recuperação de senha nem 2FA (ver `PENDENCIAS_COMERCIAIS.md` §7). O histórico mostra o autor pelo id curto, não pelo e-mail.
 - A CSP completa entra na Fase 10.

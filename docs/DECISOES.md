@@ -29,3 +29,6 @@
 | 08/11/2026 | Técnica | Sem trigger de estoque em variante nova: o seed usa `on conflict do nothing` e perderia o estoque demo. A linha é criada pela primeira movimentação | Engenharia |
 | 08/11/2026 | Técnica | `parseBRLToCents` passou a recusar "12.5" (antes virava R$ 125): ponto só como milhar em grupos de 3 | Engenharia |
 | 08/11/2026 | Técnica | Login do painel com mensagem única para senha errada e conta sem papel (não revela e-mails cadastrados); `returnTo` restrito a `/admin` | Engenharia |
+| 08/11/2026 | Técnica | Sessão lida após `connection()`: a validação do token do Supabase usa `Date.now()`, proibido na pré-renderização, e decisão de acesso nunca entra em conteúdo pré-montado | Engenharia |
+| 08/11/2026 | Técnica | Página de login 100% estática (`returnTo` lido no navegador): com Cache Components, o envio sem JavaScript numa página com trecho dinâmico devolvia só o trecho (tela em branco). Formulários do painel, que são dinâmicos, ainda dependem do JavaScript carregado | Engenharia |
+| 08/11/2026 | Técnica | Conta `owner` criada pelo usuário com `create-owner.mjs`. Teste de gravação real com reversão (`e2e/admin-escrita.spec.ts`, só com `E2E_ADMIN_WRITE=1`) passou: preço e imagem | Usuário / Engenharia |

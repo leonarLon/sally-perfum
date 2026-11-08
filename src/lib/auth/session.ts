@@ -1,5 +1,6 @@
 import "server-only";
 import { redirect } from "next/navigation";
+import { connection } from "next/server";
 import { cache } from "react";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -12,6 +13,9 @@ export type SessionUser = { id: string; email: string | null };
  * nunca de dado enviado pelo navegador. Deduplicado por requisição com cache().
  */
 export const getSessionUser = cache(async (): Promise<SessionUser | null> => {
+  // Só em requisição real: a validação do token usa o relógio (Date.now) e uma decisão de
+  // acesso nunca deve entrar em conteúdo pré-renderizado ou pré-carregado.
+  await connection();
   const supabase = await createSupabaseServerClient();
   const { data } = await supabase.auth.getClaims();
   const sub = data?.claims?.sub;
