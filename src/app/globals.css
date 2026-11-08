@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/*
+ * Sally Perfumaria — design tokens.
+ * Componentes nunca usam cores literais: sempre estas variáveis (via classes Tailwind
+ * geradas pelo bloco @theme abaixo, ex.: bg-primary, text-muted, border-border).
+ * Contrastes contra #FFF documentados em docs/FASE-1-DIAGNOSTICO.md §3.
+ */
+:root {
+  --primary: #b0306a;
+  --primary-hover: #8e2253;
+  --primary-foreground: #ffffff;
+  --secondary: #f8d7e3;
+  --secondary-foreground: #5c1a38;
+  --background: #ffffff;
+  --surface: #fff7fa;
+  --text: #2b1d24;
+  --muted: #6e5a64;
+  --border: #ebdde3;
+  --success: #1e7f4f;
+  --warning: #a15c00;
+  --error: #b3261e;
+  --ring: #b0306a;
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-ring: var(--ring);
+  --radius-card: var(--radius);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-cormorant);
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Foco sempre visível para navegação por teclado. */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
