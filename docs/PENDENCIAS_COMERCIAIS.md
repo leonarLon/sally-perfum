@@ -74,6 +74,10 @@ O que implementar:
 - [ ] Criar o usuário `owner` da loja real pelo script controlado. Remover usuários de teste e de estudo.
 - [ ] Ativar 2FA (MFA do Supabase Auth) para as contas administrativas e exigi-lo no `requireRole`.
 - [ ] Configurar SMTP próprio no Supabase Auth (o padrão do plano Free tem limite baixo) e liberar a recuperação de senha do painel.
+- [ ] **Religar a confirmação de e-mail no cadastro** (Authentication → Email → Confirm email), desligada para a demonstração. O código já trata os dois casos.
+- [ ] Configurar em Authentication → URL Configuration o Site URL e as Redirect URLs do domínio real (`/auth/callback`).
+- [ ] Ativar a proteção contra senhas vazadas (recurso do plano Pro do Supabase Auth) e um CAPTCHA no cadastro e no login.
+- [ ] Definir o prazo de retenção dos pedidos de contas excluídas (hoje ficam sem vínculo, por obrigação legal) e revisar com o jurídico.
 - [ ] Mostrar o e-mail do autor no histórico do painel (hoje aparece o id curto) e definir a retenção da tabela `audit_logs`.
 - [ ] Apagar `ADMIN_PASSWORD` do `.env.local` depois de criar a conta, e trocar a senha de estudo.
 - [ ] Definir quem terá papel `admin` além do proprietário.

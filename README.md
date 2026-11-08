@@ -14,7 +14,8 @@ E-commerce de perfumes com identidade rosa e branca e painel administrativo.
 | 4. Supabase: modelo, migrations e seed de 45 produtos | ✅ Aplicado no Supabase em 08/11/2026 (autorizado): 45 produtos publicados, 105 variantes, 128 imagens no Storage. Relatório em `supabase/seed/catalog.load-report.json` |
 | 5. Painel administrativo | ✅ Login de admin, `requireRole` no servidor, produtos (criar, editar, publicar, arquivar), variantes e preços, imagens (upload validado, principal, remoção), estoque (contagem e entrada com movimentação), marcas, categorias, dashboard e auditoria automática. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
 | 6. Sacola, checkout e pedidos | ✅ Sacola no navegador, checkout sem cadastro, pedido com reserva de estoque transacional e idempotente, expiração da reserva, link secreto de acompanhamento, pedidos no painel (pagar, enviar, entregar, cancelar). Migration aplicada no Supabase em 08/11/2026 (autorizado) |
-| 7, 8, 10 e 11 | ⏳ Planejadas |
+| 7. Área do cliente | ✅ Cadastro, login, recuperação de senha, Meus pedidos, endereços, favoritos, perfil, troca de senha, exportação de dados e exclusão de conta (LGPD); checkout preenchido para quem está logado. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
+| 8, 10 e 11 | ⏳ Planejadas |
 | 9. IA (Consultor de Fragrâncias e RAG) | ⏸️ Suspensa até a venda do projeto; ver [PENDENCIAS_COMERCIAIS.md §6](docs/PENDENCIAS_COMERCIAIS.md) |
 
 As rotas ainda não implementadas exibem um aviso explícito ("Esta área ainda não foi implementada"), com a fase prevista. Nada simula uma funcionalidade inexistente.
@@ -61,6 +62,7 @@ Ver [.env.example](.env.example). Sem as variáveis do Supabase, a aplicação s
 | `npm run e2e` | Playwright em desktop e mobile (faz o build e sobe na porta 3100; relatório em `playwright-report/`, traces de falhas em `test-results/`) |
 | `npm run check` | Lint + typecheck + testes unitários |
 | `E2E_CHECKOUT_WRITE=1 npx playwright test e2e/checkout.spec.ts --project=desktop` | Cria um pedido de demonstração real e o cancela pelo painel (**exige autorização**) |
+| `E2E_ACCOUNT_WRITE=1 npx playwright test e2e/conta.spec.ts --project=desktop` | Cria um cliente de teste, usa a conta e a exclui pela tela (**exige autorização**) |
 | `E2E_ADMIN_WRITE=1 npx playwright test e2e/admin-escrita.spec.ts --project=desktop` | Grava de verdade no Supabase pelo painel (preço e imagem) e desfaz (**exige autorização**) |
 | `node scripts/catalog/build-seed-data.mjs` | Recoleta os dados de referência e verifica as imagens (gera `supabase/seed/catalog.json`) |
 | `node scripts/catalog/generate-seed-sql.mjs` | Gera o seed SQL idempotente |
@@ -97,7 +99,8 @@ docs/                diagnóstico, decisões e pendências comerciais
 - Os testes de banco usam PGlite com um shim de `auth`/`storage` (`tests/db/supabase-shim.sql`). Eles validam o SQL, a RLS e o seed, mas não substituem um teste no Supabase real.
 - O pagamento é confirmado manualmente no painel até a Fase 8 (provedor simulado). Cupons, clientes, relatórios e configurações do painel ainda não existem.
 - O checkout depende de JavaScript (a sacola fica no `localStorage`).
-- Com o projeto dentro do OneDrive, a pasta `.next` às vezes fica travada no build. Se acontecer, apague `.next` e rode de novo.
+- Com o projeto dentro do OneDrive, arquivos antigos de `.next` às vezes viram atalhos de nuvem e travam o build. Por isso o `npm run build` apaga `.next` antes (`scripts/dev/clean-next.mjs`).
+- E-mails de confirmação e de recuperação de senha dependem do SMTP gratuito do Supabase, com limite baixo de envios.
 - Enviar um formulário do painel antes de o JavaScript carregar mostra uma tela em branco (limitação do Next com Cache Components em páginas dinâmicas). O login não tem esse problema.
 - O painel não tem recuperação de senha nem 2FA (ver `PENDENCIAS_COMERCIAIS.md` §7). O histórico mostra o autor pelo id curto, não pelo e-mail.
 - A CSP completa entra na Fase 10.

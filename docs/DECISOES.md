@@ -38,3 +38,9 @@
 | 08/11/2026 | Técnica | Reserva no pedido (não na sacola), com expiração de 30 min liberada sob demanda; sem dependência de `pg_cron` no plano Free | Engenharia |
 | 08/11/2026 | Técnica | Acompanhamento sem cadastro por token de 244 bits; a resposta omite rua, `user_id` e o próprio token | Engenharia |
 | 08/11/2026 | Técnica | Sem pagamento real até a Fase 8: o admin confirma o pagamento no painel, o que baixa o estoque | Engenharia |
+| 08/11/2026 | D13 | **Autorizado** pelo usuário: Fase 7. Migration `20261108000500_customers.sql` aplicada (dry-run antes), conferência remota 25/25 e teste com cliente de teste criado e excluído pela tela | Usuário |
+| 08/11/2026 | D14 | Confirmação de e-mail no cadastro **desligada pelo usuário** para a demonstração (SMTP gratuito limitado). Religar antes do uso comercial | Usuário |
+| 08/11/2026 | Técnica | Páginas de login, cadastro e senha estáticas (parâmetros lidos no navegador), para funcionarem antes da hidratação | Engenharia |
+| 08/11/2026 | Técnica | Perfil criado sob demanda, sem trigger em `auth.users`; privilégio de UPDATE por coluna (revogar coluna não anula o UPDATE da tabela no Postgres) | Engenharia |
+| 08/11/2026 | Técnica | Exclusão de conta exige "EXCLUIR" + senha atual (conferida num cliente isolado, sem trocar a sessão); admins não se excluem pela loja | Engenharia |
+| 08/11/2026 | Técnica | `npm run build` limpa `.next` antes (OneDrive transforma arquivos de build em atalhos de nuvem). Junction para fora do OneDrive foi testada e descartada: o Turbopack não acha o `node_modules` | Engenharia |

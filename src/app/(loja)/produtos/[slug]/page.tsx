@@ -2,6 +2,7 @@ import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { FavoriteButton } from "@/components/account/favorite-button";
 import { OlfactoryInfo } from "@/components/catalog/olfactory-info";
 import { ProductGallery } from "@/components/catalog/product-gallery";
 import { ProductGrid, ProductGridSkeleton } from "@/components/catalog/product-grid";
@@ -88,9 +89,12 @@ async function ProductContent({ params }: { params: PageProps<"/produtos/[slug]"
         <ProductGallery images={images} name={product.name} />
         <div className="space-y-6">
           <div className="space-y-2">
-            <Link href={`/marcas/${product.brand.slug}`} className="text-sm font-semibold uppercase tracking-wider text-primary hover:underline">
-              {product.brand.name}
-            </Link>
+            <div className="flex items-start justify-between gap-4">
+              <Link href={`/marcas/${product.brand.slug}`} className="text-sm font-semibold uppercase tracking-wider text-primary hover:underline">
+                {product.brand.name}
+              </Link>
+              <FavoriteButton productId={product.id} slug={product.slug} name={product.name} />
+            </div>
             <h1 className="font-display text-4xl font-semibold leading-tight">{product.name}</h1>
             {product.concentration ? <p className="text-muted">{product.concentration}</p> : null}
             {product.short_description ? <p className="text-lg">{product.short_description}</p> : null}

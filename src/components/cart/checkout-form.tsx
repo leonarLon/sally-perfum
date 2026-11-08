@@ -6,6 +6,7 @@ import { placeOrder, type CheckoutState } from "@/app/(loja)/checkout/actions";
 import { Field, FormMessage, SelectField } from "@/components/admin/form-kit";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/card";
+import type { Address } from "@/lib/account/queries";
 import { cart, useCart, useHydrated } from "@/lib/cart/store";
 import { PAYMENT_METHODS, UFS } from "@/lib/checkout/schemas";
 import { formatBRL } from "@/lib/money";
@@ -13,14 +14,19 @@ import { CEP_KEY } from "./cart-view";
 import { OrderSummary } from "./order-summary";
 import { useQuote } from "./use-quote";
 
-export function CheckoutForm() {
+export type CheckoutDefaults = { name: string | null; email: string | null; phone: string | null; addresses: Address[] };
+
+export function CheckoutForm({ defaults }: { defaults?: CheckoutDefaults | null }) {
+  const saved = defaults?.addresses ?? [];
+  const [addressIdx, setAddressIdx] = useState(0);
+  const addr: Partial<Address> = saved[addressIdx] ?? {};
   const hydrated = useHydrated();
   const items = useCart();
   const router = useRouter();
   // Uma chave por tentativa de compra, criada no primeiro envio: clique duplo ou reenvio
   // devolvem o MESMO pedido (create_order é idempotente pela chave).
   const idempotencyKey = useRef<string | null>(null);
-  const [cep, setCep] = useState(() => (typeof window === "undefined" ? "" : (sessionStorage.getItem(CEP_KEY) ?? "")));
+  const [cep, setCep] = useState(() => saved[0]?.cep ?? (typeof window === "undefined" ? "" : (sessionStorage.getItem(CEP_KEY) ?? "")));
   const cepDigits = cep.replace(/\D/g, "");
   const { quote, loading } = useQuote(items, cepDigits.length === 8 ? cepDigits : undefined);
   const [state, formAction, pending] = useActionState<CheckoutState, FormData>(placeOrder, {});
@@ -67,13 +73,33 @@ export function CheckoutForm() {
 
         <fieldset className="grid gap-4 sm:grid-cols-2">
           <legend className="mb-3 font-display text-xl font-semibold">Seus dados</legend>
-          <Field name="name" label="Nome completo" state={s} autoComplete="name" required className="sm:col-span-2" />
-          <Field name="email" label="E-mail" type="email" state={s} autoComplete="email" required hint="Enviaremos o link do pedido para este e-mail (simulado nesta demonstração)." />
-          <Field name="phone" label="Celular (opcional)" type="tel" state={s} autoComplete="tel" inputMode="tel" placeholder="(11) 98765-4321" />
+          <Field name="name" label="Nome completo" state={s} autoComplete="name" required className="sm:col-span-2" defaultValue={defaults?.name ?? ""} />
+          <Field name="email" label="E-mail" type="email" state={s} autoComplete="email" required defaultValue={defaults?.email ?? ""} hint="Enviaremos o link do pedido para este e-mail (simulado nesta demonstração)." />
+          <Field name="phone" label="Celular (opcional)" type="tel" state={s} autoComplete="tel" inputMode="tel" placeholder="(11) 98765-4321" defaultValue={defaults?.phone ?? ""} />
         </fieldset>
 
         <fieldset className="grid gap-4 sm:grid-cols-6">
           <legend className="mb-3 font-display text-xl font-semibold">Entrega</legend>
+          {saved.length > 1 && (
+            <label className="space-y-1.5 text-sm sm:col-span-6">
+              <span className="font-medium">Endereço salvo</span>
+              <select
+                value={addressIdx}
+                onChange={(e) => {
+                  const i = Number(e.target.value);
+                  setAddressIdx(i);
+                  setCep(saved[i]?.cep ?? "");
+                }}
+                className="h-11 w-full rounded-card border border-border bg-background px-4"
+              >
+                {saved.map((a, i) => (
+                  <option key={a.id} value={i}>
+                    {a.label} · {a.street}, {a.number}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
           <Field
             name="cep"
             label="CEP"
@@ -89,12 +115,12 @@ export function CheckoutForm() {
             }}
             className="sm:col-span-2"
           />
-          <Field name="street" label="Endereço" state={s} autoComplete="address-line1" required className="sm:col-span-4" />
-          <Field name="number" label="Número" state={s} required className="sm:col-span-2" />
-          <Field name="complement" label="Complemento (opcional)" state={s} autoComplete="address-line2" className="sm:col-span-4" />
-          <Field name="district" label="Bairro" state={s} required className="sm:col-span-2" />
-          <Field name="city" label="Cidade" state={s} autoComplete="address-level2" required className="sm:col-span-3" />
-          <SelectField name="state" label="Estado" state={s} required options={UFS.map((u) => ({ value: u, label: u }))} className="sm:col-span-1" />
+          <Field key={`street-${addressIdx}`} name="street" label="Endereço" state={s} autoComplete="address-line1" required className="sm:col-span-4" defaultValue={addr.street ?? ""} />
+          <Field key={`number-${addressIdx}`} name="number" label="Número" state={s} required className="sm:col-span-2" defaultValue={addr.number ?? ""} />
+          <Field key={`complement-${addressIdx}`} name="complement" label="Complemento (opcional)" state={s} autoComplete="address-line2" className="sm:col-span-4" defaultValue={addr.complement ?? ""} />
+          <Field key={`district-${addressIdx}`} name="district" label="Bairro" state={s} required className="sm:col-span-2" defaultValue={addr.district ?? ""} />
+          <Field key={`city-${addressIdx}`} name="city" label="Cidade" state={s} autoComplete="address-level2" required className="sm:col-span-3" defaultValue={addr.city ?? ""} />
+          <SelectField key={`state-${addressIdx}`} name="state" label="Estado" state={s} required defaultValue={addr.state} options={UFS.map((u) => ({ value: u, label: u }))} className="sm:col-span-1" />
         </fieldset>
 
         <fieldset>

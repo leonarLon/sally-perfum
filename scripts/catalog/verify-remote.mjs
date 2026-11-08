@@ -73,6 +73,11 @@ await blocked("liberação de reservas", supabase.rpc("release_expired_reservati
   check("cotação usa o preço do banco e calcula frete", !q.error && q.data?.subtotal_cents === v.price_cents && Boolean(q.data?.shipping?.label), q.error?.message ?? `${q.data?.subtotal_cents} / ${q.data?.shipping?.label}`);
 }
 
+// Fase 7: dados de clientes inacessíveis a visitantes.
+await blocked("leitura de perfis", supabase.from("profiles").select("user_id").limit(1));
+await blocked("leitura de endereços", supabase.from("customer_addresses").select("id").limit(1));
+await blocked("gravação de favoritos", supabase.from("favorites").insert({ product_id: zero }));
+
 const report = { verifiedAt: new Date().toISOString(), products: all.length, checks };
 fs.writeFileSync(path.join(root, "supabase/seed/catalog.load-report.json"), JSON.stringify(report, null, 2) + "\n");
 process.exit(checks.every((c) => c.ok) ? 0 : 1);

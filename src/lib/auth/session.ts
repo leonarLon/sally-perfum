@@ -5,7 +5,7 @@ import { cache } from "react";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export type Role = "admin" | "owner";
-export type SessionUser = { id: string; email: string | null };
+export type SessionUser = { id: string; email: string | null; name: string | null };
 
 /**
  * Camada de acesso (DAL): toda página e ação privada passa por aqui.
@@ -21,7 +21,9 @@ export const getSessionUser = cache(async (): Promise<SessionUser | null> => {
   const sub = data?.claims?.sub;
   if (!sub) return null;
   const email = typeof data.claims.email === "string" ? data.claims.email : null;
-  return { id: sub, email };
+  const meta = (data.claims.user_metadata ?? {}) as Record<string, unknown>;
+  const name = typeof meta.full_name === "string" ? meta.full_name.slice(0, 120) : null;
+  return { id: sub, email, name };
 });
 
 const hasRole = cache(async (role: Role): Promise<boolean> => {

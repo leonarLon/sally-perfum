@@ -85,6 +85,11 @@ Preenchida **só por trigger** (`audit_row_change`, `SECURITY DEFINER`) em `bran
 - `order_items`: retrato do produto na compra (SKU, nome, marca, preço unitário). `order_events`: histórico de status com autor.
 - `inventory_movements.order_id` liga as movimentações ao pedido. Sinais: `reserve` −q e `release` +q (disponível); `sale` −q e `return` +q (físico).
 
+### Área do cliente (Fase 7)
+- `profiles` (1:1 com `auth.users`, criado sob demanda), `customer_addresses` (até 10 por pessoa, um padrão por índice único parcial), `favorites` (só produtos publicados).
+- RLS: somente o dono lê e altera; admin **não** lê endereços salvos nem favoritos. UPDATE concedido coluna a coluna (o `user_id` nunca muda).
+- Exclusão de conta: `on delete cascade` em perfil, endereços e favoritos; pedidos, eventos, auditoria e movimentações de estoque ficam com o vínculo nulo (`on delete set null`).
+
 ## View e funções (RPC)
 | Objeto | Descrição |
 |---|---|
@@ -102,6 +107,7 @@ Preenchida **só por trigger** (`audit_row_change`, `SECURITY DEFINER`) em `bran
 | `get_order_public(token)` | Pedido pelo link: sem `user_id`, rua ou token; CEP mascarado |
 | `admin_update_order_status(order, status)` | Transições válidas com efeito no estoque (pago baixa, cancelado libera ou devolve) |
 | `admin_release_expired_reservations()` / `release_expired_reservations()` | Expira pedidos vencidos e devolve a reserva |
+| `set_default_address(address)` | Troca atômica do endereço padrão do próprio cliente (`SECURITY INVOKER`) |
 | `admin_set_primary_image(image)` | Troca atômica da imagem principal (`SECURITY INVOKER`, passa pela RLS) |
 
 As RPCs do catálogo são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem chama. As de estoque e indicadores são `SECURITY DEFINER` porque leem quantidades protegidas por privilégio de coluna; por isso verificam `has_role('admin')` na primeira linha e não são executáveis por `anon`.
@@ -118,6 +124,7 @@ As RPCs do catálogo são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem c
 | audit_logs | — | Leitura (escrita só por trigger) |
 | orders, order_items, order_events | Cliente lê os próprios (sem token); visitante nada | Leitura; mudança só por RPC |
 | shipping_zones, store_settings | Leitura pública | Escrita |
+| profiles, customer_addresses, favorites | Só o próprio dono | — (sem acesso) |
 | storage `product-images` | Leitura pública pela URL | Upload, leitura via API, atualização e remoção |
 
 ## Índices
@@ -128,6 +135,7 @@ As RPCs do catálogo são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem c
 |---|---|
 | `20261108000100_catalog.sql` | Utilitários, RBAC, catálogo, estoque, RLS, view, bucket de imagens |
 | `20261108000200_catalog_rpc.sql` | `search_catalog`, `get_product`, `catalog_facets` |
+| `20261108000500_customers.sql` | Perfil, endereços, favoritos; `inventory_movements.actor_id` com `on delete set null` |
 | `20261108000400_orders.sql` | Frete, configurações, pedidos, itens, histórico, RPCs de compra e de status |
 | `20261108000300_admin.sql` | `audit_logs` e triggers, RPCs `admin_*`, policy de leitura do Storage para admin |
 

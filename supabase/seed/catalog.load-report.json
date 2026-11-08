@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-11-08T21:46:16.325Z",
+  "verifiedAt": "2026-11-08T22:07:34.764Z",
   "products": 45,
   "checks": [
     {
@@ -111,6 +111,21 @@
       "name": "cotação usa o preço do banco e calcula frete",
       "ok": true,
       "detail": "32590 / São Paulo (capital e região)"
+    },
+    {
+      "name": "visitante bloqueado: leitura de perfis",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: leitura de endereços",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: gravação de favoritos",
+      "ok": true,
+      "detail": "42501"
     }
   ]
 }
