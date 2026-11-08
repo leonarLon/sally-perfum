@@ -40,7 +40,7 @@ export function CatalogFilters({
 
       {facets.families.length ? (
         <Fieldset legend="Família olfativa">
-          <select name="familia" defaultValue={filters.familia ?? ""} className="h-10 w-full rounded-full border border-border bg-background px-3">
+          <select name="familia" aria-label="Família olfativa" defaultValue={filters.familia ?? ""} className="h-10 w-full rounded-full border border-border bg-background px-3">
             <option value="">Todas</option>
             {facets.families.map((f) => (
               <option key={f.name} value={f.name}>
@@ -53,7 +53,7 @@ export function CatalogFilters({
 
       {!fixed.marca ? (
         <Fieldset legend="Marca">
-          <select name="marca" defaultValue={filters.marca ?? ""} className="h-10 w-full rounded-full border border-border bg-background px-3">
+          <select name="marca" aria-label="Marca" defaultValue={filters.marca ?? ""} className="h-10 w-full rounded-full border border-border bg-background px-3">
             <option value="">Todas</option>
             {facets.brands.map((b) => (
               <option key={b.slug} value={b.slug}>

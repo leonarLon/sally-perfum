@@ -20,4 +20,5 @@
 | 08/11/2026 | Técnica | Busca, filtros e paginação em RPCs SQL `SECURITY INVOKER`, testáveis em PGlite e protegidas pela RLS | Engenharia |
 | 08/11/2026 | Técnica | Imagens: `external_url` como fallback até o upload ao Storage (`upload-images.mjs`, com validação por magic bytes) | Engenharia |
 | 08/11/2026 | D2 | Projeto Supabase Free criado pelo usuário; chaves no `.env.local` (conexão verificada) | Usuário |
-| — | D10 | **Pendente:** autorização para aplicar migrations, seed e imagens no Supabase remoto | Aguardando |
+| 08/11/2026 | D10 | **Autorizado** pelo usuário: migrations, seed de 45 produtos e upload de 128 imagens aplicados no Supabase e verificados (10/10 checagens, testes de RLS no banco real e 32 E2E) | Usuário |
+| 08/11/2026 | Técnica | Tokens `success` (#1A6B43) e `warning` (#8A4F00) escurecidos após a auditoria axe apontar contraste insuficiente nos selos de estoque | Engenharia |

@@ -6,8 +6,8 @@
 |---|---|
 | Produtos no seed | 45 |
 | Variantes (SKUs) | 105 |
-| Status da carga | **Seed preparado — NÃO executado no Supabase remoto** (aguardando autorização) |
-| Publicação | Serão publicados ao executar o seed (status `published`) |
+| Status da carga | Executado no Supabase e verificado em 2026-11-08 |
+| Publicação | Publicados no catálogo público |
 | Revisão comercial | **Pendente para todos**: preços são de referência e o estoque é de DEMONSTRAÇÃO |
 
 ## Fontes e critérios

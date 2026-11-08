@@ -118,7 +118,7 @@ async function ProductContent({ params }: { params: PageProps<"/produtos/[slug]"
 
 function ProductSkeleton() {
   return (
-    <div className="grid gap-10 lg:grid-cols-2" aria-busy="true" aria-label="Carregando perfume">
+    <div className="grid gap-10 lg:grid-cols-2" role="status" aria-busy="true" aria-label="Carregando perfume">
       <Skeleton className="aspect-square w-full" />
       <div className="space-y-4">
         <Skeleton className="h-4 w-24" />

@@ -1,0 +1,56 @@
+{
+  "verifiedAt": "2026-11-08T20:51:04.424Z",
+  "products": 45,
+  "checks": [
+    {
+      "name": "≥ 40 produtos publicados visíveis no catálogo público",
+      "ok": true,
+      "detail": "45 produtos"
+    },
+    {
+      "name": "todos os produtos do seed estão publicados",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "sem produtos duplicados",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "todo produto tem preço > 0 em centavos inteiros",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "todo produto tem imagem",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "quantidade de estoque NÃO é exposta ao público",
+      "ok": true,
+      "detail": "permission denied for table inventory"
+    },
+    {
+      "name": "detalhe de \"la-vie-est-belle-lancome\" com todas as variantes",
+      "ok": true,
+      "detail": "3/3"
+    },
+    {
+      "name": "preços batem com a referência do seed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "imagens principais carregam (HTTP 200)",
+      "ok": true,
+      "detail": "45/45"
+    },
+    {
+      "name": "imagens servidas pelo Storage do Supabase",
+      "ok": true,
+      "detail": "45/45 no Storage"
+    }
+  ]
+}

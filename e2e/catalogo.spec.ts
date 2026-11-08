@@ -65,7 +65,9 @@ test.describe("Catálogo público (Fase 3) — dados do Supabase", () => {
 
   test("produto sem pirâmide confirmada informa isso (grupo 49)", async ({ page }) => {
     await page.goto("/produtos/khamrah-lattafa");
-    await expect(page.getByText(/não foi confirmada por fonte confiável/)).toBeVisible();
+    const olfativo = page.getByRole("region", { name: "Informações olfativas" });
+    await expect(olfativo.getByText(/não foi confirmada por fonte confiável/)).toBeVisible();
+    await expect(olfativo.getByText("Notas de saída")).toHaveCount(0);
   });
 
   test("produto inexistente mostra página de não encontrado (grupo 7)", async ({ page }) => {

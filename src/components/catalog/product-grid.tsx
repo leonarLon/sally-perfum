@@ -16,7 +16,7 @@ export function ProductGrid({ items, priorityCount = 0 }: { items: CatalogItem[]
 
 export function ProductGridSkeleton({ count = 8 }: { count?: number }) {
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4" aria-busy="true" aria-label="Carregando perfumes">
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4" role="status" aria-busy="true" aria-label="Carregando perfumes">
       {Array.from({ length: count }, (_, i) => (
         <div key={i} className="space-y-3">
           <Skeleton className="aspect-square w-full" />

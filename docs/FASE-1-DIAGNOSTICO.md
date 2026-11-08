@@ -81,8 +81,8 @@ Proposta: rosa profundo como cor de ação, branco predominante e neutros com le
 | `text` | `#2B1D24` | Texto principal | > 14 : 1 |
 | `muted` | `#6E5A64` | Texto secundário | ≈ 6,4 : 1 ✅ |
 | `border` | `#EBDDE3` | Divisórias | decorativo |
-| `success` | `#1E7F4F` | Em estoque, aprovado | AA |
-| `warning` | `#A15C00` | Estoque baixo, pendente | AA |
+| `success` | `#1A6B43` | Em estoque, aprovado | AA (≈5,7:1 sobre o fundo tingido; ajustado na Fase 3 após auditoria axe) |
+| `warning` | `#8A4F00` | Estoque baixo, pendente | AA (≈5,5:1 sobre o fundo tingido; ajustado na Fase 3) |
 | `error` | `#B3261E` | Erros, recusado | AA |
 
 - **Tipografia:** Cormorant Garamond (títulos) + Inter (texto e interface), ambas com licença OFL, carregadas via `next/font`.
