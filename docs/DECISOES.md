@@ -22,3 +22,10 @@
 | 08/11/2026 | D2 | Projeto Supabase Free criado pelo usuário; chaves no `.env.local` (conexão verificada) | Usuário |
 | 08/11/2026 | D10 | **Autorizado** pelo usuário: migrations, seed de 45 produtos e upload de 128 imagens aplicados no Supabase e verificados (10/10 checagens, testes de RLS no banco real e 32 E2E) | Usuário |
 | 08/11/2026 | Técnica | Tokens `success` (#1A6B43) e `warning` (#8A4F00) escurecidos após a auditoria axe apontar contraste insuficiente nos selos de estoque | Engenharia |
+| 08/11/2026 | D11 | **Autorizado** pelo usuário: Fase 5. Migration `20261108000300_admin.sql` aplicada no Supabase (dry-run antes) e verificada como visitante (16/16 checagens) | Usuário |
+| 08/11/2026 | Técnica | Painel escreve com a **sessão do admin** (RLS ativa), não com service role. `requireRole` no layout, em cada leitura (DAL) e em cada server action | Engenharia |
+| 08/11/2026 | Técnica | Auditoria por **trigger** no banco (não depende do código lembrar de registrar) e somente leitura pela API | Engenharia |
+| 08/11/2026 | Técnica | Estoque só por RPC transacional com motivo obrigatório; "contagem conferida" tira a marca de demonstração, "entrada" não | Engenharia |
+| 08/11/2026 | Técnica | Sem trigger de estoque em variante nova: o seed usa `on conflict do nothing` e perderia o estoque demo. A linha é criada pela primeira movimentação | Engenharia |
+| 08/11/2026 | Técnica | `parseBRLToCents` passou a recusar "12.5" (antes virava R$ 125): ponto só como milhar em grupos de 3 | Engenharia |
+| 08/11/2026 | Técnica | Login do painel com mensagem única para senha errada e conta sem papel (não revela e-mails cadastrados); `returnTo` restrito a `/admin` | Engenharia |

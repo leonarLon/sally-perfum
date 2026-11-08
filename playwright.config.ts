@@ -1,5 +1,12 @@
 import { defineConfig, devices } from "@playwright/test";
 
+// Credenciais opcionais do E2E do painel (ADMIN_EMAIL/ADMIN_PASSWORD) ficam no .env.local, fora do git.
+try {
+  process.loadEnvFile(".env.local");
+} catch {
+  // sem .env.local: os testes que dependem dele são pulados
+}
+
 const PORT = Number(process.env.E2E_PORT ?? 3100);
 
 export default defineConfig({

@@ -44,6 +44,8 @@ test.describe("Catálogo público (Fase 3) — dados do Supabase", () => {
 
   test("ordenação por menor preço (grupo 4)", async ({ page }) => {
     await page.goto("/produtos?ordem=price_asc");
+    // allTextContents não espera: aguarda o resultado (streaming) substituir o skeleton.
+    await expect(page.getByRole("article").first()).toBeVisible();
     const prices = await page.getByRole("article").locator("text=/R\\$/").allTextContents();
     const cents = prices
       .map((t) => t.match(/R\$\s?([\d.]+,\d{2})/)?.[1])

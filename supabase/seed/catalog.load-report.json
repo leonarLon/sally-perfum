@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-11-08T20:51:04.424Z",
+  "verifiedAt": "2026-11-08T21:13:44.393Z",
   "products": 45,
   "checks": [
     {
@@ -51,6 +51,36 @@
       "name": "imagens servidas pelo Storage do Supabase",
       "ok": true,
       "detail": "45/45 no Storage"
+    },
+    {
+      "name": "visitante bloqueado: admin_update_stock",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: admin_list_inventory",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: admin_dashboard_stats",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: admin_set_primary_image",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: leitura da auditoria",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: escrita na auditoria",
+      "ok": true,
+      "detail": "42501"
     }
   ]
 }

@@ -20,8 +20,11 @@ export function formatBRL(cents: Cents): string {
 
 /** Converte texto digitado ("189,90", "1.299,00", "R$ 50") para centavos sem float. */
 export function parseBRLToCents(input: string): Cents {
-  const cleaned = input.replace(/[R$\s]/g, "").replace(/\./g, "");
-  const match = /^(\d+)(?:,(\d{1,2}))?$/.exec(cleaned);
+  const raw = input.replace(/[R$\s]/g, "");
+  // Ponto só como separador de milhar em grupos de 3 ("1.299,00"); "12.5" é recusado,
+  // em vez de virar R$ 125 silenciosamente.
+  if (!/^(\d{1,3}(\.\d{3})+|\d+)(,\d{1,2})?$/.test(raw)) throw new TypeError(`Valor inválido: "${input}"`);
+  const match = /^(\d+)(?:,(\d{1,2}))?$/.exec(raw.replace(/\./g, ""));
   if (!match) throw new TypeError(`Valor inválido: "${input}"`);
   const reais = Number(match[1]);
   const centavos = Number((match[2] ?? "0").padEnd(2, "0"));

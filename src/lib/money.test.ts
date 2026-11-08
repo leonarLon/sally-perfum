@@ -29,6 +29,9 @@ describe("money (centavos inteiros)", () => {
     expect(parseBRLToCents("0,5")).toBe(50);
     expect(() => parseBRLToCents("12,345")).toThrow();
     expect(() => parseBRLToCents("abc")).toThrow();
+    expect(() => parseBRLToCents("12.5")).toThrow(); // não vira R$ 125
+    expect(() => parseBRLToCents("1.29,00")).toThrow();
+    expect(parseBRLToCents("12.345.678,90")).toBe(1234567890);
   });
 
   it("evita o erro clássico de float 0.1 + 0.2", () => {

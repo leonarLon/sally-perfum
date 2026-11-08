@@ -12,7 +12,8 @@ E-commerce de perfumes com identidade rosa e branca e painel administrativo.
 | 2. Design system e fundação | ✅ Tokens, componentes base, layouts da loja e do admin, mapa de rotas, testes configurados |
 | 3. Catálogo público | ✅ Listagem, busca, filtros, ordenação, paginação, marca e categoria, detalhe do produto, SEO (sitemap, robots, JSON-LD). Lê só do Supabase |
 | 4. Supabase: modelo, migrations e seed de 45 produtos | ✅ Aplicado no Supabase em 08/11/2026 (autorizado): 45 produtos publicados, 105 variantes, 128 imagens no Storage. Relatório em `supabase/seed/catalog.load-report.json` |
-| 5 a 8, 10 e 11 | ⏳ Planejadas |
+| 5. Painel administrativo | ✅ Login de admin, `requireRole` no servidor, produtos (criar, editar, publicar, arquivar), variantes e preços, imagens (upload validado, principal, remoção), estoque (contagem e entrada com movimentação), marcas, categorias, dashboard e auditoria automática. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
+| 6 a 8, 10 e 11 | ⏳ Planejadas |
 | 9. IA (Consultor de Fragrâncias e RAG) | ⏸️ Suspensa até a venda do projeto; ver [PENDENCIAS_COMERCIAIS.md §6](docs/PENDENCIAS_COMERCIAIS.md) |
 
 As rotas ainda não implementadas exibem um aviso explícito ("Esta área ainda não foi implementada"), com a fase prevista. Nada simula uma funcionalidade inexistente.
@@ -46,6 +47,7 @@ Ver [.env.example](.env.example). Sem as variáveis do Supabase, a aplicação s
 | `NEXT_PUBLIC_SITE_URL` | URLs absolutas e SEO | Não |
 | `SUPABASE_DB_URL` | Somente CLI (migrations e seed); nunca usada pela aplicação | **Sim** |
 | `PAYMENT_PROVIDER` | `fake` (simulado) | Não |
+| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Somente o script `create-owner.mjs` e o E2E do painel; nunca usadas pela aplicação | **Sim** (senha) |
 
 ## Comandos
 | Comando | O que faz |
@@ -61,7 +63,8 @@ Ver [.env.example](.env.example). Sem as variáveis do Supabase, a aplicação s
 | `node scripts/catalog/generate-seed-sql.mjs` | Gera o seed SQL idempotente |
 | `npx supabase db push --remote="$SUPABASE_DB_URL" --include-seed --dry-run` | Mostra migrations e seed pendentes no Supabase (sem `--dry-run` aplica; **exige autorização**) |
 | `node --env-file=.env.local scripts/catalog/upload-images.mjs` | Envia as imagens do seed ao Storage (**exige autorização**) |
-| `node --env-file=.env.local scripts/catalog/verify-remote.mjs` | Verifica a carga no Supabase como visitante (somente leitura) |
+| `node --env-file=.env.local scripts/catalog/verify-remote.mjs` | Verifica a carga e os bloqueios do painel no Supabase como visitante (somente leitura) |
+| `node --env-file=.env.local scripts/admin/create-owner.mjs` | Cria a conta do proprietário e concede o papel `owner` (**exige autorização**) |
 
 ## Estrutura
 ```
@@ -89,5 +92,6 @@ docs/                diagnóstico, decisões e pendências comerciais
 ## Limitações atuais
 - Os E2E do catálogo rodam contra o Supabase configurado no `.env.local`, não contra um banco local. A suíte de banco (PGlite) é a parte determinística.
 - Os testes de banco usam PGlite com um shim de `auth`/`storage` (`tests/db/supabase-shim.sql`). Eles validam o SQL, a RLS e o seed, mas não substituem um teste no Supabase real.
-- A checagem de papel administrativo no servidor entra na Fase 5. Hoje o painel não tem nenhuma operação real.
+- Pedidos, cupons, clientes, relatórios e configurações do painel entram nas Fases 6 a 8.
+- O painel não tem recuperação de senha nem 2FA (ver `PENDENCIAS_COMERCIAIS.md` §7). O histórico mostra o autor pelo id curto, não pelo e-mail.
 - A CSP completa entra na Fase 10.

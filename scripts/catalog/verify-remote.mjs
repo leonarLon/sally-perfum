@@ -2,7 +2,7 @@
 /**
  * Verifica, com a chave PÚBLICA (como um visitante), se a carga está correta no Supabase:
  * quantidade publicada, variantes, disponibilidade, preços, imagens acessíveis e
- * ausência de duplicatas. Somente leitura. Gera supabase/seed/catalog.load-report.json.
+ * ausência de duplicatas, e que as funções do painel recusam visitantes. Somente leitura. Gera supabase/seed/catalog.load-report.json.
  * Uso: node --env-file=.env.local scripts/catalog/verify-remote.mjs
  */
 import fs from "node:fs";
@@ -49,6 +49,16 @@ for (const item of all) {
 }
 check("imagens principais carregam (HTTP 200)", broken === 0, `${all.length - broken}/${all.length}`);
 check("imagens servidas pelo Storage do Supabase", all.every((i) => i.image_path), `${all.filter((i) => i.image_path).length}/${all.length} no Storage`);
+
+// Fase 5: funções e auditoria do painel recusam visitantes.
+const zero = "00000000-0000-0000-0000-000000000000";
+const blocked = async (label, promise) => { const { error } = await promise; check(`visitante bloqueado: ${label}`, Boolean(error), error?.code ?? "PERMITIDO!"); };
+await blocked("admin_update_stock", supabase.rpc("admin_update_stock", { p_variant_id: zero, p_mode: "set", p_quantity: 1, p_min_stock: 1, p_reason: "teste" }));
+await blocked("admin_list_inventory", supabase.rpc("admin_list_inventory", {}));
+await blocked("admin_dashboard_stats", supabase.rpc("admin_dashboard_stats"));
+await blocked("admin_set_primary_image", supabase.rpc("admin_set_primary_image", { p_image_id: zero }));
+await blocked("leitura da auditoria", supabase.from("audit_logs").select("id").limit(1));
+await blocked("escrita na auditoria", supabase.from("audit_logs").insert({ action: "update", entity: "x", entity_id: "y" }));
 
 const report = { verifiedAt: new Date().toISOString(), products: all.length, checks };
 fs.writeFileSync(path.join(root, "supabase/seed/catalog.load-report.json"), JSON.stringify(report, null, 2) + "\n");

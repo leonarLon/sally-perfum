@@ -76,6 +76,9 @@ Por **privilégio de coluna**, o público só lê `variant_id` e `stock_status`,
 ### `inventory_movements`
 Somente inserção: `type` (`seed`, `in`, `adjust`, `reserve`, `release`, `sale`, `return`), `quantity` (delta assinado ≠ 0), `reason`, `actor_id`. Visível só para admin.
 
+### `audit_logs`: auditoria (Fase 5)
+Preenchida **só por trigger** (`audit_row_change`, `SECURITY DEFINER`) em `brands`, `categories`, `products`, `product_variants`, `product_images`, `inventory` e `user_roles`. Guarda `actor_id` (`auth.uid()`; `null` = sistema/seed), `action`, `entity`, `entity_id` e `changes` (no update, só os campos alterados como `{campo: {de, para}}`; updates sem mudança real não geram registro). Leitura só para admin; ninguém insere, altera ou apaga pela API.
+
 ## View e funções (RPC)
 | Objeto | Descrição |
 |---|---|
@@ -84,7 +87,12 @@ Somente inserção: `type` (`seed`, `in`, `adjust`, `reserve`, `release`, `sale`
 | `get_product(slug)` | Produto com marca, categoria, variantes (com `stock_status`) e imagens; `null` se inexistente ou não visível |
 | `catalog_facets()` | Marcas, famílias e faixa de preço para os filtros |
 
-Todas as RPCs são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem chama.
+| `admin_update_stock(variant, mode, quantity, min_stock, reason)` | `set` = contagem conferida (deixa de ser demo), `in` = entrada. Trava a linha (`for update`), nunca abaixo do reservado, grava movimentação com autor e motivo. Cria a linha de estoque de variantes novas |
+| `admin_list_inventory(q, status, product_id)` | Estoque com quantidades para o painel |
+| `admin_dashboard_stats()` | Contagens do dashboard |
+| `admin_set_primary_image(image)` | Troca atômica da imagem principal (`SECURITY INVOKER`, passa pela RLS) |
+
+As RPCs do catálogo são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem chama. As de estoque e indicadores são `SECURITY DEFINER` porque leem quantidades protegidas por privilégio de coluna; por isso verificam `has_role('admin')` na primeira linha e não são executáveis por `anon`.
 
 ## RLS (resumo)
 | Tabela | anon / cliente | admin / owner |
@@ -92,10 +100,11 @@ Todas as RPCs são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem chama.
 | brands, categories | Leitura se ativas | Leitura e escrita |
 | products | Leitura se `published` | Leitura e escrita (inclui rascunhos) |
 | product_variants, product_images | Leitura se o produto está publicado | Leitura e escrita |
-| inventory | Somente `stock_status` de variantes publicadas | Leitura (quantidades via servidor) |
+| inventory | Somente `stock_status` de variantes publicadas | Quantidades e alteração só pelas RPCs `admin_*` |
 | inventory_movements | — | Leitura |
 | user_roles | Próprios papéis (cliente) | Escrita só pelo service role |
-| storage `product-images` | Leitura pública | Upload, atualização e remoção |
+| audit_logs | — | Leitura (escrita só por trigger) |
+| storage `product-images` | Leitura pública pela URL | Upload, leitura via API, atualização e remoção |
 
 ## Índices
 Únicos: slugs, `sku`, `seed_key`, `(product_id, position)` em imagens, imagem principal parcial. Busca: `products(status)`, `(brand_id)`, `(category_id)`, `product_variants(product_id)`, `inventory_movements(variant_id, created_at desc)`.
@@ -105,6 +114,7 @@ Todas as RPCs são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem chama.
 |---|---|
 | `20261108000100_catalog.sql` | Utilitários, RBAC, catálogo, estoque, RLS, view, bucket de imagens |
 | `20261108000200_catalog_rpc.sql` | `search_catalog`, `get_product`, `catalog_facets` |
+| `20261108000300_admin.sql` | `audit_logs` e triggers, RPCs `admin_*`, policy de leitura do Storage para admin |
 
 ## Seed
 `supabase/seed/catalog.seed.sql` (gerado) é idempotente: upsert por `seed_key` e `sku`. Ele **não sobrescreve** preço confirmado (`price_is_reference = false`), conteúdo revisado (`commercial_review = 'approved'`) nem estoque existente. Detalhes em [PRODUCT_CATALOG.md](PRODUCT_CATALOG.md).

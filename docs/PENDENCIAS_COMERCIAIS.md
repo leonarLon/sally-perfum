@@ -66,7 +66,10 @@ O que implementar:
 
 ## 7. Contas e acessos
 - [ ] Criar o usuário `owner` da loja real pelo script controlado. Remover usuários de teste e de estudo.
-- [ ] Ativar 2FA para as contas administrativas.
+- [ ] Ativar 2FA (MFA do Supabase Auth) para as contas administrativas e exigi-lo no `requireRole`.
+- [ ] Configurar SMTP próprio no Supabase Auth (o padrão do plano Free tem limite baixo) e liberar a recuperação de senha do painel.
+- [ ] Mostrar o e-mail do autor no histórico do painel (hoje aparece o id curto) e definir a retenção da tabela `audit_logs`.
+- [ ] Apagar `ADMIN_PASSWORD` do `.env.local` depois de criar a conta, e trocar a senha de estudo.
 - [ ] Definir quem terá papel `admin` além do proprietário.
 
 ## 8. Qualidade antes de abrir
