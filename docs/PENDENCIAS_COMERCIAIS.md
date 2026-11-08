@@ -9,7 +9,7 @@ Mantenha a lista atualizada a cada fase. Os itens novos entram na seção corres
 ## 1. Legal, marca e dados do negócio
 - [ ] Definir a razão social, o CNPJ, o endereço e os contatos da loja real e exibi-los no rodapé (exigência do CDC e do Decreto 7.962/2013 para comércio eletrônico).
 - [ ] Remover o aviso "Projeto de estudo — loja de demonstração" do topo (`src/components/layout/site-header.tsx`) e do rodapé (`site-footer.tsx`).
-- [ ] Redigir as políticas reais de troca e devolução (direito de arrependimento de 7 dias), de entrega, de privacidade (LGPD) e os termos de uso. Elas também alimentam o RAG do Consultor.
+- [ ] Redigir as políticas reais de troca e devolução (direito de arrependimento de 7 dias), de entrega, de privacidade (LGPD) e os termos de uso. A página `/privacidade` atual é um texto de demonstração. Elas também alimentam o RAG do Consultor.
 - [ ] Nomear o encarregado de dados (DPO) e definir o canal para os titulares exercerem seus direitos.
 - [ ] Revisar o banner de cookies e o consentimento conforme as ferramentas de analytics/marketing escolhidas.
 - [ ] Registrar o domínio e configurar o e-mail remetente (SPF, DKIM, DMARC).
@@ -37,6 +37,10 @@ Mantenha a lista atualizada a cada fase. Os itens novos entram na seção corres
 
 ## 4. Frete e operação
 - [ ] Trocar a **tabela fixa de frete por região** (adotada neste projeto) por cotação real (ex.: Melhor Envio, Correios ou transportadora contratada).
+- [ ] Os valores da tabela `shipping_zones` e o frete grátis acima de R$ 299 são **fictícios** (marcados `is_demo`). Definir os reais.
+- [ ] Pedir CPF no checkout quando houver emissão de nota fiscal (hoje não é coletado, por minimização de dados).
+- [ ] Enviar e-mails de confirmação e de mudança de status do pedido (hoje o cliente acompanha só pelo link).
+- [ ] Cupons de desconto: ainda não implementados (o campo `discount_cents` já existe no pedido).
 - [ ] Cadastrar o peso e as dimensões reais de cada SKU.
 - [ ] Definir prazos de despacho, a política de frete grátis e as regiões atendidas.
 - [ ] Emitir nota fiscal (NF-e) com integração a um ERP ou emissor: **não implementado** neste projeto.
@@ -45,6 +49,8 @@ Mantenha a lista atualizada a cada fase. Os itens novos entram na seção corres
 - [ ] **Vercel:** migrar de Hobby para Pro (o Hobby proíbe uso comercial). Valor de referência: US$ 20/mês (pesquisa de 08/11/2026).
 - [ ] **Supabase:** migrar de Free para Pro (o Free pausa o projeto após 1 semana de inatividade). Valor de referência: US$ 25/mês. Ativar backups e point-in-time recovery, se o volume justificar.
 - [ ] **E-mail transacional:** conta própria (ex.: Resend) com domínio verificado.
+- [ ] **Limite de tentativas** do checkout em armazenamento compartilhado (ex.: Upstash Redis ou firewall da Vercel). O atual é em memória, por instância.
+- [ ] Agendar a expiração de reservas com `pg_cron` (hoje é feita sob demanda, a cada pedido e a cada acesso ao painel).
 - [ ] **Monitoramento:** erros (ex.: Sentry), uptime e alertas de pagamento e estoque.
 - [ ] Criar um projeto Supabase **separado** para produção (não reaproveitar o de estudo) e aplicar as migrations do zero.
 - [ ] Trocar todas as chaves usadas no estudo (Supabase service role, IA, etc.).

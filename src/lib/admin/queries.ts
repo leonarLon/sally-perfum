@@ -135,6 +135,7 @@ export async function getAdminProduct(id: string): Promise<AdminProduct | null> 
 
 export async function listInventory(opts: { q?: string; status?: string; productId?: string } = {}) {
   const { supabase } = await requireRole();
+  await releaseExpired(supabase);
   const status = opts.status && ["in_stock", "low_stock", "out_of_stock"].includes(opts.status) ? opts.status : null;
   const { data, error } = await supabase.rpc("admin_list_inventory", {
     p_q: opts.q?.trim() || null,
@@ -205,13 +206,93 @@ export async function listAudit(opts: { entityIds?: string[]; limit?: number } =
 
 export type DashboardStats = Record<
   | "products_published" | "products_draft" | "products_archived" | "review_pending" | "reference_prices"
-  | "variants_active" | "low_stock" | "out_of_stock" | "demo_stock",
+  | "variants_active" | "low_stock" | "out_of_stock" | "demo_stock"
+  | "orders_pending" | "orders_to_ship" | "orders_total" | "revenue_paid_cents",
   number
 >;
 
 export async function getDashboardStats() {
   const { supabase } = await requireRole();
+  await releaseExpired(supabase);
   const { data, error } = await supabase.rpc("admin_dashboard_stats");
   if (error) throw new Error("Falha ao carregar os indicadores.");
   return data as DashboardStats;
+}
+
+// ---------------------------------------------------------------------------
+// Pedidos (Fase 6)
+// ---------------------------------------------------------------------------
+const ORDER_COLUMNS =
+  "id, number, user_id, status, customer_name, customer_email, customer_phone, ship_cep, ship_street, ship_number, ship_complement, ship_district, ship_city, ship_state, shipping_label, shipping_days_min, shipping_days_max, payment_method, subtotal_cents, shipping_cents, discount_cents, total_cents, reserved_until, is_demo, created_at, updated_at";
+
+export type AdminOrder = {
+  id: string;
+  number: number;
+  user_id: string | null;
+  status: "pending_payment" | "paid" | "shipped" | "delivered" | "canceled" | "expired";
+  customer_name: string;
+  customer_email: string;
+  customer_phone: string | null;
+  ship_cep: string;
+  ship_street: string;
+  ship_number: string;
+  ship_complement: string | null;
+  ship_district: string;
+  ship_city: string;
+  ship_state: string;
+  shipping_label: string;
+  shipping_days_min: number;
+  shipping_days_max: number;
+  payment_method: "pix" | "card" | "boleto";
+  subtotal_cents: number;
+  shipping_cents: number;
+  discount_cents: number;
+  total_cents: number;
+  reserved_until: string | null;
+  is_demo: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type AdminOrderItem = { id: number; variant_id: string | null; sku: string; product_name: string; brand_name: string; volume_ml: number | null; unit_price_cents: number; quantity: number; line_total_cents: number };
+export type AdminOrderEvent = { id: number; from_status: string | null; to_status: string; note: string | null; actor_id: string | null; created_at: string };
+
+/** Expira reservas vencidas (devolve o estoque) antes de mostrar pedidos ou estoque. */
+async function releaseExpired(supabase: Awaited<ReturnType<typeof requireRole>>["supabase"]) {
+  await supabase.rpc("admin_release_expired_reservations");
+}
+
+export async function listOrders(opts: { status?: string; q?: string; page?: number }) {
+  const { supabase } = await requireRole();
+  await releaseExpired(supabase);
+  const page = Math.max(1, opts.page ?? 1);
+  let query = supabase
+    .from("orders")
+    .select("id, number, status, customer_name, customer_email, total_cents, payment_method, reserved_until, created_at, items:order_items(quantity)", { count: "exact" })
+    .order("created_at", { ascending: false })
+    .range((page - 1) * ADMIN_PAGE_SIZE, page * ADMIN_PAGE_SIZE - 1);
+  if (opts.status && ["pending_payment", "paid", "shipped", "delivered", "canceled", "expired"].includes(opts.status)) query = query.eq("status", opts.status);
+  const q = opts.q?.trim().replace(/^#/, "");
+  if (q) {
+    if (/^\d{1,12}$/.test(q)) query = query.eq("number", Number(q));
+    else query = query.ilike("customer_email", `%${q.replace(/[%_\,()]/g, "")}%`);
+  }
+  const { data, error, count } = await query;
+  if (error) throw new Error("Falha ao listar pedidos.");
+  type Row = Pick<AdminOrder, "id" | "number" | "status" | "customer_name" | "customer_email" | "total_cents" | "payment_method" | "reserved_until" | "created_at"> & { items: { quantity: number }[] };
+  return { items: (data ?? []) as Row[], total: count ?? 0, page };
+}
+
+export async function getOrder(id: string) {
+  const { supabase } = await requireRole();
+  if (!/^[0-9a-f-]{36}$/i.test(id)) return null;
+  await releaseExpired(supabase);
+  const [o, items, events] = await Promise.all([
+    supabase.from("orders").select(ORDER_COLUMNS).eq("id", id).maybeSingle(),
+    supabase.from("order_items").select("id, variant_id, sku, product_name, brand_name, volume_ml, unit_price_cents, quantity, line_total_cents").eq("order_id", id).order("id"),
+    supabase.from("order_events").select("id, from_status, to_status, note, actor_id, created_at").eq("order_id", id).order("id"),
+  ]);
+  if (o.error || items.error || events.error) throw new Error("Falha ao carregar o pedido.");
+  if (!o.data) return null;
+  return { order: o.data as AdminOrder, items: (items.data ?? []) as AdminOrderItem[], events: (events.data ?? []) as AdminOrderEvent[] };
 }

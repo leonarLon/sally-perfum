@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-11-08T21:28:26.421Z",
+  "verifiedAt": "2026-11-08T21:46:16.325Z",
   "products": 45,
   "checks": [
     {
@@ -81,6 +81,36 @@
       "name": "visitante bloqueado: escrita na auditoria",
       "ok": true,
       "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: create_order direto",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: leitura de pedidos",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: mudança de status de pedido",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: liberação de reservas",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "link de pedido com token inexistente não revela nada",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cotação usa o preço do banco e calcula frete",
+      "ok": true,
+      "detail": "32590 / São Paulo (capital e região)"
     }
   ]
 }

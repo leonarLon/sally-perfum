@@ -1,5 +1,6 @@
 import { Heart, Search, ShoppingBag, User } from "lucide-react";
 import Link from "next/link";
+import { CartCount } from "@/components/cart/cart-count";
 import { Container } from "@/components/ui/card";
 import { Logo } from "./logo";
 
@@ -38,7 +39,9 @@ export function SiteHeader() {
         <nav aria-label="Atalhos da conta" className="ml-auto flex items-center gap-1 md:ml-0">
           <HeaderIcon href="/minha-conta/favoritos" label="Favoritos" icon={<Heart />} />
           <HeaderIcon href="/minha-conta" label="Minha conta" icon={<User />} />
-          <HeaderIcon href="/carrinho" label="Sacola" icon={<ShoppingBag />} />
+          <HeaderIcon href="/carrinho" label="Sacola" icon={<ShoppingBag />}>
+            <CartCount />
+          </HeaderIcon>
         </nav>
       </Container>
       <Container>
@@ -54,15 +57,16 @@ export function SiteHeader() {
   );
 }
 
-function HeaderIcon({ href, label, icon }: { href: string; label: string; icon: React.ReactNode }) {
+function HeaderIcon({ href, label, icon, children }: { href: string; label: string; icon: React.ReactNode; children?: React.ReactNode }) {
   return (
     <Link
       href={href}
       aria-label={label}
       title={label}
-      className="inline-flex size-10 items-center justify-center rounded-full text-text hover:bg-surface hover:text-primary [&_svg]:size-5"
+      className="relative inline-flex size-10 items-center justify-center rounded-full text-text hover:bg-surface hover:text-primary [&_svg]:size-5"
     >
       {icon}
+      {children}
     </Link>
   );
 }

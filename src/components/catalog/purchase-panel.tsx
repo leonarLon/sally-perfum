@@ -1,8 +1,10 @@
 "use client";
-import { ShoppingBag } from "lucide-react";
+import { Check, ShoppingBag } from "lucide-react";
+import Link from "next/link";
 import { useId, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { cart, MAX_QTY } from "@/lib/cart/store";
 import type { ProductVariant } from "@/lib/catalog/types";
 import { formatBRL } from "@/lib/money";
 import { cn } from "@/lib/utils";
@@ -14,16 +16,16 @@ export const STOCK_LABEL = {
   out_of_stock: { text: "Esgotado", variant: "error" },
 } as const;
 
-const MAX_QTY = 10;
-
 /**
  * Seleção de volume e quantidade. Preço e disponibilidade exibidos aqui são apenas
- * informativos: o servidor revalida tudo ao adicionar à sacola e no checkout.
+ * informativos: a sacola guarda só variante e quantidade, e o servidor recalcula
+ * preço e disponibilidade na sacola e no checkout.
  */
 export function PurchasePanel({ variants }: { variants: ProductVariant[] }) {
   const firstAvailable = variants.find((v) => v.stock_status !== "out_of_stock") ?? variants[0];
   const [selectedId, setSelectedId] = useState(firstAvailable?.id);
   const [qty, setQty] = useState(1);
+  const [feedback, setFeedback] = useState<{ ok: boolean; text: string } | null>(null);
   const groupId = useId();
   const selected = variants.find((v) => v.id === selectedId) ?? firstAvailable;
   if (!selected) return <p className="text-muted">Produto sem variações disponíveis.</p>;
@@ -52,6 +54,7 @@ export function PurchasePanel({ variants }: { variants: ProductVariant[] }) {
                 onClick={() => {
                   setSelectedId(v.id);
                   setQty(1);
+                  setFeedback(null);
                 }}
                 className={cn(
                   "flex min-w-24 flex-col items-center rounded-card border px-4 py-2 text-sm transition-colors",
@@ -86,12 +89,30 @@ export function PurchasePanel({ variants }: { variants: ProductVariant[] }) {
             ))}
           </select>
         </label>
-        <Button size="lg" className="flex-1" disabled aria-describedby="sacola-aviso">
+        <Button
+          size="lg"
+          className="flex-1"
+          disabled={soldOut}
+          onClick={() => {
+            const ok = cart.add(selected.id, qty);
+            setFeedback(ok ? { ok, text: "Adicionado à sacola." } : { ok, text: "Sua sacola já tem o máximo de produtos diferentes." });
+          }}
+        >
           <ShoppingBag /> {soldOut ? "Esgotado" : "Adicionar à sacola"}
         </Button>
       </div>
-      <p id="sacola-aviso" className="text-xs text-muted" role="note">
-        A sacola e o checkout serão liberados na Fase 6 do projeto.
+      <p role="status" className="min-h-5 text-sm">
+        {feedback &&
+          (feedback.ok ? (
+            <span className="inline-flex items-center gap-1.5 text-success">
+              <Check className="size-4" aria-hidden /> {feedback.text}{" "}
+              <Link href="/carrinho" className="font-medium text-primary underline-offset-4 hover:underline">
+                Ver sacola
+              </Link>
+            </span>
+          ) : (
+            <span className="text-error">{feedback.text}</span>
+          ))}
       </p>
     </div>
   );

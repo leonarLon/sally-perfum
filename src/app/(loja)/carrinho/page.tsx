@@ -1,7 +1,13 @@
-import { EmConstrucao } from "@/components/layout/em-construcao";
+import { CartView } from "@/components/cart/cart-view";
+import { Container } from "@/components/ui/card";
 
-export const metadata = { title: "Sacola" };
+export const metadata = { title: "Sacola", robots: { index: false } };
 
-export default function Page() {
-  return <EmConstrucao titulo="Sacola" fase={6} />;
+export default function CartPage() {
+  return (
+    <Container className="py-10">
+      <h1 className="mb-8 font-display text-3xl font-semibold">Sacola</h1>
+      <CartView />
+    </Container>
+  );
 }

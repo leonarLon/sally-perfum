@@ -79,6 +79,12 @@ Somente inserção: `type` (`seed`, `in`, `adjust`, `reserve`, `release`, `sale`
 ### `audit_logs`: auditoria (Fase 5)
 Preenchida **só por trigger** (`audit_row_change`, `SECURITY DEFINER`) em `brands`, `categories`, `products`, `product_variants`, `product_images`, `inventory` e `user_roles`. Guarda `actor_id` (`auth.uid()`; `null` = sistema/seed), `action`, `entity`, `entity_id` e `changes` (no update, só os campos alterados como `{campo: {de, para}}`; updates sem mudança real não geram registro). Leitura só para admin; ninguém insere, altera ou apaga pela API.
 
+### Pedidos (Fase 6)
+- `shipping_zones`: frete fixo por 1º dígito do CEP (valores de demonstração). `store_settings`: linha única com frete grátis, minutos de reserva (30) e limites por pedido.
+- `orders`: número sequencial, `public_token` (64 hex, a credencial do link de acompanhamento), `user_id` opcional, `idempotency_key` única, status (`pending_payment`, `paid`, `shipped`, `delivered`, `canceled`, `expired`), dados de contato e entrega, valores em centavos com `CHECK` do total, `reserved_until`, `privacy_accepted_at`.
+- `order_items`: retrato do produto na compra (SKU, nome, marca, preço unitário). `order_events`: histórico de status com autor.
+- `inventory_movements.order_id` liga as movimentações ao pedido. Sinais: `reserve` −q e `release` +q (disponível); `sale` −q e `return` +q (físico).
+
 ## View e funções (RPC)
 | Objeto | Descrição |
 |---|---|
@@ -90,6 +96,12 @@ Preenchida **só por trigger** (`audit_row_change`, `SECURITY DEFINER`) em `bran
 | `admin_update_stock(variant, mode, quantity, min_stock, reason)` | `set` = contagem conferida (deixa de ser demo), `in` = entrada. Trava a linha (`for update`), nunca abaixo do reservado, grava movimentação com autor e motivo. Cria a linha de estoque de variantes novas |
 | `admin_list_inventory(q, status, product_id)` | Estoque com quantidades para o painel |
 | `admin_dashboard_stats()` | Contagens do dashboard |
+| `quote_cart(items, cep)` | Cotação pública: preço atual, disponibilidade (limitada ao máximo por item), subtotal e frete |
+| `shipping_quote(cep, subtotal)` | Frete da região, com frete grátis acima do valor configurado |
+| `create_order(...)` | **Só service role.** Trava o estoque em ordem fixa, recusa venda acima do disponível, recalcula preço e frete, reserva e é idempotente (advisory lock pela chave) |
+| `get_order_public(token)` | Pedido pelo link: sem `user_id`, rua ou token; CEP mascarado |
+| `admin_update_order_status(order, status)` | Transições válidas com efeito no estoque (pago baixa, cancelado libera ou devolve) |
+| `admin_release_expired_reservations()` / `release_expired_reservations()` | Expira pedidos vencidos e devolve a reserva |
 | `admin_set_primary_image(image)` | Troca atômica da imagem principal (`SECURITY INVOKER`, passa pela RLS) |
 
 As RPCs do catálogo são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem chama. As de estoque e indicadores são `SECURITY DEFINER` porque leem quantidades protegidas por privilégio de coluna; por isso verificam `has_role('admin')` na primeira linha e não são executáveis por `anon`.
@@ -104,6 +116,8 @@ As RPCs do catálogo são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem c
 | inventory_movements | — | Leitura |
 | user_roles | Próprios papéis (cliente) | Escrita só pelo service role |
 | audit_logs | — | Leitura (escrita só por trigger) |
+| orders, order_items, order_events | Cliente lê os próprios (sem token); visitante nada | Leitura; mudança só por RPC |
+| shipping_zones, store_settings | Leitura pública | Escrita |
 | storage `product-images` | Leitura pública pela URL | Upload, leitura via API, atualização e remoção |
 
 ## Índices
@@ -114,6 +128,7 @@ As RPCs do catálogo são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem c
 |---|---|
 | `20261108000100_catalog.sql` | Utilitários, RBAC, catálogo, estoque, RLS, view, bucket de imagens |
 | `20261108000200_catalog_rpc.sql` | `search_catalog`, `get_product`, `catalog_facets` |
+| `20261108000400_orders.sql` | Frete, configurações, pedidos, itens, histórico, RPCs de compra e de status |
 | `20261108000300_admin.sql` | `audit_logs` e triggers, RPCs `admin_*`, policy de leitura do Storage para admin |
 
 ## Seed

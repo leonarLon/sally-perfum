@@ -32,3 +32,9 @@
 | 08/11/2026 | Técnica | Sessão lida após `connection()`: a validação do token do Supabase usa `Date.now()`, proibido na pré-renderização, e decisão de acesso nunca entra em conteúdo pré-montado | Engenharia |
 | 08/11/2026 | Técnica | Página de login 100% estática (`returnTo` lido no navegador): com Cache Components, o envio sem JavaScript numa página com trecho dinâmico devolvia só o trecho (tela em branco). Formulários do painel, que são dinâmicos, ainda dependem do JavaScript carregado | Engenharia |
 | 08/11/2026 | Técnica | Conta `owner` criada pelo usuário com `create-owner.mjs`. Teste de gravação real com reversão (`e2e/admin-escrita.spec.ts`, só com `E2E_ADMIN_WRITE=1`) passou: preço e imagem | Usuário / Engenharia |
+| 08/11/2026 | D12 | **Autorizado** pelo usuário: Fase 6. Migration `20261108000400_orders.sql` aplicada no Supabase (dry-run antes), conferência remota 22/22 e teste com pedido de demonstração real cancelado pelo painel | Usuário |
+| 08/11/2026 | Técnica | Sacola no `localStorage` com só variante e quantidade; preço, disponibilidade e frete sempre recalculados no banco (`quote_cart` / `create_order`) | Engenharia |
+| 08/11/2026 | Técnica | `create_order` só com service role, chamado pela server action após validação, limite de tentativas e sessão verificada | Engenharia |
+| 08/11/2026 | Técnica | Reserva no pedido (não na sacola), com expiração de 30 min liberada sob demanda; sem dependência de `pg_cron` no plano Free | Engenharia |
+| 08/11/2026 | Técnica | Acompanhamento sem cadastro por token de 244 bits; a resposta omite rua, `user_id` e o próprio token | Engenharia |
+| 08/11/2026 | Técnica | Sem pagamento real até a Fase 8: o admin confirma o pagamento no painel, o que baixa o estoque | Engenharia |

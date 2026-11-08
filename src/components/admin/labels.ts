@@ -17,7 +17,7 @@ export const MOVEMENT_TYPE: Record<string, string> = {
   reserve: "Reserva",
   release: "Liberação",
   sale: "Venda",
-  return: "Devolução",
+  return: "Devolução ao estoque",
 };
 
 export const AUDIT_ENTITY: Record<string, string> = {
@@ -28,6 +28,7 @@ export const AUDIT_ENTITY: Record<string, string> = {
   brands: "Marca",
   categories: "Categoria",
   user_roles: "Papel de acesso",
+  shipping_zones: "Frete",
 };
 
 export const AUDIT_ACTION = { insert: "criou", update: "alterou", delete: "removeu" } as const;

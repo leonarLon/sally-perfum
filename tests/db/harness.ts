@@ -21,7 +21,7 @@ export async function createTestDb(): Promise<PGlite> {
   return db;
 }
 
-export type Actor = { role: "anon" } | { role: "authenticated"; userId: string } | { role: "postgres" };
+export type Actor = { role: "anon" } | { role: "authenticated"; userId: string } | { role: "service_role" } | { role: "postgres" };
 
 /**
  * Executa SQL como um papel do Supabase (anon / authenticated com JWT sub / postgres),

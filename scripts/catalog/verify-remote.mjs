@@ -60,6 +60,19 @@ await blocked("admin_set_primary_image", supabase.rpc("admin_set_primary_image",
 await blocked("leitura da auditoria", supabase.from("audit_logs").select("id").limit(1));
 await blocked("escrita na auditoria", supabase.from("audit_logs").insert({ action: "update", entity: "x", entity_id: "y" }));
 
+// Fase 6: pedidos só pelo servidor; cotação e link do pedido públicos e seguros.
+await blocked("create_order direto", supabase.rpc("create_order", { p_idempotency_key: zero, p_user_id: null, p_items: [], p_customer: {}, p_address: {}, p_payment_method: "pix", p_privacy_accepted: true }));
+await blocked("leitura de pedidos", supabase.from("orders").select("id").limit(1));
+await blocked("mudança de status de pedido", supabase.rpc("admin_update_order_status", { p_order_id: zero, p_status: "paid" }));
+await blocked("liberação de reservas", supabase.rpc("release_expired_reservations"));
+{
+  const { data, error } = await supabase.rpc("get_order_public", { p_token: "0".repeat(64) });
+  check("link de pedido com token inexistente não revela nada", !error && data === null, error?.message ?? "");
+  const v = sample.variants[0];
+  const q = await supabase.rpc("quote_cart", { p_items: [{ variant_id: detail?.variants?.find((d) => d.sku === v.sku)?.id, quantity: 1, price_cents: 1 }], p_cep: "01310100" });
+  check("cotação usa o preço do banco e calcula frete", !q.error && q.data?.subtotal_cents === v.price_cents && Boolean(q.data?.shipping?.label), q.error?.message ?? `${q.data?.subtotal_cents} / ${q.data?.shipping?.label}`);
+}
+
 const report = { verifiedAt: new Date().toISOString(), products: all.length, checks };
 fs.writeFileSync(path.join(root, "supabase/seed/catalog.load-report.json"), JSON.stringify(report, null, 2) + "\n");
 process.exit(checks.every((c) => c.ok) ? 0 : 1);

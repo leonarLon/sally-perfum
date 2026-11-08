@@ -8,6 +8,7 @@ const groups = [
     links: [
       { href: "/produtos", label: "Todos os perfumes" },
       { href: "/carrinho", label: "Sacola" },
+      { href: "/privacidade", label: "Política de privacidade" },
     ],
   },
   {

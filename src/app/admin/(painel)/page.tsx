@@ -10,6 +10,8 @@ export default async function DashboardPage() {
   const [stats, audit] = await Promise.all([getDashboardStats(), listAudit({ limit: 12 })]);
 
   const cards = [
+    { label: "Pedidos aguardando pagamento", value: stats.orders_pending, href: "/admin/pedidos?status=pending_payment" },
+    { label: "Pedidos pagos para enviar", value: stats.orders_to_ship, href: "/admin/pedidos?status=paid" },
     { label: "Produtos publicados", value: stats.products_published, href: "/admin/produtos?status=published" },
     { label: "Rascunhos", value: stats.products_draft, href: "/admin/produtos?status=draft" },
     { label: "Variantes com estoque baixo", value: stats.low_stock, href: "/admin/estoque?status=low_stock" },
@@ -25,7 +27,7 @@ export default async function DashboardPage() {
     <div className="space-y-8">
       <h1 className="font-display text-3xl font-semibold">Dashboard</h1>
 
-      <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {cards.map((c) => (
           <li key={c.label}>
             <Link href={c.href} className="block rounded-card border border-border bg-surface p-5 transition-colors hover:border-primary">
