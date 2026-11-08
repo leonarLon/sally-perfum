@@ -46,12 +46,19 @@ Mantenha a lista atualizada a cada fase. Os itens novos entram na seção corres
 - [ ] Trocar todas as chaves usadas no estudo (Supabase service role, IA, etc.).
 - [ ] Ativar a CSP completa e revisar os headers de segurança para os domínios finais.
 
-## 6. Inteligência artificial
-- [ ] **A API da Anthropic (Claude) é paga e não tem plano gratuito.** Sem `ANTHROPIC_API_KEY`, o Consultor roda em modo demonstração, sem LLM. Para a loja real: criar a conta, definir um limite de gastos e configurar a chave no servidor.
-- [ ] Modelo escolhido: **`claude-opus-5-5`** (decisão de 08/11/2026). Reavaliar o custo com volume real (estimativa em `FASE-1-DIAGNOSTICO.md` §15).
-- [ ] Embeddings (Voyage AI): o plano gratuito inclui 200 milhões de tokens. Validar a qualidade em português com dados reais.
-- [ ] Revisar os prompts e as respostas do Consultor com a loja; definir o tom de voz da marca.
-- [ ] Informar na política de privacidade o uso de IA e a retenção das conversas.
+## 6. Inteligência artificial: implementar após a venda
+**Situação atual:** o Consultor de Fragrâncias e qualquer recurso de IA foram **retirados do site** em 08/11/2026, porque a API do Claude é paga. Não existe rota `/assistente`, link no menu nem código de IA no projeto. O desenho completo continua em `FASE-1-DIAGNOSTICO.md` §12 e deve ser seguido na implementação.
+
+O que implementar:
+- [ ] **Consultor de Fragrâncias Sally** (rota `/assistente` + atalho no cabeçalho e na home): conversa que identifica ocasião, orçamento e família olfativa, consulta o catálogo por ferramentas somente leitura (`search_catalog`, `get_product`, `compare_products`, `search_knowledge`, `propose_cart_items`) e mostra cards com imagem, nome, marca, volume, preço e justificativa, todos vindos do banco. Adicionar ao carrinho só depois da confirmação do cliente.
+- [ ] **Regras anti-alucinação:** só citar produtos retornados pelas ferramentas daquela conversa; preço, estoque e volume nunca saem do texto do modelo; quando faltar informação, responder que ela não está confirmada.
+- [ ] **RAG:** tabelas `knowledge_documents` / `document_chunks` com pgvector; fontes = produtos, políticas, FAQ e guia olfativo; reindexar só quando o `content_hash` mudar; arquivar o produto remove os chunks.
+- [ ] **Proteção contra prompt injection:** conteúdo recuperado entra como dado delimitado; nenhuma ferramenta de escrita; validação da saída; testes com documentos maliciosos.
+- [ ] **IA no admin:** sugestões de descrição, título e notas e resumo de vendas e de estoque baixo, sempre como rascunho que o proprietário aprova. Sem ações automáticas.
+- [ ] **Privacidade:** não enviar nome, e-mail ou endereço ao provedor de LLM; retenção curta das conversas; citar o uso de IA na política de privacidade.
+- [ ] **Contas e custos:** criar a conta na Anthropic com limite de gastos e configurar `ANTHROPIC_API_KEY` no servidor. Modelo decidido: **`claude-opus-5-5`** (US$ 4 / US$ 20 por milhão de tokens de entrada/saída; estimativa por volume em `FASE-1-DIAGNOSTICO.md` §15). Embeddings: Voyage AI (`VOYAGE_API_KEY`; plano gratuito de 200 milhões de tokens), validando a qualidade em português.
+- [ ] **Testes:** grupos 38 a 41 do briefing (assistente, RAG, respostas sem dados suficientes, prompt injection) e "LLM tentando realizar ação administrativa", com LLM fake determinístico via MSW.
+- [ ] **Preparação já existente que ajuda:** os campos olfativos estruturados em `products` (família, notas de topo/coração/fundo, concentração) e o `data_verification` por campo, criados nas Fases 3 e 4, são a base do RAG.
 
 ## 7. Contas e acessos
 - [ ] Criar o usuário `owner` da loja real pelo script controlado. Remover usuários de teste e de estudo.

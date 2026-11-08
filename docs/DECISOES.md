@@ -14,4 +14,5 @@
 | 08/11/2026 | Técnica | Mantido o `cacheComponents: true` (padrão do Next 16): catálogo com `'use cache'` + `cacheTag`, invalidado pelo admin com `updateTag` / `revalidateTag(tag, 'max')`; dados de sessão em `<Suspense>` | Engenharia |
 | 08/11/2026 | Técnica | Proteção de rotas com `src/proxy.ts` (antigo middleware) apenas para UX; autorização real no servidor e na RLS | Engenharia |
 | 08/11/2026 | Técnica | Testes de banco sem Docker: **PGlite** (Postgres em WASM) para validar migrations, RLS, concorrência e seed localmente | Engenharia |
+| 08/11/2026 | D4 (revisada) | **Consultor de IA retirado do site** até a venda do projeto (a API é paga). Implementação descrita em `PENDENCIAS_COMERCIAIS.md` §6. A Fase 9 fica suspensa | Usuário |
 | — | D2 | **Pendente:** projeto Supabase Free (o usuário cria e coloca as chaves no `.env.local`) | Aguardando |

@@ -30,6 +30,13 @@ test.describe("Fundação (Fase 2)", () => {
     await expect(page.getByRole("heading", { name: "Página não encontrada" })).toBeVisible();
   });
 
+  test("consultor de IA está desativado (sem rota nem atalhos)", async ({ page }) => {
+    const res = await page.goto("/assistente");
+    expect(res?.status()).toBe(404);
+    await page.goto("/");
+    await expect(page.locator('a[href="/assistente"]')).toHaveCount(0);
+  });
+
   test("painel admin tem layout próprio com menu de gestão", async ({ page }) => {
     // Sem Supabase configurado o proxy não redireciona; com Supabase, sem sessão vai para /admin/login.
     await page.goto("/admin/produtos");

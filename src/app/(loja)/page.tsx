@@ -1,4 +1,4 @@
-import { QrCode, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import { QrCode, ShieldCheck, Truck } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/card";
@@ -27,17 +27,15 @@ export default function HomePage() {
               Encontre a fragrância que conta a sua história
             </h1>
             <p className="max-w-prose text-lg text-muted">
-              Perfumes importados e nacionais com curadoria, notas olfativas detalhadas e um
-              consultor que entende o que você procura.
+              Perfumes importados e nacionais com curadoria, notas olfativas detalhadas e
+              filtros por família, ocasião e faixa de preço.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg">
                 <Link href="/produtos">Ver perfumes</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/assistente">
-                  <Sparkles /> Falar com o Consultor
-                </Link>
+                <Link href="/produtos?promocao=1">Ver promoções</Link>
               </Button>
             </div>
           </div>

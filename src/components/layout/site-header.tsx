@@ -1,4 +1,4 @@
-import { Heart, Search, ShoppingBag, Sparkles, User } from "lucide-react";
+import { Heart, Search, ShoppingBag, User } from "lucide-react";
 import Link from "next/link";
 import { Container } from "@/components/ui/card";
 import { Logo } from "./logo";
@@ -36,7 +36,6 @@ export function SiteHeader() {
           </div>
         </form>
         <nav aria-label="Atalhos da conta" className="ml-auto flex items-center gap-1 md:ml-0">
-          <HeaderIcon href="/assistente" label="Consultor de Fragrâncias" icon={<Sparkles />} />
           <HeaderIcon href="/minha-conta/favoritos" label="Favoritos" icon={<Heart />} />
           <HeaderIcon href="/minha-conta" label="Minha conta" icon={<User />} />
           <HeaderIcon href="/carrinho" label="Sacola" icon={<ShoppingBag />} />

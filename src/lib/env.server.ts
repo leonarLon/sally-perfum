@@ -17,6 +17,3 @@ export function getServerEnv() {
   return parsed.data;
 }
 
-export function getAnthropicApiKey(): string | null {
-  return process.env.ANTHROPIC_API_KEY || null;
-}

@@ -1,6 +1,6 @@
 # Sally Perfumaria
 
-E-commerce de perfumes com identidade rosa e branca, painel administrativo e Consultor de Fragrâncias com IA.
+E-commerce de perfumes com identidade rosa e branca e painel administrativo.
 
 > **Projeto de estudo e demonstração.** Não é uma loja oficial e não realiza vendas reais. Pagamentos são simulados, e preços, estoques e imagens servem apenas para demonstração. O que muda numa operação real está em [docs/PENDENCIAS_COMERCIAIS.md](docs/PENDENCIAS_COMERCIAIS.md).
 
@@ -12,7 +12,8 @@ E-commerce de perfumes com identidade rosa e branca, painel administrativo e Con
 | 2. Design system e fundação | ✅ Tokens, componentes base, layouts da loja e do admin, mapa de rotas, testes configurados |
 | 3. Catálogo público | ⏳ Próxima |
 | 4. Supabase: modelo, migrations e seed de 40+ produtos | ⏳ Depende do projeto Supabase (ver abaixo) |
-| 5 a 11 | ⏳ Planejadas |
+| 5 a 8, 10 e 11 | ⏳ Planejadas |
+| 9. IA (Consultor de Fragrâncias e RAG) | ⏸️ Suspensa até a venda do projeto; ver [PENDENCIAS_COMERCIAIS.md §6](docs/PENDENCIAS_COMERCIAIS.md) |
 
 As rotas ainda não implementadas exibem um aviso explícito ("Esta área ainda não foi implementada"), com a fase prevista. Nada simula uma funcionalidade inexistente.
 
@@ -43,7 +44,6 @@ Ver [.env.example](.env.example). Sem as variáveis do Supabase, a aplicação s
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Cliente e servidor (protegida pela RLS) | Não |
 | `SUPABASE_SERVICE_ROLE_KEY` | Somente servidor (`server-only`) | **Sim** |
 | `NEXT_PUBLIC_SITE_URL` | URLs absolutas e SEO | Não |
-| `ANTHROPIC_API_KEY` / `VOYAGE_API_KEY` | Consultor de IA (Fase 9); opcionais | **Sim** |
 | `PAYMENT_PROVIDER` | `fake` (simulado) | Não |
 
 ## Comandos

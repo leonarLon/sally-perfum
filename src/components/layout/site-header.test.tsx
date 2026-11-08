@@ -8,7 +8,7 @@ describe("SiteHeader", () => {
     expect(screen.getByRole("search")).toBeInTheDocument();
     expect(screen.getByLabelText("Buscar perfumes")).toHaveAttribute("name", "q");
     const atalhos = screen.getByRole("navigation", { name: "Atalhos da conta" });
-    for (const nome of ["Consultor de Fragrâncias", "Favoritos", "Minha conta", "Sacola"]) {
+    for (const nome of ["Favoritos", "Minha conta", "Sacola"]) {
       expect(within(atalhos).getByRole("link", { name: nome })).toBeInTheDocument();
     }
   });

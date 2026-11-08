@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: { default: "Sally Perfumaria", template: "%s | Sally Perfumaria" },
   description:
-    "Perfumes femininos, masculinos e unissex com curadoria Sally e o Consultor de Fragrâncias com IA.",
+    "Perfumes femininos, masculinos e unissex com curadoria Sally, notas olfativas detalhadas e compra sem cadastro obrigatório.",
   openGraph: { siteName: "Sally Perfumaria", locale: "pt_BR", type: "website" },
 };
 
