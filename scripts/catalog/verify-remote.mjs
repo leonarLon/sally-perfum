@@ -78,6 +78,11 @@ await blocked("leitura de perfis", supabase.from("profiles").select("user_id").l
 await blocked("leitura de endereços", supabase.from("customer_addresses").select("id").limit(1));
 await blocked("gravação de favoritos", supabase.from("favorites").insert({ product_id: zero }));
 
+// Fase 8: pagamentos só pelo servidor/webhook.
+await blocked("criação de cobrança", supabase.rpc("create_payment", { p_order_id: zero, p_provider: "fake", p_provider_ref: "fake_x_123456", p_method: "pix", p_amount_cents: 100 }));
+await blocked("aplicação de evento de pagamento", supabase.rpc("apply_payment_event", { p_provider: "fake", p_event_id: "evt_hack_123", p_type: "payment.approved", p_provider_ref: "fake_x_123456", p_amount_cents: 100 }));
+await blocked("leitura de pagamentos", supabase.from("payments").select("id").limit(1));
+
 const report = { verifiedAt: new Date().toISOString(), products: all.length, checks };
 fs.writeFileSync(path.join(root, "supabase/seed/catalog.load-report.json"), JSON.stringify(report, null, 2) + "\n");
 process.exit(checks.every((c) => c.ok) ? 0 : 1);

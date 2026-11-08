@@ -15,7 +15,8 @@ E-commerce de perfumes com identidade rosa e branca e painel administrativo.
 | 5. Painel administrativo | ✅ Login de admin, `requireRole` no servidor, produtos (criar, editar, publicar, arquivar), variantes e preços, imagens (upload validado, principal, remoção), estoque (contagem e entrada com movimentação), marcas, categorias, dashboard e auditoria automática. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
 | 6. Sacola, checkout e pedidos | ✅ Sacola no navegador, checkout sem cadastro, pedido com reserva de estoque transacional e idempotente, expiração da reserva, link secreto de acompanhamento, pedidos no painel (pagar, enviar, entregar, cancelar). Migration aplicada no Supabase em 08/11/2026 (autorizado) |
 | 7. Área do cliente | ✅ Cadastro, login, recuperação de senha, Meus pedidos, endereços, favoritos, perfil, troca de senha, exportação de dados e exclusão de conta (LGPD); checkout preenchido para quem está logado. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
-| 8, 10 e 11 | ⏳ Planejadas |
+| 8. Pagamentos (simulado) | ✅ Pix, boleto e cartão de teste por um provedor simulado atrás de interface independente de gateway; cartão tokenizado no navegador; webhook com assinatura HMAC, idempotente e com conferência de valor; estorno no cancelamento. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
+| 10 e 11 | ⏳ Planejadas |
 | 9. IA (Consultor de Fragrâncias e RAG) | ⏸️ Suspensa até a venda do projeto; ver [PENDENCIAS_COMERCIAIS.md §6](docs/PENDENCIAS_COMERCIAIS.md) |
 
 As rotas ainda não implementadas exibem um aviso explícito ("Esta área ainda não foi implementada"), com a fase prevista. Nada simula uma funcionalidade inexistente.
@@ -49,6 +50,7 @@ Ver [.env.example](.env.example). Sem as variáveis do Supabase, a aplicação s
 | `NEXT_PUBLIC_SITE_URL` | URLs absolutas e SEO | Não |
 | `SUPABASE_DB_URL` | Somente CLI (migrations e seed); nunca usada pela aplicação | **Sim** |
 | `PAYMENT_PROVIDER` | `fake` (simulado) | Não |
+| `PAYMENT_WEBHOOK_SECRET` | Somente servidor: assinatura HMAC do webhook de pagamentos | **Sim** |
 | `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Somente o script `create-owner.mjs` e o E2E do painel; nunca usadas pela aplicação | **Sim** (senha) |
 
 ## Comandos
@@ -97,7 +99,7 @@ docs/                diagnóstico, decisões e pendências comerciais
 ## Limitações atuais
 - Os E2E do catálogo rodam contra o Supabase configurado no `.env.local`, não contra um banco local. A suíte de banco (PGlite) é a parte determinística.
 - Os testes de banco usam PGlite com um shim de `auth`/`storage` (`tests/db/supabase-shim.sql`). Eles validam o SQL, a RLS e o seed, mas não substituem um teste no Supabase real.
-- O pagamento é confirmado manualmente no painel até a Fase 8 (provedor simulado). Cupons, clientes, relatórios e configurações do painel ainda não existem.
+- Pagamentos são **simulados** (`PAYMENT_PROVIDER=fake`): nada é cobrado. Cupons, clientes, relatórios e configurações do painel ainda não existem.
 - O checkout depende de JavaScript (a sacola fica no `localStorage`).
 - Com o projeto dentro do OneDrive, arquivos antigos de `.next` às vezes viram atalhos de nuvem e travam o build. Por isso o `npm run build` apaga `.next` antes (`scripts/dev/clean-next.mjs`).
 - E-mails de confirmação e de recuperação de senha dependem do SMTP gratuito do Supabase, com limite baixo de envios.

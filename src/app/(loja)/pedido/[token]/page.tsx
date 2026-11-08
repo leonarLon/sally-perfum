@@ -2,6 +2,7 @@ import { CheckCircle2, Clock } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { PaymentPanel, type PublicPayment } from "@/components/cart/payment-panel";
 import { Badge } from "@/components/ui/badge";
 import { Container, Skeleton } from "@/components/ui/card";
 import { PAYMENT_METHODS } from "@/lib/checkout/schemas";
@@ -31,6 +32,7 @@ type PublicOrder = {
   discount_cents: number;
   total_cents: number;
   is_demo: boolean;
+  payment: (NonNullable<PublicPayment> & { amount_cents: number }) | null;
   items: { sku: string; product_name: string; brand_name: string; product_slug: string; volume_ml: number | null; unit_price_cents: number; quantity: number; line_total_cents: number }[];
   events: { status: keyof typeof ORDER_STATUS; at: string }[];
 };
@@ -77,11 +79,23 @@ async function OrderDetails({ params, searchParams }: PageProps<"/pedido/[token]
         <p className="flex gap-2 rounded-card border border-warning/30 bg-warning/5 p-4 text-sm">
           <Clock className="size-5 shrink-0 text-warning" aria-hidden />
           <span>
-            Os produtos estão reservados até <strong>{dateFmt.format(new Date(o.reserved_until))}</strong>. O pagamento
-            simulado ({PAYMENT_METHODS[o.payment_method]}) chega na próxima etapa do projeto; por enquanto a confirmação é
-            feita pela loja no painel.
+            Os produtos estão reservados até <strong>{dateFmt.format(new Date(o.reserved_until))}</strong>. Pague até lá
+            para garantir o pedido.
           </span>
         </p>
+      )}
+
+      {o.status === "pending_payment" && <PaymentPanel token={token} payment={o.payment} preferred={o.payment_method} />}
+
+      {o.payment?.status === "approved" && o.status !== "pending_payment" && (
+        <p role="status" className="flex gap-2 rounded-card bg-success/10 p-4 text-sm text-success">
+          <CheckCircle2 className="size-5 shrink-0" aria-hidden />
+          Pagamento aprovado ({PAYMENT_METHODS[o.payment.method]}
+          {o.payment.card_last4 ? `, cartão final ${o.payment.card_last4}` : ""}).
+        </p>
+      )}
+      {o.payment?.status === "refunded" && (
+        <p role="status" className="rounded-card bg-surface p-4 text-sm">Pagamento estornado (simulado).</p>
       )}
 
       <section aria-labelledby="itens-pedido">

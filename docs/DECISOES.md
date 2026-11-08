@@ -44,3 +44,7 @@
 | 08/11/2026 | Técnica | Perfil criado sob demanda, sem trigger em `auth.users`; privilégio de UPDATE por coluna (revogar coluna não anula o UPDATE da tabela no Postgres) | Engenharia |
 | 08/11/2026 | Técnica | Exclusão de conta exige "EXCLUIR" + senha atual (conferida num cliente isolado, sem trocar a sessão); admins não se excluem pela loja | Engenharia |
 | 08/11/2026 | Técnica | `npm run build` limpa `.next` antes (OneDrive transforma arquivos de build em atalhos de nuvem). Junction para fora do OneDrive foi testada e descartada: o Turbopack não acha o `node_modules` | Engenharia |
+| 08/11/2026 | D15 | **Autorizado** pelo usuário (antecipadamente): Fase 8. Migration `20261108000600_payments.sql` aplicada, conferência remota 28/28 e compra de teste paga com cartão (recusa e aprovação), cancelada com estorno | Usuário |
+| 08/11/2026 | Técnica | Confirmação de pagamento **só** por evento do provedor com assinatura HMAC (`t=…,v1=…`, tolerância de 5 min) e aplicação idempotente no banco; a tela do cliente nunca marca pedido como pago | Engenharia |
+| 08/11/2026 | Técnica | Cartão tokenizado no navegador; os campos do cartão não têm `name` (nem um envio sem JavaScript manda o número) | Engenharia |
+| 08/11/2026 | Técnica | O resultado do pagamento aparece na própria página do pedido; as rotas `/checkout/sucesso`, `/pendente` e `/erro` foram removidas (o §7.7 do diagnóstico foi atendido dessa forma) | Engenharia |

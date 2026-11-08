@@ -90,6 +90,11 @@ Preenchida **só por trigger** (`audit_row_change`, `SECURITY DEFINER`) em `bran
 - RLS: somente o dono lê e altera; admin **não** lê endereços salvos nem favoritos. UPDATE concedido coluna a coluna (o `user_id` nunca muda).
 - Exclusão de conta: `on delete cascade` em perfil, endereços e favoritos; pedidos, eventos, auditoria e movimentações de estoque ficam com o vínculo nulo (`on delete set null`).
 
+### Pagamentos (Fase 8)
+- `payments`: uma linha por tentativa (`provider`, `provider_ref` único, `method`, `status` pending/approved/declined/expired/canceled/refunded/review, `amount_cents`, códigos Pix/boleto, bandeira e 4 últimos dígitos do cartão, `needs_refund`). No máximo uma pendente por pedido (índice único parcial). Nenhum dado de cartão completo.
+- `payment_events`: eventos do provedor, únicos por `(provider, event_id)` (idempotência), com o resultado da aplicação.
+- Trigger `orders_sync_payments`: cancelar pedido pago estorna a cobrança aprovada; cancelar/expirar encerra a pendente.
+
 ## View e funções (RPC)
 | Objeto | Descrição |
 |---|---|
@@ -107,6 +112,8 @@ Preenchida **só por trigger** (`audit_row_change`, `SECURITY DEFINER`) em `bran
 | `get_order_public(token)` | Pedido pelo link: sem `user_id`, rua ou token; CEP mascarado |
 | `admin_update_order_status(order, status)` | Transições válidas com efeito no estoque (pago baixa, cancelado libera ou devolve) |
 | `admin_release_expired_reservations()` / `release_expired_reservations()` | Expira pedidos vencidos e devolve a reserva |
+| `create_payment(...)` | **Só service role.** Cria a cobrança para pedido pendente, com valor igual ao total; substitui a pendente anterior |
+| `apply_payment_event(...)` | **Só service role**, após verificar a assinatura do webhook. Idempotente; aprovado com valor certo e pedido pendente → pedido pago (baixa estoque); valor divergente → revisão; pedido já expirado → marcado para estorno |
 | `set_default_address(address)` | Troca atômica do endereço padrão do próprio cliente (`SECURITY INVOKER`) |
 | `admin_set_primary_image(image)` | Troca atômica da imagem principal (`SECURITY INVOKER`, passa pela RLS) |
 
@@ -135,6 +142,7 @@ As RPCs do catálogo são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem c
 |---|---|
 | `20261108000100_catalog.sql` | Utilitários, RBAC, catálogo, estoque, RLS, view, bucket de imagens |
 | `20261108000200_catalog_rpc.sql` | `search_catalog`, `get_product`, `catalog_facets` |
+| `20261108000600_payments.sql` | Pagamentos, eventos do provedor, RPCs de cobrança e webhook, sincronia com o status do pedido |
 | `20261108000500_customers.sql` | Perfil, endereços, favoritos; `inventory_movements.actor_id` com `on delete set null` |
 | `20261108000400_orders.sql` | Frete, configurações, pedidos, itens, histórico, RPCs de compra e de status |
 | `20261108000300_admin.sql` | `audit_logs` e triggers, RPCs `admin_*`, policy de leitura do Storage para admin |

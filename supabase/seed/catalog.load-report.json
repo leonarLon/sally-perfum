@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-11-08T22:07:34.764Z",
+  "verifiedAt": "2026-11-08T22:19:56.427Z",
   "products": 45,
   "checks": [
     {
@@ -124,6 +124,21 @@
     },
     {
       "name": "visitante bloqueado: gravação de favoritos",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: criação de cobrança",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: aplicação de evento de pagamento",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: leitura de pagamentos",
       "ok": true,
       "detail": "42501"
     }

@@ -24,3 +24,13 @@ export const NEXT_STATUS: Record<OrderStatus, { to: "paid" | "shipped" | "delive
   canceled: [],
   expired: [],
 };
+
+export const PAYMENT_STATUS = {
+  pending: { label: "Aguardando", variant: "warning" },
+  approved: { label: "Aprovado", variant: "success" },
+  declined: { label: "Recusado", variant: "error" },
+  expired: { label: "Expirado", variant: "outline" },
+  canceled: { label: "Cancelado", variant: "outline" },
+  refunded: { label: "Estornado", variant: "outline" },
+  review: { label: "Em revisão", variant: "error" },
+} as const;

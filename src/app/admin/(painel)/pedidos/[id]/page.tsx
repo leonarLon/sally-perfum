@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { requireRole } from "@/lib/auth/session";
 import { getOrder } from "@/lib/admin/queries";
 import { PAYMENT_METHODS } from "@/lib/checkout/schemas";
-import { NEXT_STATUS, ORDER_STATUS, type OrderStatus } from "@/lib/checkout/status";
+import { NEXT_STATUS, ORDER_STATUS, PAYMENT_STATUS, type OrderStatus } from "@/lib/checkout/status";
 import { formatBRL } from "@/lib/money";
 import { updateOrderStatus } from "../actions";
 
@@ -17,7 +17,7 @@ export default async function OrderDetailPage({ params }: PageProps<"/admin/pedi
   const { user } = await requireRole();
   const data = await getOrder(id);
   if (!data) notFound();
-  const { order: o, items, events } = data;
+  const { order: o, items, events, payments } = data;
   const st = ORDER_STATUS[o.status];
   const next = NEXT_STATUS[o.status as OrderStatus];
   const who = (actor: string | null) => (actor === null ? "Sistema / cliente" : actor === user.id ? "Você" : `Usuário ${actor.slice(0, 8)}`);
@@ -59,7 +59,7 @@ export default async function OrderDetailPage({ params }: PageProps<"/admin/pedi
             ))}
           </div>
           {o.status === "pending_payment" && (
-            <p className="text-xs text-muted">Ainda sem provedor de pagamento (Fase 8): a confirmação manual baixa o estoque reservado.</p>
+            <p className="text-xs text-muted">O pagamento normalmente é confirmado pelo webhook do provedor. Use a confirmação manual só para pagamentos recebidos fora dele.</p>
           )}
         </section>
       )}
@@ -131,6 +131,35 @@ export default async function OrderDetailPage({ params }: PageProps<"/admin/pedi
             {o.shipping_label} · {o.shipping_days_min} a {o.shipping_days_max} dias úteis
           </p>
         </div>
+      </section>
+
+      <section aria-labelledby="pagamentos" className="space-y-3">
+        <h2 id="pagamentos" className="font-display text-xl font-semibold">
+          Pagamentos
+        </h2>
+        {payments.length ? (
+          <ul className="divide-y divide-border rounded-card border border-border text-sm">
+            {payments.map((p) => (
+              <li key={p.id} className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5">
+                <span>
+                  <strong className="font-medium">{PAYMENT_METHODS[p.method]}</strong>
+                  {p.card_last4 && ` · ${p.card_brand} final ${p.card_last4}`} · {formatBRL(p.amount_cents)}
+                  <span className="text-muted"> · {p.provider_ref}</span>
+                  {p.failure_reason && <span className="text-muted"> · {p.failure_reason}</span>}
+                </span>
+                <span className="flex items-center gap-2">
+                  {p.needs_refund && <Badge variant="error">Estornar</Badge>}
+                  <Badge variant={PAYMENT_STATUS[p.status].variant}>{PAYMENT_STATUS[p.status].label}</Badge>
+                  <time dateTime={p.created_at} className="text-xs text-muted">
+                    {formatDateTime(p.created_at)}
+                  </time>
+                </span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-sm text-muted">Nenhuma tentativa de pagamento.</p>
+        )}
       </section>
 
       <section aria-labelledby="historico" className="space-y-3">

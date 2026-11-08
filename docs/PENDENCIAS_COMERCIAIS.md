@@ -27,6 +27,9 @@ Mantenha a lista atualizada a cada fase. Os itens novos entram na seção corres
 - [ ] Revisar a regra de parcelamento exibida (demonstração: até 10x, parcela mínima de R$ 50) conforme o gateway contratado.
 
 ## 3. Pagamentos
+- [ ] Implementar um provedor real na interface `PaymentProvider` (`src/lib/payments/types.ts`), com o SDK de tokenização do próprio gateway no navegador, e ajustar `verifySignature` ao formato de assinatura dele. O provedor `fake` e o botão "Simular pagamento recebido" devem sair do build de produção.
+- [ ] Estorno real no gateway ao cancelar pedido pago (hoje só muda o status para "Estornado") e rotina para cobranças marcadas "Estornar" (pagas depois de a reserva expirar).
+- [ ] Trocar `PAYMENT_WEBHOOK_SECRET` pelo segredo fornecido pelo gateway e cadastrar a URL `/api/webhooks/payments` no painel dele.
 - [ ] Escolher o gateway (recomendação em `FASE-1-DIAGNOSTICO.md` §11) e **confirmar as taxas atuais** com ele.
 - [ ] Criar a conta da loja no gateway, fazer a homologação e cadastrar a chave Pix.
 - [ ] Configurar as credenciais de produção **somente** nas variáveis de ambiente do servidor (`PAYMENT_PROVIDER` e chaves do gateway), nunca no código.

@@ -135,7 +135,7 @@ export function CheckoutForm({ defaults }: { defaults?: CheckoutDefaults | null 
           </div>
           {s.fieldErrors?.payment_method && <p className="mt-2 text-xs text-error">{s.fieldErrors.payment_method}</p>}
           <p className="mt-3 text-xs text-muted">
-            Demonstração: nenhum pagamento é cobrado. O pedido fica aguardando pagamento e o estoque fica reservado por 30 minutos.
+            Você paga na próxima tela e o estoque fica reservado por 30 minutos. Demonstração: nenhum valor é cobrado.
           </p>
         </fieldset>
 

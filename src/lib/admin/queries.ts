@@ -255,6 +255,19 @@ export type AdminOrder = {
 };
 
 export type AdminOrderItem = { id: number; variant_id: string | null; sku: string; product_name: string; brand_name: string; volume_ml: number | null; unit_price_cents: number; quantity: number; line_total_cents: number };
+export type AdminPayment = {
+  id: string;
+  provider: string;
+  provider_ref: string;
+  method: "pix" | "card" | "boleto";
+  status: "pending" | "approved" | "declined" | "expired" | "canceled" | "refunded" | "review";
+  amount_cents: number;
+  card_brand: string | null;
+  card_last4: string | null;
+  needs_refund: boolean;
+  failure_reason: string | null;
+  created_at: string;
+};
 export type AdminOrderEvent = { id: number; from_status: string | null; to_status: string; note: string | null; actor_id: string | null; created_at: string };
 
 /** Expira reservas vencidas (devolve o estoque) antes de mostrar pedidos ou estoque. */
@@ -287,12 +300,22 @@ export async function getOrder(id: string) {
   const { supabase } = await requireRole();
   if (!/^[0-9a-f-]{36}$/i.test(id)) return null;
   await releaseExpired(supabase);
-  const [o, items, events] = await Promise.all([
+  const [o, items, events, payments] = await Promise.all([
     supabase.from("orders").select(ORDER_COLUMNS).eq("id", id).maybeSingle(),
     supabase.from("order_items").select("id, variant_id, sku, product_name, brand_name, volume_ml, unit_price_cents, quantity, line_total_cents").eq("order_id", id).order("id"),
     supabase.from("order_events").select("id, from_status, to_status, note, actor_id, created_at").eq("order_id", id).order("id"),
+    supabase
+      .from("payments")
+      .select("id, provider, provider_ref, method, status, amount_cents, card_brand, card_last4, needs_refund, failure_reason, created_at")
+      .eq("order_id", id)
+      .order("created_at", { ascending: false }),
   ]);
-  if (o.error || items.error || events.error) throw new Error("Falha ao carregar o pedido.");
+  if (o.error || items.error || events.error || payments.error) throw new Error("Falha ao carregar o pedido.");
   if (!o.data) return null;
-  return { order: o.data as AdminOrder, items: (items.data ?? []) as AdminOrderItem[], events: (events.data ?? []) as AdminOrderEvent[] };
+  return {
+    order: o.data as AdminOrder,
+    items: (items.data ?? []) as AdminOrderItem[],
+    events: (events.data ?? []) as AdminOrderEvent[],
+    payments: (payments.data ?? []) as AdminPayment[],
+  };
 }
