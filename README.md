@@ -77,6 +77,29 @@ Ver [.env.example](.env.example). Sem as variáveis do Supabase, a aplicação s
 | `node --env-file=.env.local scripts/catalog/verify-remote.mjs` | Verifica a carga e os bloqueios do painel no Supabase como visitante (somente leitura) |
 | `node --env-file=.env.local scripts/admin/create-owner.mjs` | Cria a conta do proprietário e concede o papel `owner` (**exige autorização**) |
 
+## Publicação na Vercel (demonstração)
+Plano Hobby (gratuito, uso não comercial). `vercel.json` fixa as funções em `pdx1` (Portland), perto do Supabase (us-west-2).
+
+1. Na Vercel: **Add New → Project → Import** do repositório do GitHub. Framework detectado: Next.js; não mude os comandos.
+2. Em **Environment Variables**, cadastre (valores do `.env.local`; marque as secretas como *Sensitive*):
+
+   | Variável | Valor |
+   |---|---|
+   | `NEXT_PUBLIC_SUPABASE_URL` | igual ao `.env.local` |
+   | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | igual ao `.env.local` |
+   | `SUPABASE_SERVICE_ROLE_KEY` | igual ao `.env.local` (**Sensitive**) |
+   | `PAYMENT_WEBHOOK_SECRET` | igual ao `.env.local` (**Sensitive**) |
+   | `PAYMENT_PROVIDER` | `fake` |
+   | `STORE_MODE` | `demo` |
+   | `NEXT_PUBLIC_SITE_URL` | a URL final, ex.: `https://sally-perfum.vercel.app` (sem barra no fim) |
+
+   **Não** cadastre `SUPABASE_DB_URL`, `ADMIN_EMAIL` nem `ADMIN_PASSWORD`: a aplicação não usa.
+3. **Deploy.** Se a URL final for diferente da que você pôs em `NEXT_PUBLIC_SITE_URL`, corrija a variável e faça **Redeploy** (ela entra no build).
+4. No Supabase: **Authentication → URL Configuration**: *Site URL* = a URL da Vercel; em *Redirect URLs* adicione `https://SEU-DOMINIO/auth/callback` (mantenha `http://localhost:3000/auth/callback` para desenvolvimento). Sem isso, os links de recuperação de senha apontam para o endereço errado.
+5. Conferência do site publicado (somente leitura): `E2E_BASE_URL=https://SEU-DOMINIO npx playwright test`.
+
+Cada `git push` na `main` publica uma nova versão.
+
 ## Estrutura
 ```
 src/

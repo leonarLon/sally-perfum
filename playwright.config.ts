@@ -8,6 +8,8 @@ try {
 }
 
 const PORT = Number(process.env.E2E_PORT ?? 3100);
+// E2E_BASE_URL=https://… roda a suíte contra um site já publicado (sem subir servidor local).
+const REMOTE = process.env.E2E_BASE_URL?.replace(/\/$/, "");
 
 export default defineConfig({
   testDir: "./e2e",
@@ -15,7 +17,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
   use: {
-    baseURL: `http://localhost:${PORT}`,
+    baseURL: REMOTE ?? `http://localhost:${PORT}`,
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },
@@ -23,7 +25,7 @@ export default defineConfig({
     { name: "desktop", use: { ...devices["Desktop Chrome"] } },
     { name: "mobile", use: { ...devices["Pixel 7"] } },
   ],
-  webServer: {
+  webServer: REMOTE ? undefined : {
     // Build de produção para os E2E refletirem o comportamento real.
     command: `npm run build && npx next start -p ${PORT}`,
     url: `http://localhost:${PORT}`,
