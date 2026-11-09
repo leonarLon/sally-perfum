@@ -17,7 +17,7 @@ const shown = (c: number) => `R$ ${toInput(c)}`;
 test.describe("Painel: gravação real com reversão", () => {
   test.skip(process.env.E2E_ADMIN_WRITE !== "1" || !email || !password, "Defina E2E_ADMIN_WRITE=1 (e credenciais) para rodar.");
 
-  test("altera preço e imagem, a loja reflete na hora, e tudo é desfeito (grupos 18, 19, 22)", async ({ page, request, isMobile }) => {
+  test("altera preço e imagem, a loja reflete na hora, e tudo é desfeito", async ({ page, request, isMobile }) => {
     test.skip(isMobile, "uma execução basta");
     test.setTimeout(120_000);
     page.on("dialog", (d) => d.accept());

@@ -19,7 +19,7 @@ const valid = {
   items: JSON.stringify([{ variantId: "00000000-0000-4000-8000-000000000001", quantity: 2 }]),
 };
 
-describe("checkout: validação (grupos 10, 12, 33)", () => {
+describe("checkout: validação", () => {
   it("normaliza CEP e telefone e aceita o pedido válido", () => {
     const d = checkoutSchema.parse(valid);
     expect(d.cep).toBe("01310100");

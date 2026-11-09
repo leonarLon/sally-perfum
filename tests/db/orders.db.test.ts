@@ -46,7 +46,7 @@ describe("Banco: pedidos, reserva de estoque e checkout (Fase 6)", () => {
     [variant, variant2] = rows;
   }, 60_000);
 
-  describe("cotação da sacola (grupos 8, 9, 11)", () => {
+  describe("cotação da sacola", () => {
     it("usa o preço do banco, limita pela disponibilidade e calcula frete por CEP", async () => {
       await setStock(variant.id, 3);
       const [{ q }] = await as<{ q: { lines: { quantity: number; max_qty: number; price_cents: number; line_total_cents: number }[]; subtotal_cents: number; shipping: { price_cents: number; label: string } } }>(
@@ -71,7 +71,7 @@ describe("Banco: pedidos, reserva de estoque e checkout (Fase 6)", () => {
     });
   });
 
-  describe("criação do pedido (grupos 12, 13, 14, 15, 16)", () => {
+  describe("criação do pedido", () => {
     it("cria pedido com preço do banco, reserva o estoque e registra movimento e histórico", async () => {
       await setStock(variant.id, 10);
       const r = await order([{ variant_id: variant.id, quantity: 2, price_cents: 1 }]); // preço enviado é ignorado
@@ -86,7 +86,7 @@ describe("Banco: pedidos, reserva de estoque e checkout (Fase 6)", () => {
       expect(mov.rows).toEqual([{ type: "reserve", quantity: -2 }]);
     });
 
-    it("é idempotente: a mesma chave devolve o mesmo pedido sem reservar de novo (grupo 14)", async () => {
+    it("é idempotente: a mesma chave devolve o mesmo pedido sem reservar de novo", async () => {
       await setStock(variant.id, 10);
       const key = randomUUID();
       const a = await order([{ variant_id: variant.id, quantity: 1 }], { key });
@@ -95,7 +95,7 @@ describe("Banco: pedidos, reserva de estoque e checkout (Fase 6)", () => {
       expect((await stock(variant.id)).reserved).toBe(1);
     });
 
-    it("nunca vende além do disponível, contando as reservas de outros pedidos (grupo 13)", async () => {
+    it("nunca vende além do disponível, contando as reservas de outros pedidos", async () => {
       await setStock(variant.id, 3);
       await order([{ variant_id: variant.id, quantity: 2 }]);
       await expect(order([{ variant_id: variant.id, quantity: 2 }])).rejects.toThrow(/ESTOQUE_INSUFICIENTE:.*:1/);
@@ -128,13 +128,13 @@ describe("Banco: pedidos, reserva de estoque e checkout (Fase 6)", () => {
       await expect(order([{ variant_id: variant.id, quantity: 1 }], { privacy: false })).rejects.toThrow(/política de privacidade/);
     });
 
-    it("visitante e cliente não chamam create_order direto (só o servidor) (grupo 31)", async () => {
+    it("visitante e cliente não chamam create_order direto (só o servidor)", async () => {
       await expect(order([{ variant_id: variant.id, quantity: 1 }], { actor: { role: "anon" } })).rejects.toThrow(/permission denied/);
       await expect(order([{ variant_id: variant.id, quantity: 1 }], { actor: { role: "authenticated", userId: buyerId } })).rejects.toThrow(/permission denied/);
     });
   });
 
-  describe("reserva expirada (grupo 15)", () => {
+  describe("reserva expirada", () => {
     it("libera o estoque do pedido vencido antes do próximo pedido", async () => {
       await setStock(variant.id, 2);
       const old = await order([{ variant_id: variant.id, quantity: 2 }]);
@@ -149,7 +149,7 @@ describe("Banco: pedidos, reserva de estoque e checkout (Fase 6)", () => {
     });
   });
 
-  describe("status do pedido pelo painel (grupos 23, 24)", () => {
+  describe("status do pedido pelo painel", () => {
     it("pago baixa o estoque físico e a reserva; enviado e entregue não mexem no estoque", async () => {
       await setStock(variant.id, 5);
       const r = await order([{ variant_id: variant.id, quantity: 2 }]);
@@ -198,7 +198,7 @@ describe("Banco: pedidos, reserva de estoque e checkout (Fase 6)", () => {
     });
   });
 
-  describe("acesso aos pedidos (grupos 25, 31, 33)", () => {
+  describe("acesso aos pedidos", () => {
     it("link com token mostra o pedido sem dados sensíveis; token errado não mostra nada", async () => {
       await setStock(variant.id, 5);
       const r = await order([{ variant_id: variant.id, quantity: 1 }]);

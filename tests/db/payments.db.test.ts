@@ -38,7 +38,7 @@ describe("Banco: pagamentos e webhooks (Fase 8)", () => {
     variantId = rows[0].id;
   }, 60_000);
 
-  it("pagamento aprovado pelo webhook marca o pedido como pago e baixa o estoque (grupos 35, 36)", async () => {
+  it("pagamento aprovado pelo webhook marca o pedido como pago e baixa o estoque", async () => {
     const o = await newOrder(2);
     const ref = await charge(o.order_id, o.total_cents);
     expect(await stock()).toEqual({ on_hand: 10, reserved: 2 });
@@ -48,7 +48,7 @@ describe("Banco: pagamentos e webhooks (Fase 8)", () => {
     expect((await payStatus(ref)).status).toBe("approved");
   });
 
-  it("o mesmo evento repetido não é aplicado de novo (idempotência, grupo 37)", async () => {
+  it("o mesmo evento repetido não é aplicado de novo (idempotência)", async () => {
     const o = await newOrder(1);
     const ref = await charge(o.order_id, o.total_cents);
     const id = `evt_${randomUUID()}`;
@@ -61,7 +61,7 @@ describe("Banco: pagamentos e webhooks (Fase 8)", () => {
     expect(await stock()).toEqual({ on_hand: 9, reserved: 0 });
   });
 
-  it("valor divergente não paga o pedido: cobrança vai para revisão (grupo 38)", async () => {
+  it("valor divergente não paga o pedido: cobrança vai para revisão", async () => {
     const o = await newOrder(1);
     const ref = await charge(o.order_id, o.total_cents);
     const r = await event("payment.approved", ref, o.total_cents - 1);
@@ -104,7 +104,7 @@ describe("Banco: pagamentos e webhooks (Fase 8)", () => {
     await expect(charge(o.order_id, o.total_cents)).rejects.toThrow(/PEDIDO_NAO_PENDENTE:canceled/);
   });
 
-  it("cancelar pedido pago estorna a cobrança; cancelar pendente encerra a cobrança aberta (grupo 39)", async () => {
+  it("cancelar pedido pago estorna a cobrança; cancelar pendente encerra a cobrança aberta", async () => {
     const paid = await newOrder(1);
     const ref = await charge(paid.order_id, paid.total_cents);
     await event("payment.approved", ref, paid.total_cents);
@@ -122,7 +122,7 @@ describe("Banco: pagamentos e webhooks (Fase 8)", () => {
     expect((await event("payment.approved", "fake_inexistente", 100)).result).toBe("unknown_payment");
   });
 
-  it("visitante e cliente não criam cobrança, não aplicam eventos nem leem eventos (grupo 31)", async () => {
+  it("visitante e cliente não criam cobrança, não aplicam eventos nem leem eventos", async () => {
     const o = await newOrder(1, buyerId);
     const ref = await charge(o.order_id, o.total_cents);
     for (const actor of [{ role: "anon" as const }, { role: "authenticated" as const, userId: buyerId }]) {

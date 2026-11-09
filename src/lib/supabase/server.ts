@@ -2,6 +2,7 @@ import "server-only";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { getPublicEnv } from "@/lib/env";
+import { SESSION_COOKIE_OPTIONS } from "./cookies";
 
 /**
  * Cliente por requisição com a sessão do usuário (cookies httpOnly).
@@ -11,6 +12,7 @@ export async function createSupabaseServerClient() {
   const env = getPublicEnv();
   const cookieStore = await cookies();
   return createServerClient(env.NEXT_PUBLIC_SUPABASE_URL, env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
+    cookieOptions: SESSION_COOKIE_OPTIONS,
     cookies: {
       getAll() {
         return cookieStore.getAll();

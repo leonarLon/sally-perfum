@@ -18,7 +18,7 @@ describe("Banco: migrations + seed do catálogo (Postgres real via PGlite)", () 
     customerId = await createUser(db, "cliente@sally.test");
   }, 60_000);
 
-  describe("carga inicial (grupo 45)", () => {
+  describe("carga inicial", () => {
     it("carrega pelo menos 40 produtos publicados, com variantes, estoque e imagens", async () => {
       const products = await count(db, "select count(*) n from products where status = 'published'");
       expect(products).toBeGreaterThanOrEqual(40);
@@ -27,7 +27,7 @@ describe("Banco: migrations + seed do catálogo (Postgres real via PGlite)", () 
       expect(await count(db, "select count(*) n from products p where not exists (select 1 from product_images i where i.product_id = p.id and i.is_primary)")).toBe(0);
     });
 
-    it("todo estoque inicial é marcado como demonstração e tem movimentação 'seed' (grupo 50)", async () => {
+    it("todo estoque inicial é marcado como demonstração e tem movimentação 'seed'", async () => {
       expect(await count(db, "select count(*) n from inventory where not is_demo_quantity")).toBe(0);
       expect(await count(db, "select count(*) n from inventory i where i.on_hand > 0 and not exists (select 1 from inventory_movements m where m.variant_id = i.variant_id and m.type = 'seed')")).toBe(0);
     });
@@ -80,7 +80,7 @@ describe("Banco: migrations + seed do catálogo (Postgres real via PGlite)", () 
     });
   });
 
-  describe("RLS e autorização no banco (grupos 35–37)", () => {
+  describe("RLS e autorização no banco", () => {
     it("visitante vê o catálogo publicado pela view, mas nunca as quantidades de estoque", async () => {
       const rows = await as<{ n: number }>(db, { role: "anon" }, "select count(*)::int n from catalog_products");
       expect(rows[0].n).toBeGreaterThanOrEqual(40);
@@ -100,7 +100,7 @@ describe("Banco: migrations + seed do catálogo (Postgres real via PGlite)", () 
       await db.exec("update products set status = 'published' where seed_key = 'khamrah'");
     });
 
-    it("cliente não consegue alterar preço nem criar produto (grupo: alteração de preço sem autorização)", async () => {
+    it("cliente não consegue alterar preço nem criar produto", async () => {
       const updated = await as<{ sku: string }>(
         db,
         { role: "authenticated", userId: customerId },
@@ -114,7 +114,7 @@ describe("Banco: migrations + seed do catálogo (Postgres real via PGlite)", () 
       ).rejects.toThrow(/row-level security/);
     });
 
-    it("cliente não consegue alterar estoque (grupo: alteração de estoque sem autorização)", async () => {
+    it("cliente não consegue alterar estoque", async () => {
       await expect(
         as(db, { role: "authenticated", userId: customerId }, "update inventory set on_hand = 1000"),
       ).rejects.toThrow(/permission denied/);
@@ -161,7 +161,7 @@ describe("Banco: migrations + seed do catálogo (Postgres real via PGlite)", () 
       expect(view.variant_count).toBe(raw.rows[0].n);
     });
 
-    it("produto com todas as variantes esgotadas aparece como indisponível (grupo 23)", async () => {
+    it("produto com todas as variantes esgotadas aparece como indisponível", async () => {
       await db.exec("update inventory set on_hand = 0, reserved = 0 where variant_id in (select v.id from product_variants v join products p on p.id = v.product_id where p.seed_key = 'asad')");
       const [row] = await as<{ in_stock: boolean }>(db, { role: "anon" }, "select in_stock from catalog_products where slug = 'asad-lattafa'");
       expect(row.in_stock).toBe(false);

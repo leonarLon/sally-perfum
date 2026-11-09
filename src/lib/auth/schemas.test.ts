@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { addressSchema, newPasswordSchema, profileSchema, safeStoreReturnTo, signupSchema } from "./schemas";
 
-describe("conta: validação (grupos 26, 27, 29, 30)", () => {
+describe("conta: validação", () => {
   it("cadastro exige senha forte, confirmação igual e aceite da privacidade", () => {
     const base = { full_name: "Ana Souza", email: " Ana@Example.COM ", password: "perfume123", password_confirm: "perfume123", privacy: "on" };
     expect(signupSchema.parse(base).email).toBe("ana@example.com");

@@ -31,7 +31,7 @@ describe("Banco: painel administrativo (Fase 5)", () => {
     productId = rows[0].product_id;
   }, 60_000);
 
-  describe("estoque (grupos 20, 21, 50)", () => {
+  describe("estoque", () => {
     it("admin confere a contagem: grava quantidade real, movimento 'adjust' com autor e deixa de ser demo", async () => {
       const r = await updateStock(admin(), "set", 12, 2);
       expect(r).toMatchObject({ on_hand: 12, min_stock: 2, stock_status: "in_stock", is_demo_quantity: false });
@@ -70,7 +70,7 @@ describe("Banco: painel administrativo (Fase 5)", () => {
       await expect(updateStock(admin(), "zerar", 5)).rejects.toThrow(/modo inválido/);
     });
 
-    it("cliente e visitante não alteram estoque nem leem quantidades (grupos 30, 31)", async () => {
+    it("cliente e visitante não alteram estoque nem leem quantidades", async () => {
       await expect(updateStock(customer(), "set", 999)).rejects.toThrow(/permissão negada/);
       await expect(updateStock({ role: "anon" }, "set", 999)).rejects.toThrow(/permission denied/);
       await expect(as(db, customer(), "select * from public.admin_list_inventory()")).rejects.toThrow(/permissão negada/);
@@ -101,7 +101,7 @@ describe("Banco: painel administrativo (Fase 5)", () => {
     });
   });
 
-  describe("auditoria (grupo 40)", () => {
+  describe("auditoria", () => {
     it("registra quem alterou o quê, só com os campos que mudaram", async () => {
       await as(db, admin(), "update products set name = name || ' (editado)', featured = featured where id = $1", [productId]);
       const { rows } = await db.query<{ actor_id: string; action: string; changes: Record<string, { de: string; para: string }> }>(
@@ -146,7 +146,7 @@ describe("Banco: painel administrativo (Fase 5)", () => {
     });
   });
 
-  describe("produtos e imagens pelo painel (grupos 17, 18, 19)", () => {
+  describe("produtos e imagens pelo painel", () => {
     it("owner herda as permissões de admin", async () => {
       const r = await as<{ r: Stock }>(db, { role: "authenticated", userId: ownerId }, "select public.admin_update_stock($1, 'in', 1, 3, 'Teste do dono') r", [variantId]);
       expect(r[0].r.delta).toBe(1);

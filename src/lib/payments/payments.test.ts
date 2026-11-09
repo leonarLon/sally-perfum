@@ -7,7 +7,7 @@ const SECRET = "s".repeat(64);
 const rpc = vi.fn();
 vi.mock("@/lib/supabase/admin", () => ({ createSupabaseAdminClient: () => ({ rpc }) }));
 
-describe("webhook: assinatura HMAC (grupos 36, 37)", () => {
+describe("webhook: assinatura HMAC", () => {
   const body = JSON.stringify({ id: "evt_123", type: "payment.approved" });
 
   it("aceita a assinatura correta dentro da tolerância", () => {
@@ -26,7 +26,7 @@ describe("webhook: assinatura HMAC (grupos 36, 37)", () => {
   });
 });
 
-describe("cartão de teste: tokenização no navegador (grupo 35)", () => {
+describe("cartão de teste: tokenização no navegador", () => {
   const now = new Date("2026-11-08T12:00:00Z");
 
   it("gera token só com resultado, bandeira e 4 últimos dígitos", () => {
@@ -45,7 +45,7 @@ describe("cartão de teste: tokenização no navegador (grupo 35)", () => {
   });
 });
 
-describe("webhook: processamento (grupos 36, 37)", () => {
+describe("webhook: processamento", () => {
   beforeEach(() => {
     rpc.mockReset();
     process.env.PAYMENT_WEBHOOK_SECRET = SECRET;

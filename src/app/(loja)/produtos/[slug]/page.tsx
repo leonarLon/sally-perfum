@@ -19,12 +19,25 @@ export async function generateMetadata(props: PageProps<"/produtos/[slug]">) {
   if (!product) return { title: "Perfume não encontrado", robots: { index: false } };
   const image = resolveImageUrl(product.images[0]);
   const title = `${product.name} ${product.brand.name}${product.concentration ? ` ${product.concentration}` : ""}`;
+  const description = product.short_description ?? fallbackDescription(product);
   return {
     title,
-    description: product.short_description ?? undefined,
+    description,
     alternates: { canonical: `/produtos/${product.slug}` },
-    openGraph: { title, description: product.short_description ?? undefined, images: image ? [image] : undefined },
+    openGraph: { title, description, images: image ? [image] : undefined },
   };
+}
+
+/** Descrição para buscadores montada só com dados do cadastro (nada inventado). */
+function fallbackDescription(p: ProductDetail): string {
+  const vols = p.variants.map((v) => v.volume_ml).filter((v): v is number => Boolean(v));
+  const parts = [
+    `${p.name}${p.concentration ? ` ${p.concentration}` : ""}, de ${p.brand.name}.`,
+    p.olfactory_family ? `Família olfativa: ${p.olfactory_family}.` : "",
+    vols.length ? `Disponível em ${vols.map((v) => `${v} ml`).join(", ")}.` : "",
+    "Sally Perfumaria (loja de demonstração).",
+  ];
+  return parts.filter(Boolean).join(" ").slice(0, 160);
 }
 
 /** Dados estruturados schema.org/Product (preço e disponibilidade reais do banco). */

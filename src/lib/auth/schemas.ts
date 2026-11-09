@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "@/lib/zod";
 import { UFS } from "@/lib/checkout/schemas";
 
 const email = z.string("Informe um e-mail válido.").trim().toLowerCase().pipe(z.email("Informe um e-mail válido.").max(254));

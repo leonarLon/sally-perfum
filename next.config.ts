@@ -1,16 +1,18 @@
 import type { NextConfig } from "next";
+import { assertPaymentConfig, securityHeaders } from "./src/lib/security/headers";
 
 const supabaseHost = process.env.NEXT_PUBLIC_SUPABASE_URL
   ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname
   : undefined;
 
-const securityHeaders = [
-  { key: "X-Content-Type-Options", value: "nosniff" },
-  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  { key: "X-Frame-Options", value: "DENY" },
-  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
-  // CSP completa (com nonce) entra na Fase 10, quando todos os domínios externos estiverem definidos.
-];
+// Falha o build/start se o pagamento simulado estiver ativo em modo comercial.
+assertPaymentConfig({ STORE_MODE: process.env.STORE_MODE, PAYMENT_PROVIDER: process.env.PAYMENT_PROVIDER });
+
+const headers = securityHeaders({
+  supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
+  isDev: process.env.NODE_ENV === "development",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
+});
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
@@ -38,7 +40,7 @@ const nextConfig: NextConfig = {
     ],
   },
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [{ source: "/:path*", headers }];
   },
 };
 

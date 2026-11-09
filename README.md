@@ -16,7 +16,8 @@ E-commerce de perfumes com identidade rosa e branca e painel administrativo.
 | 6. Sacola, checkout e pedidos | ✅ Sacola no navegador, checkout sem cadastro, pedido com reserva de estoque transacional e idempotente, expiração da reserva, link secreto de acompanhamento, pedidos no painel (pagar, enviar, entregar, cancelar). Migration aplicada no Supabase em 08/11/2026 (autorizado) |
 | 7. Área do cliente | ✅ Cadastro, login, recuperação de senha, Meus pedidos, endereços, favoritos, perfil, troca de senha, exportação de dados e exclusão de conta (LGPD); checkout preenchido para quem está logado. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
 | 8. Pagamentos (simulado) | ✅ Pix, boleto e cartão de teste por um provedor simulado atrás de interface independente de gateway; cartão tokenizado no navegador; webhook com assinatura HMAC, idempotente e com conferência de valor; estorno no cancelamento. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
-| 10 e 11 | ⏳ Planejadas |
+| 10. Segurança e qualidade | ✅ Revisão de segurança ([SECURITY.md](docs/SECURITY.md)), CSP e cabeçalhos, cookies de sessão `httpOnly`, trava do pagamento simulado em modo comercial, varredura de segredos no bundle, matriz de testes ([TESTES.md](docs/TESTES.md)) e Lighthouse com mediana ([LIGHTHOUSE.md](docs/LIGHTHOUSE.md)) |
+| 11. Documentação final e publicação | ⏳ Planejada (publicação só com autorização) |
 | 9. IA (Consultor de Fragrâncias e RAG) | ⏸️ Suspensa até a venda do projeto; ver [PENDENCIAS_COMERCIAIS.md §6](docs/PENDENCIAS_COMERCIAIS.md) |
 
 As rotas ainda não implementadas exibem um aviso explícito ("Esta área ainda não foi implementada"), com a fase prevista. Nada simula uma funcionalidade inexistente.
@@ -63,6 +64,7 @@ Ver [.env.example](.env.example). Sem as variáveis do Supabase, a aplicação s
 | `npm test` | Vitest (relatório JUnit em `test-results/`) |
 | `npm run e2e` | Playwright em desktop e mobile (faz o build e sobe na porta 3100; relatório em `playwright-report/`, traces de falhas em `test-results/`) |
 | `npm run check` | Lint + typecheck + testes unitários |
+| `node scripts/perf/lighthouse.mjs [url] [execuções]` | Lighthouse em desktop e mobile com mediana (servidor de produção rodando) |
 | `E2E_CHECKOUT_WRITE=1 npx playwright test e2e/checkout.spec.ts --project=desktop` | Cria um pedido de demonstração real e o cancela pelo painel (**exige autorização**) |
 | `E2E_ACCOUNT_WRITE=1 npx playwright test e2e/conta.spec.ts --project=desktop` | Cria um cliente de teste, usa a conta e a exclui pela tela (**exige autorização**) |
 | `E2E_ADMIN_WRITE=1 npx playwright test e2e/admin-escrita.spec.ts --project=desktop` | Grava de verdade no Supabase pelo painel (preço e imagem) e desfaz (**exige autorização**) |
@@ -94,7 +96,8 @@ docs/                diagnóstico, decisões e pendências comerciais
 - [Pendências para operação comercial](docs/PENDENCIAS_COMERCIAIS.md)
 - [Modelo de dados](docs/DATA_MODEL.md)
 - [Catálogo inicial e fontes](docs/PRODUCT_CATALOG.md)
-- ARCHITECTURE.md, SECURITY.md e COST_ESTIMATE.md serão criados nas fases correspondentes.
+- [Segurança](docs/SECURITY.md) · [Matriz de testes](docs/TESTES.md) · [Lighthouse](docs/LIGHTHOUSE.md)
+- ARCHITECTURE.md e COST_ESTIMATE.md serão criados na Fase 11.
 
 ## Limitações atuais
 - Os E2E do catálogo rodam contra o Supabase configurado no `.env.local`, não contra um banco local. A suíte de banco (PGlite) é a parte determinística.
@@ -105,4 +108,4 @@ docs/                diagnóstico, decisões e pendências comerciais
 - E-mails de confirmação e de recuperação de senha dependem do SMTP gratuito do Supabase, com limite baixo de envios.
 - Enviar um formulário do painel antes de o JavaScript carregar mostra uma tela em branco (limitação do Next com Cache Components em páginas dinâmicas). O login não tem esse problema.
 - O painel não tem recuperação de senha nem 2FA (ver `PENDENCIAS_COMERCIAIS.md` §7). O histórico mostra o autor pelo id curto, não pelo e-mail.
-- A CSP completa entra na Fase 10.
+- A CSP permite scripts inline (exigência do Next com pré-renderização parcial); ver [SECURITY.md](docs/SECURITY.md).

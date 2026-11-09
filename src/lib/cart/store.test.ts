@@ -3,7 +3,7 @@ import { CART_KEY, MAX_LINES, cart, sanitizeCart } from "./store";
 
 const id = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, "0")}`;
 
-describe("sacola no navegador (grupo 8)", () => {
+describe("sacola no navegador", () => {
   beforeEach(() => localStorage.clear());
 
   it("adiciona, soma a mesma variante e respeita o máximo de 10 por item", () => {

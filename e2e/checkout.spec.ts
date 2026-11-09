@@ -17,7 +17,7 @@ async function addToCart(page: Page, qty = 1) {
   await expect(page.getByRole("status").filter({ hasText: "Adicionado à sacola." })).toBeVisible();
 }
 
-test.describe("Sacola (grupos 8, 9, 11)", () => {
+test.describe("Sacola", () => {
   test("adiciona do produto, atualiza o contador e calcula frete pelo CEP", async ({ page }) => {
     await addToCart(page, 2);
     await expect(cartLink(page)).toContainText("2");
@@ -50,7 +50,7 @@ test.describe("Sacola (grupos 8, 9, 11)", () => {
   });
 });
 
-test.describe("Checkout (grupos 10, 12, 43)", () => {
+test.describe("Checkout", () => {
   test("valida campos obrigatórios e consentimento sem criar pedido", async ({ page }) => {
     await addToCart(page);
     await page.goto("/checkout");
@@ -66,20 +66,20 @@ test.describe("Checkout (grupos 10, 12, 43)", () => {
     expect(r.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(" | ")}`)).toEqual([]);
   });
 
-  test("webhook de pagamento recusa chamada sem assinatura válida (grupo 36)", async ({ request }) => {
+  test("webhook de pagamento recusa chamada sem assinatura válida", async ({ request }) => {
     const body = { id: "evt_forjado123456", type: "payment.approved", created: 1, data: { provider_ref: `fake_pix_${"a".repeat(24)}`, amount_cents: 100 } };
     expect((await request.post("/api/webhooks/payments", { data: body })).status()).toBe(401);
     const forged = await request.post("/api/webhooks/payments", { data: body, headers: { "x-sally-signature": `t=${Math.floor(Date.now() / 1000)},v1=${"0".repeat(64)}` } });
     expect(forged.status()).toBe(401);
   });
 
-  test("página de pedido com token inválido mostra não encontrado (grupo 25)", async ({ page }) => {
+  test("página de pedido com token inválido mostra não encontrado", async ({ page }) => {
     await page.goto(`/pedido/${"0".repeat(64)}`);
     await expect(page.getByRole("heading", { name: "Página não encontrada" })).toBeVisible();
   });
 });
 
-test.describe("Compra completa com reserva e cancelamento (grupos 12–16, 23)", () => {
+test.describe("Compra completa com reserva e cancelamento", () => {
   const email = process.env.ADMIN_EMAIL;
   const password = process.env.ADMIN_PASSWORD;
   test.skip(process.env.E2E_CHECKOUT_WRITE !== "1" || !email || !password, "Defina E2E_CHECKOUT_WRITE=1 e as credenciais de admin para rodar.");

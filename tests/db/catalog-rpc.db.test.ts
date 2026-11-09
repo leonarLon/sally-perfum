@@ -10,7 +10,7 @@ type Item = {
 };
 type Page = { total: number; page: number; page_size: number; items: Item[] };
 
-describe("RPC do catálogo (grupos 1–7)", () => {
+describe("RPC do catálogo", () => {
   let db: PGlite;
   const search = async (args: Record<string, unknown> = {}) => {
     const keys = Object.keys(args);
@@ -24,7 +24,7 @@ describe("RPC do catálogo (grupos 1–7)", () => {
     await db.exec(seedSql());
   }, 60_000);
 
-  it("lista o catálogo publicado com total e paginação padrão (grupo 1 e 5)", async () => {
+  it("lista o catálogo publicado com total e paginação padrão", async () => {
     const r = await search();
     expect(r.total).toBeGreaterThanOrEqual(40);
     expect(r.items).toHaveLength(24);
@@ -41,7 +41,7 @@ describe("RPC do catálogo (grupos 1–7)", () => {
     expect((await search({ p_page: 99 })).items).toHaveLength(0);
   });
 
-  it("busca por nome, marca ou nota, ignorando acentos e caixa (grupo 2)", async () => {
+  it("busca por nome, marca ou nota, ignorando acentos e caixa", async () => {
     expect((await search({ p_q: "SAUVAGE" })).items.map((i) => i.slug)).toContain("sauvage-dior");
     expect((await search({ p_q: "idole" })).items.map((i) => i.slug)).toContain("idole-lancome");
     expect((await search({ p_q: "lattafa" })).items.every((i) => i.brand_slug === "lattafa")).toBe(true);
@@ -62,7 +62,7 @@ describe("RPC do catálogo (grupos 1–7)", () => {
     expect((await search()).total).toBeGreaterThanOrEqual(40); // tabela intacta
   });
 
-  it("filtra por gênero, origem, marca, família, promoção e faixa de preço (grupo 3)", async () => {
+  it("filtra por gênero, origem, marca, família, promoção e faixa de preço", async () => {
     const fem = await search({ p_gender: "feminino", p_page_size: 48 });
     expect(fem.items.every((i) => i.gender === "feminino")).toBe(true);
     const nac = await search({ p_origin: "nacional", p_page_size: 48 });
@@ -83,7 +83,7 @@ describe("RPC do catálogo (grupos 1–7)", () => {
     expect(r.items.every((i) => i.gender === "masculino" && i.origin === "importado" && i.min_price_cents <= 50000)).toBe(true);
   });
 
-  it("ordena por preço crescente e decrescente (grupo 4)", async () => {
+  it("ordena por preço crescente e decrescente", async () => {
     const asc = (await search({ p_sort: "price_asc", p_page_size: 48 })).items.map((i) => i.min_price_cents);
     expect(asc).toEqual([...asc].sort((a, b) => a - b));
     const desc = (await search({ p_sort: "price_desc", p_page_size: 48 })).items.map((i) => i.min_price_cents);
@@ -97,12 +97,12 @@ describe("RPC do catálogo (grupos 1–7)", () => {
     expect(r.items.every((i) => i.in_stock)).toBe(true);
   });
 
-  it("todo item tem imagem (Storage ou URL externa documentada) (grupo 48)", async () => {
+  it("todo item tem imagem (Storage ou URL externa documentada)", async () => {
     const r = await search({ p_page_size: 48 });
     expect(r.items.every((i) => i.image_path || i.image_url)).toBe(true);
   });
 
-  describe("get_product (grupos 6 e 7)", () => {
+  describe("get_product", () => {
     it("retorna o produto com marca, variantes ordenadas por volume e imagens", async () => {
       const [{ p }] = await as<{ p: Record<string, unknown> & { variants: { volume_ml: number; stock_status: string }[]; images: unknown[]; brand: { slug: string } } }>(
         db, { role: "anon" }, "select public.get_product('sauvage-dior') p");
@@ -126,7 +126,7 @@ describe("RPC do catálogo (grupos 1–7)", () => {
       await db.exec("update products set status = 'published' where seed_key = 'daisy'");
     });
 
-    it("produto sem pirâmide confirmada retorna notas nulas, não inventadas (grupo 49)", async () => {
+    it("produto sem pirâmide confirmada retorna notas nulas, não inventadas", async () => {
       const [{ p }] = await as<{ p: { top_notes: unknown; heart_notes: unknown; base_notes: unknown } }>(
         db, { role: "anon" }, "select public.get_product('khamrah-lattafa') p");
       expect(p.top_notes).toBeNull();

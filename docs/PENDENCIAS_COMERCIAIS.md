@@ -35,7 +35,7 @@ Mantenha a lista atualizada a cada fase. Os itens novos entram na seção corres
 - [ ] Configurar as credenciais de produção **somente** nas variáveis de ambiente do servidor (`PAYMENT_PROVIDER` e chaves do gateway), nunca no código.
 - [ ] Configurar a URL do webhook de produção e o segredo de assinatura.
 - [ ] Testar no sandbox: aprovado, recusado, pendente, estorno total e parcial, webhook duplicado.
-- [ ] Desligar o provedor simulado (`PAYMENT_PROVIDER=fake`) em produção. O build deve falhar se ele estiver ativo em produção (implementar junto com a Fase 8).
+- [ ] Definir `STORE_MODE=commercial` em produção: o build já falha se `PAYMENT_PROVIDER=fake` (trava implementada na Fase 10).
 - [ ] Definir regras comerciais: desconto no Pix, parcelamento máximo e parcela mínima.
 
 ## 4. Frete e operação
@@ -57,7 +57,9 @@ Mantenha a lista atualizada a cada fase. Os itens novos entram na seção corres
 - [ ] **Monitoramento:** erros (ex.: Sentry), uptime e alertas de pagamento e estoque.
 - [ ] Criar um projeto Supabase **separado** para produção (não reaproveitar o de estudo) e aplicar as migrations do zero.
 - [ ] Trocar todas as chaves usadas no estudo (Supabase service role, IA, etc.).
-- [ ] Ativar a CSP completa e revisar os headers de segurança para os domínios finais.
+- [ ] Revisar a CSP para os domínios finais (gateway, analytics) e avaliar CSP com hash/SRI quando o Next suportar com pré-renderização parcial.
+- [ ] Atualizar `eslint-config-next`/`typescript-eslint` quando houver versão sem a vulnerabilidade moderada do `minimatch` (só ferramenta de desenvolvimento).
+- [ ] Publicar `/.well-known/security.txt` com um contato de segurança.
 
 ## 6. Inteligência artificial: implementar após a venda
 **Situação atual:** o Consultor de Fragrâncias e qualquer recurso de IA foram **retirados do site** em 08/11/2026, porque a API do Claude é paga. Não existe rota `/assistente`, link no menu nem código de IA no projeto. O desenho completo continua em `FASE-1-DIAGNOSTICO.md` §12 e deve ser seguido na implementação.

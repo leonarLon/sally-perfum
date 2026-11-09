@@ -32,7 +32,7 @@ describe("Banco: área do cliente e LGPD (Fase 7)", () => {
     await db.query("update products set status = 'draft' where id = $1", [draftId]);
   }, 60_000);
 
-  describe("perfil (grupo 26)", () => {
+  describe("perfil", () => {
     it("o dono cria e edita o próprio perfil; outra pessoa não vê nem altera", async () => {
       await as(db, asAna(), "insert into profiles (user_id, full_name, phone) values ($1, 'Ana Souza', '11987654321')", [ana]);
       await as(db, asAna(), "update profiles set full_name = 'Ana S.' where user_id = $1", [ana]);
@@ -49,7 +49,7 @@ describe("Banco: área do cliente e LGPD (Fase 7)", () => {
     });
   });
 
-  describe("endereços (grupo 27)", () => {
+  describe("endereços", () => {
     it("cada pessoa vê só os próprios endereços e define um padrão por vez", async () => {
       const a1 = await insertAddress(asAna(), addr("Casa"));
       const a2 = await insertAddress(asAna(), addr("Trabalho"));
@@ -82,7 +82,7 @@ describe("Banco: área do cliente e LGPD (Fase 7)", () => {
     });
   });
 
-  describe("favoritos (grupo 28)", () => {
+  describe("favoritos", () => {
     it("favorita produto publicado, não duplica e remove", async () => {
       await as(db, asAna(), "insert into favorites (product_id) values ($1)", [productId]);
       await expect(as(db, asAna(), "insert into favorites (product_id) values ($1)", [productId])).rejects.toThrow(/duplicate key/);
@@ -99,7 +99,7 @@ describe("Banco: área do cliente e LGPD (Fase 7)", () => {
     });
   });
 
-  describe("exclusão de conta (grupo 34)", () => {
+  describe("exclusão de conta", () => {
     it("apaga perfil, endereços e favoritos; pedidos e movimentações ficam sem vínculo", async () => {
       const carla = await createUser(db, "carla@sally.test");
       const c = { role: "authenticated" as const, userId: carla };

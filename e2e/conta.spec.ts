@@ -10,7 +10,7 @@ import { expect, test, type Page } from "@playwright/test";
 const axe = (page: Page) => new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();
 const violations = (r: Awaited<ReturnType<typeof axe>>) => r.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(" | ")}`);
 
-test.describe("Conta: acesso e validação (grupos 26, 29, 30)", () => {
+test.describe("Conta: acesso e validação", () => {
   test("área do cliente exige login e volta ao destino", async ({ page }) => {
     await page.goto("/minha-conta/enderecos");
     await expect(page).toHaveURL(/\/login\?returnTo=%2Fminha-conta%2Fenderecos|\/login\?returnTo=\/minha-conta\/enderecos/);
@@ -39,19 +39,19 @@ test.describe("Conta: acesso e validação (grupos 26, 29, 30)", () => {
     expect(violations(await axe(page))).toEqual([]);
   });
 
-  test("favoritar sem login leva para entrar com retorno ao produto (grupo 28)", async ({ page }) => {
+  test("favoritar sem login leva para entrar com retorno ao produto", async ({ page }) => {
     await page.goto("/produtos/sauvage-dior");
     await page.getByRole("button", { name: /Adicionar Sauvage aos favoritos/ }).click();
     await expect(page).toHaveURL(/\/login\?returnTo=%2Fprodutos%2Fsauvage-dior/);
   });
 
-  test("exportação de dados exige sessão (grupo 34)", async ({ request }) => {
+  test("exportação de dados exige sessão", async ({ request }) => {
     const res = await request.get("/minha-conta/dados", { maxRedirects: 0 });
     expect([302, 307, 401]).toContain(res.status());
   });
 });
 
-test.describe("Conta: fluxo completo com exclusão ao final (grupos 26–28, 34)", () => {
+test.describe("Conta: fluxo completo com exclusão ao final", () => {
   test.skip(process.env.E2E_ACCOUNT_WRITE !== "1", "Defina E2E_ACCOUNT_WRITE=1 para rodar (cria e exclui um cliente de teste).");
   test.describe.configure({ mode: "serial" });
 
@@ -81,8 +81,36 @@ test.describe("Conta: fluxo completo com exclusão ao final (grupos 26–28, 34)
     await page.getByLabel("E-mail", { exact: true }).fill(email);
     await page.getByLabel("Senha", { exact: true }).fill(password);
     await page.getByRole("button", { name: "Entrar" }).click();
-    await expect(page).toHaveURL(/\/produtos\/sauvage-dior$/);
+    await expect(page).toHaveURL((u) => u.pathname === "/produtos/sauvage-dior"); // não casa com /login?returnTo=…
 
+    // Cookie de sessão inacessível a JavaScript (protege o token contra XSS).
+    const session = (await page.context().cookies()).filter((c) => c.name.startsWith("sb-"));
+    expect(session.length).toBeGreaterThan(0);
+    expect(session.every((c) => c.httpOnly && c.sameSite === "Lax")).toBe(true);
+    expect(await page.evaluate(() => document.cookie)).not.toContain("sb-");
+
+    // Sessão persistente: recarregar e navegar mantém a pessoa logada.
+    await page.reload();
+    await page.goto("/minha-conta");
+    await expect(page.getByRole("heading", { level: 1, name: /Olá, Cliente/ })).toBeVisible();
+
+    // Cliente logado tentando entrar no painel: barrado no servidor.
+    await page.goto("/admin/produtos");
+    await expect(page).toHaveURL(/\/admin\/login\?erro=sem-permissao/);
+    await expect(page.getByText("Sua conta não tem acesso ao painel.")).toBeVisible();
+
+    // Logout: a área do cliente volta a pedir login; depois entra de novo.
+    await page.goto("/minha-conta");
+    await page.getByRole("button", { name: "Sair" }).click();
+    await expect(page).toHaveURL((u) => u.pathname === "/");
+    await page.goto("/minha-conta");
+    await expect(page).toHaveURL(/\/login\?returnTo=/);
+    await page.getByLabel("E-mail", { exact: true }).fill(email);
+    await page.getByLabel("Senha", { exact: true }).fill(password);
+    await page.getByRole("button", { name: "Entrar" }).click();
+    await expect(page).toHaveURL((u) => u.pathname === "/minha-conta");
+
+    await page.goto("/produtos/sauvage-dior");
     await page.getByRole("button", { name: /Adicionar Sauvage aos favoritos/ }).click();
     await expect(page.getByRole("button", { name: /Remover Sauvage dos favoritos/ })).toHaveAttribute("aria-pressed", "true");
     await page.goto("/minha-conta/favoritos");
@@ -107,6 +135,15 @@ test.describe("Conta: fluxo completo com exclusão ao final (grupos 26–28, 34)
     await expect(page.getByLabel("E-mail", { exact: true })).toHaveValue(email);
     await expect(page.getByLabel("Endereço", { exact: true })).toHaveValue("Av. Paulista");
     await expect(page.getByLabel("Nome completo", { exact: true })).toHaveValue("Cliente E2E");
+
+    // Compra autenticada: o pedido fica vinculado à conta e aparece em "Meus pedidos".
+    // (Fica aguardando pagamento e a reserva expira sozinha em 30 min.)
+    await page.getByLabel(/Li e aceito/).check();
+    await page.getByRole("button", { name: "Concluir pedido" }).click();
+    await expect(page).toHaveURL(/\/pedido\/[0-9a-f]{64}\?novo=1$/, { timeout: 20_000 });
+    const orderNumber = (await page.getByRole("heading", { level: 1 }).textContent())!.match(/#(\d+)/)![1];
+    await page.goto("/minha-conta/pedidos");
+    await expect(page.getByRole("link", { name: `Pedido #${orderNumber}` })).toBeVisible();
 
     await page.goto("/minha-conta/perfil");
     const download = page.waitForEvent("download");

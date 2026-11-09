@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "@/lib/zod";
 
 /**
  * Converte searchParams da URL (não confiáveis) em filtros válidos.

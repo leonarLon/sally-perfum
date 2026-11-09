@@ -12,7 +12,7 @@ test.describe("Catálogo público (Fase 3) — dados do Supabase", () => {
     test.skip(empty, "Catálogo remoto ainda não carregado (aguardando seed autorizado).");
   });
 
-  test("lista ≥ 24 produtos na primeira página com contador e paginação (grupos 1, 5, 46)", async ({ page }) => {
+  test("lista ≥ 24 produtos na primeira página com contador e paginação", async ({ page }) => {
     await expect(page.getByRole("status").filter({ hasText: /perfumes encontrados/ })).toBeVisible();
     const total = Number((await page.getByText(/perfumes encontrados/).textContent())?.match(/\d+/)?.[0]);
     expect(total).toBeGreaterThanOrEqual(40);
@@ -22,13 +22,13 @@ test.describe("Catálogo público (Fase 3) — dados do Supabase", () => {
     await expect(page.getByRole("article")).toHaveCount(total - 24);
   });
 
-  test("busca por termo sem acento encontra produto acentuado (grupo 2)", async ({ page }) => {
+  test("busca por termo sem acento encontra produto acentuado", async ({ page }) => {
     await page.goto("/buscar?q=idole");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(/idole/);
     await expect(page.getByRole("link", { name: "Idôle" })).toBeVisible();
   });
 
-  test("busca pelo cabeçalho leva para /buscar (grupo 2)", async ({ page, isMobile }) => {
+  test("busca pelo cabeçalho leva para /buscar", async ({ page, isMobile }) => {
     test.skip(isMobile, "campo de busca do cabeçalho visível no desktop");
     await page.getByLabel("Buscar perfumes").fill("lattafa");
     await page.getByLabel("Buscar perfumes").press("Enter");
@@ -36,13 +36,13 @@ test.describe("Catálogo público (Fase 3) — dados do Supabase", () => {
     for (const brand of await page.getByRole("article").locator("p").first().allTextContents()) expect(brand).toMatch(/lattafa/i);
   });
 
-  test("filtros por gênero e marca via formulário (grupo 3)", async ({ page }) => {
+  test("filtros por gênero e marca via formulário", async ({ page }) => {
     await page.goto("/produtos?genero=masculino&marca=dior");
     await expect(page.getByRole("link", { name: "Sauvage" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Miss Dior Parfum" })).toHaveCount(0);
   });
 
-  test("ordenação por menor preço (grupo 4)", async ({ page }) => {
+  test("ordenação por menor preço", async ({ page }) => {
     await page.goto("/produtos?ordem=price_asc");
     // allTextContents não espera: aguarda o resultado (streaming) substituir o skeleton.
     await expect(page.getByRole("article").first()).toBeVisible();
@@ -54,7 +54,7 @@ test.describe("Catálogo público (Fase 3) — dados do Supabase", () => {
     expect(cents.length).toBeGreaterThan(5);
   });
 
-  test("detalhe do produto: galeria, volumes, preço, olfativo e relacionados (grupo 6)", async ({ page }) => {
+  test("detalhe do produto: galeria, volumes, preço, olfativo e relacionados", async ({ page }) => {
     await page.goto("/produtos/sauvage-dior");
     await expect(page.getByRole("heading", { level: 1, name: "Sauvage" })).toBeVisible();
     await expect(page.getByRole("radiogroup")).toBeVisible();
@@ -65,26 +65,26 @@ test.describe("Catálogo público (Fase 3) — dados do Supabase", () => {
     expect(JSON.parse(ld!)["@type"]).toBe("Product");
   });
 
-  test("produto sem pirâmide confirmada informa isso (grupo 49)", async ({ page }) => {
+  test("produto sem pirâmide confirmada informa isso", async ({ page }) => {
     await page.goto("/produtos/khamrah-lattafa");
     const olfativo = page.getByRole("region", { name: "Informações olfativas" });
     await expect(olfativo.getByText(/não foi confirmada por fonte confiável/)).toBeVisible();
     await expect(olfativo.getByText("Notas de saída")).toHaveCount(0);
   });
 
-  test("produto inexistente mostra página de não encontrado (grupo 7)", async ({ page }) => {
+  test("produto inexistente mostra página de não encontrado", async ({ page }) => {
     await page.goto("/produtos/perfume-que-nao-existe");
     await expect(page.getByRole("heading", { name: "Página não encontrada" })).toBeVisible();
   });
 
-  test("páginas de marca e categoria (grupo 3)", async ({ page }) => {
+  test("páginas de marca e categoria", async ({ page }) => {
     await page.goto("/marcas/lattafa");
     await expect(page.getByRole("heading", { level: 1, name: "Lattafa" })).toBeVisible();
     await page.goto("/categorias/perfumes-unissex");
     await expect(page.getByRole("heading", { level: 1, name: "Perfumes Unissex" })).toBeVisible();
   });
 
-  test("catálogo e detalhe sem violações de acessibilidade (grupo 43)", async ({ page }) => {
+  test("catálogo e detalhe sem violações de acessibilidade", async ({ page }) => {
     for (const url of ["/produtos", "/produtos/la-vie-est-belle-lancome"]) {
       await page.goto(url);
       const r = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();

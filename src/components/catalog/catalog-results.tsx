@@ -41,7 +41,11 @@ export async function CatalogResults({
         </details>
       </aside>
 
-      <section aria-labelledby="resultados">
+      <section aria-labelledby="resultados-titulo">
+        {/* Título para leitores de tela: mantém a hierarquia h1 → h2 → h3 (títulos dos cards). */}
+        <h2 id="resultados-titulo" className="sr-only">
+          Resultados
+        </h2>
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <p id="resultados" className="text-sm text-muted" role="status">
             {page.total === 1 ? "1 perfume encontrado" : `${page.total} perfumes encontrados`}

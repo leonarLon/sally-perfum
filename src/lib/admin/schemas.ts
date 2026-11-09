@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "@/lib/zod";
 import { parseBRLToCents } from "@/lib/money";
 
 /** "Água de Rosas Nº 5" → "agua-de-rosas-n-5" (mesmo formato aceito pelo CHECK do banco). */

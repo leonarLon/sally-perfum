@@ -1,6 +1,6 @@
 "use server";
 import { redirect } from "next/navigation";
-import { z } from "zod";
+import { z } from "@/lib/zod";
 import { safeAdminReturnTo } from "@/lib/auth/session";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 

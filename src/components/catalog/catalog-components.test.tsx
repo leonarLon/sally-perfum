@@ -26,7 +26,7 @@ const variant = (o: Partial<ProductVariant>): ProductVariant => ({
   id: "v1", sku: "SLY-X-030", volume_ml: 30, price_cents: 10000, compare_at_cents: null, price_is_reference: true, stock_status: "in_stock", ...o,
 });
 
-describe("ProductCard (grupo 1)", () => {
+describe("ProductCard", () => {
   it("mostra foto, marca, nome, volume, preço 'a partir de', desconto e link", () => {
     render(<ProductCard item={item} />);
     expect(screen.getByRole("img", { name: "Sauvage — Dior" })).toHaveAttribute("src", item.image_url);
@@ -38,13 +38,13 @@ describe("ProductCard (grupo 1)", () => {
     expect(screen.getByText("-20%")).toBeInTheDocument();
   });
 
-  it("indica produto esgotado (grupo 23)", () => {
+  it("indica produto esgotado", () => {
     render(<ProductCard item={{ ...item, in_stock: false }} />);
     expect(screen.getByText("Esgotado")).toBeInTheDocument();
   });
 });
 
-describe("ProductImage (grupo 48)", () => {
+describe("ProductImage", () => {
   it("sem URL mostra placeholder identificado, nunca outra foto", () => {
     render(<ProductImage src={null} alt="Khamrah" sizes="100px" />);
     expect(screen.getByRole("img", { name: "Foto indisponível: Khamrah" })).toBeInTheDocument();
@@ -61,7 +61,7 @@ describe("helpers de exibição", () => {
   });
 });
 
-describe("OlfactoryInfo (grupo 49)", () => {
+describe("OlfactoryInfo", () => {
   const base = {
     id: "p", slug: "x", name: "X", short_description: null, description: null, gender: "unissex" as const, origin: "importado" as const,
     concentration: "Eau de Parfum", olfactory_family: null, family_group: null, occasion: null,
@@ -83,7 +83,7 @@ describe("OlfactoryInfo (grupo 49)", () => {
   });
 });
 
-describe("PurchasePanel (grupos 6 e 23)", () => {
+describe("PurchasePanel", () => {
   it("seleciona a primeira variante disponível e troca preço ao escolher outro volume", async () => {
     const variants = [
       variant({ id: "a", sku: "SLY-A-030", volume_ml: 30, price_cents: 10000, stock_status: "out_of_stock" }),

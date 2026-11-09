@@ -13,7 +13,7 @@ type Product = {
 const { products } = JSON.parse(fs.readFileSync(path.join(root, "supabase/seed/catalog.json"), "utf8")) as { products: Product[] };
 const facts = JSON.parse(fs.readFileSync(path.join(root, "supabase/seed/catalog.facts.json"), "utf8")) as { products: { key: string }[] };
 
-describe("dados do seed (grupos 45, 48, 49, 50)", () => {
+describe("dados do seed", () => {
   it("tem pelo menos 40 produtos, todos com fatos curados correspondentes", () => {
     expect(products.length).toBeGreaterThanOrEqual(40);
     expect(new Set(products.map((p) => p.key))).toEqual(new Set(facts.products.map((f) => f.key)));

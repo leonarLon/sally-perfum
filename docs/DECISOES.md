@@ -48,3 +48,9 @@
 | 08/11/2026 | Técnica | Confirmação de pagamento **só** por evento do provedor com assinatura HMAC (`t=…,v1=…`, tolerância de 5 min) e aplicação idempotente no banco; a tela do cliente nunca marca pedido como pago | Engenharia |
 | 08/11/2026 | Técnica | Cartão tokenizado no navegador; os campos do cartão não têm `name` (nem um envio sem JavaScript manda o número) | Engenharia |
 | 08/11/2026 | Técnica | O resultado do pagamento aparece na própria página do pedido; as rotas `/checkout/sucesso`, `/pendente` e `/erro` foram removidas (o §7.7 do diagnóstico foi atendido dessa forma) | Engenharia |
+| 09/11/2026 | D16 | Fase 10 autorizada pelo usuário. Sem migrations; fluxos E2E com gravação rodados e desfeitos | Usuário |
+| 09/11/2026 | Técnica | CSP sem nonce (`'unsafe-inline'` em scripts): nonce é incompatível com a pré-renderização parcial (guia do Next). Mitigação: cookies `httpOnly`, zero HTML de usuário, Zod `jitless` (sem `eval`) | Engenharia |
+| 09/11/2026 | Técnica | Cookies de sessão do Supabase com `httpOnly` (o padrão do `@supabase/ssr` é `false`); cliente Supabase de navegador removido por não ser usado | Engenharia |
+| 09/11/2026 | Técnica | Trava `STORE_MODE=commercial` + `PAYMENT_PROVIDER=fake` → build/servidor falham | Engenharia |
+| 09/11/2026 | Correção | Os números de grupo nos nomes dos testes não seguiam a numeração do briefing; foram removidos e a rastreabilidade passou a viver em `docs/TESTES.md` | Engenharia |
+| 09/11/2026 | Correção | Falhas intermitentes nos E2E de login: a URL do login termina com o `returnTo`, e a checagem por regex passava antes do login concluir. Trocada por comparação do caminho | Engenharia |

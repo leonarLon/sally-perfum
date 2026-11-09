@@ -1,6 +1,7 @@
 import "server-only";
-import { z } from "zod";
+import { z } from "@/lib/zod";
 import { MissingConfigError } from "./env";
+import { assertPaymentConfig } from "./security/headers";
 
 /** Segredos: nunca importar este módulo em Client Components ("server-only" garante erro de build). */
 const serverSchema = z.object({
@@ -25,6 +26,7 @@ const paymentSchema = z.object({
 
 /** Configuração de pagamentos. Só o provedor simulado é aceito neste projeto de estudo. */
 export function getPaymentEnv() {
+  assertPaymentConfig({ STORE_MODE: process.env.STORE_MODE, PAYMENT_PROVIDER: process.env.PAYMENT_PROVIDER });
   const parsed = paymentSchema.safeParse({
     PAYMENT_PROVIDER: process.env.PAYMENT_PROVIDER || undefined,
     PAYMENT_WEBHOOK_SECRET: process.env.PAYMENT_WEBHOOK_SECRET,

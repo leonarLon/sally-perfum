@@ -5,7 +5,7 @@ import { dbErrorMessage, detectImageType, productSchema, slugify, stockSchema, v
 const UUID = "4b1f6a1e-2c3d-4e5f-8a9b-0c1d2e3f4a5b";
 const baseProduct = { name: "Água de Rosas Nº 5", brand_id: UUID, category_id: UUID, gender: "feminino", origin: "nacional" };
 
-describe("admin: validação de produto (grupo 17)", () => {
+describe("admin: validação de produto", () => {
   it("gera slug sem acento a partir do nome e trata notas como lista", () => {
     const p = productSchema.parse({ ...baseProduct, top_notes: "bergamota, pimenta rosa ,  ", heart_notes: "" });
     expect(p.slug).toBe("agua-de-rosas-n-5");
@@ -31,7 +31,7 @@ describe("admin: validação de produto (grupo 17)", () => {
   });
 });
 
-describe("admin: validação de variante e preço (grupo 18)", () => {
+describe("admin: validação de variante e preço", () => {
   it("converte preços para centavos inteiros e marca confirmação", () => {
     const v = variantSchema.parse({ sku: "sly-teste-100", volume_ml: "100", price: "1.299,90", compare_at: "1.499,00", price_confirmed: "on", is_active: "on" });
     expect(v).toMatchObject({ sku: "SLY-TESTE-100", volume_ml: 100, price_cents: 129990, compare_at_cents: 149900, price_is_reference: false, is_active: true });
@@ -56,7 +56,7 @@ describe("admin: validação de variante e preço (grupo 18)", () => {
   });
 });
 
-describe("admin: validação de estoque (grupo 20)", () => {
+describe("admin: validação de estoque", () => {
   it("aceita contagem e exige motivo", () => {
     expect(stockSchema.parse({ variant_id: UUID, mode: "set", quantity: "12", min_stock: "3", reason: "Contagem" }).quantity).toBe(12);
     expect(stockSchema.safeParse({ variant_id: UUID, mode: "set", quantity: "12", min_stock: "3", reason: "" }).success).toBe(false);
@@ -69,7 +69,7 @@ describe("admin: validação de estoque (grupo 20)", () => {
   });
 });
 
-describe("admin: segurança (grupos 30, 32)", () => {
+describe("admin: segurança", () => {
   it("detecta imagem pela assinatura, não pela extensão", () => {
     expect(detectImageType(new Uint8Array([0xff, 0xd8, 0xff, 0xe0]))?.mime).toBe("image/jpeg");
     expect(detectImageType(new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))?.mime).toBe("image/png");
