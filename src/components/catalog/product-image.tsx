@@ -11,12 +11,15 @@ export function ProductImage({
   alt,
   sizes,
   priority = false,
+  quality,
   className,
 }: {
   src: string | null;
   alt: string;
   sizes: string;
   priority?: boolean;
+  /** Precisa estar em images.qualities (next.config.ts). */
+  quality?: 60 | 75;
   className?: string;
 }) {
   if (!src) {
@@ -33,7 +36,17 @@ export function ProductImage({
   }
   return (
     <div className={cn("relative aspect-square w-full bg-background", className)}>
-      <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-contain p-4" />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        quality={quality}
+        // Next 16: `priority` foi descontinuado; foto acima da dobra carrega já, com prioridade alta.
+        loading={priority ? "eager" : undefined}
+        fetchPriority={priority ? "high" : undefined}
+        className="object-contain p-4"
+      />
     </div>
   );
 }

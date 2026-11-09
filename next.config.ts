@@ -31,6 +31,7 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
+    qualities: [60, 75], // 60 nas miniaturas da galeria, 75 (padrão) no resto
     remotePatterns: [
       ...(supabaseHost
         ? [{ protocol: "https" as const, hostname: supabaseHost, pathname: "/storage/v1/object/public/**" }]

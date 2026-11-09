@@ -23,7 +23,8 @@ export function ProductGallery({ images, name }: { images: { src: string | null;
                 aria-pressed={i === active}
                 className={cn("block w-full overflow-hidden rounded-lg border-2", i === active ? "border-primary" : "border-border")}
               >
-                <ProductImage src={img.src} alt="" sizes="80px" />
+                {/* Qualidade menor: miniatura mais leve e com endereço diferente da foto principal. */}
+                <ProductImage src={img.src} alt="" sizes="80px" quality={60} />
               </button>
             </li>
           ))}
