@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Auditoria Lighthouse das páginas principais, em desktop e mobile, com N execuções e
- * mediana. Requer o servidor de produção rodando (npm run build && npx next start -p 3200).
+ * mediana. Local: requer o servidor de produção rodando (npm run build && npx next start -p 3200).
+ * Publicado: passe a URL, ex. https://sally-perfum.vercel.app.
  *
  *   node scripts/perf/lighthouse.mjs [baseUrl=http://localhost:3200] [execucoes=3]
  *
@@ -16,6 +17,8 @@ import desktopConfig from "lighthouse/core/config/desktop-config.js";
 
 const base = process.argv[2] ?? "http://localhost:3200";
 const runs = Number(process.argv[3] ?? 3);
+const isLocal = /localhost|127\.0\.0\.1/.test(base);
+const where = isLocal ? "build de produção local (\`next start\`)" : `site publicado na Vercel (${base}), medido a partir do Brasil`;
 const pages = [
   ["Início", "/"],
   ["Catálogo", "/produtos"],
@@ -83,7 +86,7 @@ fs.writeFileSync(
   path.join(root, "docs/LIGHTHOUSE.md"),
   `# Auditoria Lighthouse
 
-Medido em ${new Date().toISOString().slice(0, 10)} com \`scripts/perf/lighthouse.mjs\`: build de produção local (\`next start\`), Lighthouse ${JSON.parse(fs.readFileSync(path.join(root, "node_modules/lighthouse/package.json"), "utf8")).version}, **mediana de ${runs} execuções** por página. Dados do catálogo vindos do Supabase remoto (us-west-2), sem CDN: em produção na Vercel os tempos tendem a ser menores.
+Medido em ${new Date().toISOString().slice(0, 10)} com \`scripts/perf/lighthouse.mjs\`: ${where}, Lighthouse ${JSON.parse(fs.readFileSync(path.join(root, "node_modules/lighthouse/package.json"), "utf8")).version}, **mediana de ${runs} execuções** por página. Dados do catálogo vindos do Supabase (us-west-2).${isLocal ? " Sem CDN: na Vercel os tempos tendem a ser menores." : ""}
 
 Sacola e checkout foram medidos **vazios** (a sacola fica no navegador do visitante).
 

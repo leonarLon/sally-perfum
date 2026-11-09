@@ -5,13 +5,30 @@ import { Suspense } from "react";
 import { FavoriteButton } from "@/components/account/favorite-button";
 import { OlfactoryInfo } from "@/components/catalog/olfactory-info";
 import { ProductGallery } from "@/components/catalog/product-gallery";
-import { ProductGrid, ProductGridSkeleton } from "@/components/catalog/product-grid";
+import { ProductGrid } from "@/components/catalog/product-grid";
 import { PurchasePanel } from "@/components/catalog/purchase-panel";
 import { Container, Skeleton } from "@/components/ui/card";
 import { resolveImageUrl } from "@/lib/catalog/images";
-import { getProduct, getRelated } from "@/lib/catalog/queries";
+import { getProduct, getRelated, listAllSlugs } from "@/lib/catalog/queries";
 import type { ProductDetail } from "@/lib/catalog/types";
 import { getSiteUrl } from "@/lib/env";
+
+/**
+ * Pré-gera no build as páginas dos produtos publicados: saem prontas da CDN, sem esqueleto
+ * que troca de tamanho (evita o rodapé "pular"). Produtos publicados depois são gerados na
+ * primeira visita; as alterações do painel invalidam o cache pelas tags do catálogo.
+ * Com Cache Components a lista não pode ser vazia: sem Supabase no build, usa um item
+ * reservado que resulta em "não encontrado".
+ */
+export async function generateStaticParams() {
+  try {
+    const { products } = await listAllSlugs();
+    if (products.length) return products.map((slug) => ({ slug }));
+  } catch {
+    // segue com o item reservado
+  }
+  return [{ slug: "__indisponivel__" }];
+}
 
 export async function generateMetadata(props: PageProps<"/produtos/[slug]">) {
   const { slug } = await props.params;
@@ -125,9 +142,8 @@ async function ProductContent({ params }: { params: PageProps<"/produtos/[slug]"
       </div>
 
       <div className="mt-16">
-        <Suspense fallback={<ProductGridSkeleton count={4} />}>
-          <Related product={product} />
-        </Suspense>
+        {/* Sem bloco próprio: vem do cache junto com o produto (o rodapé não "pula"). */}
+        <Related product={product} />
       </div>
     </>
   );

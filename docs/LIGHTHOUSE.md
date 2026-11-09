@@ -1,26 +1,26 @@
 # Auditoria Lighthouse
 
-Medido em 2026-11-09 com `scripts/perf/lighthouse.mjs`: build de produção local (`next start`), Lighthouse 13.6.0, **mediana de 3 execuções** por página. Dados do catálogo vindos do Supabase remoto (us-west-2), sem CDN: em produção na Vercel os tempos tendem a ser menores.
+Medido em 2026-11-09 com `scripts/perf/lighthouse.mjs`: site publicado na Vercel (https://sally-perfum.vercel.app), medido a partir do Brasil, Lighthouse 13.6.0, **mediana de 3 execuções** por página. Dados do catálogo vindos do Supabase (us-west-2).
 
 Sacola e checkout foram medidos **vazios** (a sacola fica no navegador do visitante).
 
 ## Mobile (emulação Moto G Power, 4G lento)
 | Página | Performance | Acessibilidade | Boas práticas | SEO | LCP | CLS | TBT |
 |---|---|---|---|---|---|---|---|
-| Início | 100 | 100 | 100 | 100 | 0.76 s | 0 | 51 ms |
-| Catálogo | 100 | 100 | 100 | 100 | 0.91 s | 0 | 64 ms |
-| Detalhe do produto | 97 | 100 | 100 | 92 | 2.56 s | 0 | 49 ms |
-| Sacola | 100 | 100 | 100 | 63 | 0.76 s | 0.032 | 44 ms |
-| Checkout | 98 | 100 | 100 | 63 | 0.76 s | 0.079 | 70 ms |
+| Início | 99 | 100 | 100 | 100 | 0.92 s | 0 | 96 ms |
+| Catálogo | 100 | 100 | 100 | 100 | 0.94 s | 0 | 49 ms |
+| Detalhe do produto | 98 | 100 | 100 | 92 | 2.42 s | 0 | 0 ms |
+| Sacola | 100 | 100 | 100 | 63 | 0.81 s | 0.032 | 87 ms |
+| Checkout | 97 | 100 | 100 | 63 | 2.58 s | 0 | 32 ms |
 
 ## Desktop
 | Página | Performance | Acessibilidade | Boas práticas | SEO | LCP | CLS | TBT |
 |---|---|---|---|---|---|---|---|
-| Início | 100 | 100 | 100 | 100 | 0.21 s | 0 | 0 ms |
-| Catálogo | 100 | 100 | 100 | 100 | 0.80 s | 0 | 0 ms |
-| Detalhe do produto | 100 | 100 | 100 | 92 | 0.53 s | 0 | 0 ms |
-| Sacola | 100 | 100 | 100 | 63 | 0.21 s | 0 | 0 ms |
-| Checkout | 100 | 100 | 100 | 63 | 0.21 s | 0 | 0 ms |
+| Início | 100 | 100 | 100 | 100 | 0.27 s | 0 | 0 ms |
+| Catálogo | 100 | 100 | 100 | 100 | 0.58 s | 0 | 0 ms |
+| Detalhe do produto | 93 | 100 | 100 | 92 | 0.51 s | 0.164 | 0 ms |
+| Sacola | 100 | 100 | 100 | 63 | 0.24 s | 0 | 0 ms |
+| Checkout | 100 | 100 | 100 | 63 | 0.27 s | 0 | 0 ms |
 
 Itens reprovados em SEO/Boas práticas (qualquer execução): meta-description, is-crawlable.
 
