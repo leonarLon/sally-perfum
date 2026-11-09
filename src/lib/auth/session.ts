@@ -32,6 +32,12 @@ const hasRole = cache(async (role: Role): Promise<boolean> => {
   return !error && data === true;
 });
 
+/** O usuário logado tem o papel (owner inclui admin)? Só para exibir atalhos; autorizar continua com requireRole. */
+export async function sessionHasRole(role: Role = "admin"): Promise<boolean> {
+  if (!(await getSessionUser())) return false;
+  return hasRole(role);
+}
+
 export async function requireUser(returnTo = "/minha-conta") {
   const user = await getSessionUser();
   if (!user) redirect(`/login?returnTo=${encodeURIComponent(returnTo)}`);

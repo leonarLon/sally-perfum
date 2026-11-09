@@ -93,6 +93,7 @@ test.describe("Conta: fluxo completo com exclusão ao final", () => {
     await page.reload();
     await page.goto("/minha-conta");
     await expect(page.getByRole("heading", { level: 1, name: /Olá, Cliente/ })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Abrir o painel da loja" })).toHaveCount(0); // atalho só para admin
 
     // Cliente logado tentando entrar no painel: barrado no servidor.
     await page.goto("/admin/produtos");

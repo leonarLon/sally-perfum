@@ -61,6 +61,11 @@ test.describe("Painel: com login de administrador", () => {
 
     await page.goto("/admin/estoque?status=low_stock");
     await expect(page.getByRole("heading", { level: 1, name: "Estoque" })).toBeVisible();
+    // Logado como dono, a área do cliente mostra o atalho para o painel.
+    await page.goto("/minha-conta");
+    await page.getByRole("link", { name: "Abrir o painel da loja" }).click();
+    await expect(page).toHaveURL((u) => u.pathname === "/admin");
+
     await page.goto("/admin/cupons");
     await expect(page.getByRole("heading", { level: 1, name: "Cupons" })).toBeVisible();
     await expect(page.getByText("BEMVINDA10", { exact: true })).toBeVisible();

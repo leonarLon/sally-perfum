@@ -1,9 +1,10 @@
-import { LogOut } from "lucide-react";
+import { LayoutDashboard, LogOut } from "lucide-react";
+import Link from "next/link";
 import { Suspense } from "react";
 import { AccountNav } from "@/components/account/account-nav";
 import { Container, Skeleton } from "@/components/ui/card";
 import { signOut } from "@/lib/auth/actions";
-import { requireUser } from "@/lib/auth/session";
+import { requireUser, sessionHasRole } from "@/lib/auth/session";
 
 export const metadata = { title: { default: "Minha conta", template: "%s | Minha conta" }, robots: { index: false } };
 
@@ -28,5 +29,23 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
 
 async function AccountGate({ children }: { children: React.ReactNode }) {
   await requireUser("/minha-conta");
-  return <div className="min-w-0">{children}</div>;
+  const isAdmin = await sessionHasRole("admin");
+  return (
+    <div className="min-w-0 space-y-6">
+      {isAdmin && (
+        <aside aria-label="Painel da loja" className="flex flex-wrap items-center justify-between gap-3 rounded-card border border-primary/40 bg-secondary/40 p-4">
+          <p className="text-sm">
+            Você é administrador desta loja. Produtos, estoque, pedidos e cupons ficam no painel.
+          </p>
+          <Link
+            href="/admin"
+            className="inline-flex h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary-hover"
+          >
+            <LayoutDashboard className="size-4" aria-hidden /> Abrir o painel da loja
+          </Link>
+        </aside>
+      )}
+      {children}
+    </div>
+  );
 }
