@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-11-09T00:52:47.036Z",
+  "verifiedAt": "2026-11-09T01:21:32.005Z",
   "products": 45,
   "checks": [
     {
@@ -139,6 +139,31 @@
     },
     {
       "name": "visitante bloqueado: leitura de pagamentos",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: leitura de cupons",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: criação de cupom",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: cotação com cupom direta",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: avaliação de cupom direta",
+      "ok": true,
+      "detail": "42501"
+    },
+    {
+      "name": "visitante bloqueado: lista de cupons do painel",
       "ok": true,
       "detail": "42501"
     }

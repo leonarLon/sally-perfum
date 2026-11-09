@@ -12,6 +12,7 @@ export type CheckoutState = {
   message?: string;
   fieldErrors?: Record<string, string>;
   outOfStock?: string;
+  couponError?: boolean;
 };
 
 /**
@@ -41,6 +42,7 @@ export async function placeOrder(_prev: CheckoutState, formData: FormData): Prom
     p_address: { cep: d.cep, street: d.street, number: d.number, complement: d.complement, district: d.district, city: d.city, state: d.state },
     p_payment_method: d.payment_method,
     p_privacy_accepted: true,
+    p_coupon_code: d.coupon || null,
   });
   if (error) return orderErrorMessage(error.message);
 

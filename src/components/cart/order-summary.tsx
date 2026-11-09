@@ -6,9 +6,11 @@ import { installmentText } from "@/components/catalog/price";
 export function OrderSummary({ quote, loading, children }: { quote: Quote | null; loading?: boolean; children?: React.ReactNode }) {
   const subtotal = quote?.subtotal_cents ?? 0;
   const ship = quote?.shipping ?? null;
-  const total = subtotal + (ship?.price_cents ?? 0);
+  const discount = quote?.discount_cents ?? 0;
+  const goods = subtotal - discount; // frete grátis é avaliado sobre os produtos já com desconto
+  const total = goods + (ship?.price_cents ?? 0);
   const freeOver = quote?.free_shipping_over_cents ?? null;
-  const missing = freeOver && !ship?.free && subtotal > 0 && subtotal < freeOver ? freeOver - subtotal : 0;
+  const missing = freeOver && !ship?.free && goods > 0 && goods < freeOver ? freeOver - goods : 0;
   const installments = installmentText(total);
 
   return (
@@ -21,6 +23,12 @@ export function OrderSummary({ quote, loading, children }: { quote: Quote | null
           <dt>Subtotal</dt>
           <dd className="tabular-nums">{formatBRL(subtotal)}</dd>
         </div>
+        {discount > 0 && (
+          <div className="flex justify-between">
+            <dt>Desconto{quote?.coupon?.code ? ` (cupom ${quote.coupon.code})` : ""}</dt>
+            <dd className="tabular-nums text-success">−{formatBRL(discount)}</dd>
+          </div>
+        )}
         <div className="flex justify-between gap-4">
           <dt>Frete{ship && <span className="block text-xs text-muted">{ship.label} · {ship.days_min} a {ship.days_max} dias úteis</span>}</dt>
           <dd className="tabular-nums">{ship ? (ship.free ? <span className="text-success">Grátis</span> : formatBRL(ship.price_cents)) : <span className="text-muted">informe o CEP</span>}</dd>

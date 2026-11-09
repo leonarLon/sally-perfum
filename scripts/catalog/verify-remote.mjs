@@ -83,6 +83,13 @@ await blocked("criação de cobrança", supabase.rpc("create_payment", { p_order
 await blocked("aplicação de evento de pagamento", supabase.rpc("apply_payment_event", { p_provider: "fake", p_event_id: "evt_hack_123", p_type: "payment.approved", p_provider_ref: "fake_x_123456", p_amount_cents: 100 }));
 await blocked("leitura de pagamentos", supabase.from("payments").select("id").limit(1));
 
+// Cupons: códigos não são públicos e a validação só roda no servidor.
+await blocked("leitura de cupons", supabase.from("coupons").select("code").limit(1));
+await blocked("criação de cupom", supabase.from("coupons").insert({ code: "HACK90", kind: "percent", percent_off: 90 }));
+await blocked("cotação com cupom direta", supabase.rpc("quote_cart_coupon", { p_items: [], p_cep: null, p_coupon: "BEMVINDA10" }));
+await blocked("avaliação de cupom direta", supabase.rpc("evaluate_coupon", { p_code: "BEMVINDA10", p_subtotal_cents: 100000 }));
+await blocked("lista de cupons do painel", supabase.rpc("admin_list_coupons"));
+
 const report = { verifiedAt: new Date().toISOString(), products: all.length, checks };
 fs.writeFileSync(path.join(root, "supabase/seed/catalog.load-report.json"), JSON.stringify(report, null, 2) + "\n");
 process.exit(checks.every((c) => c.ok) ? 0 : 1);

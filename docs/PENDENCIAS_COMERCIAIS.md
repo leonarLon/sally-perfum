@@ -43,7 +43,8 @@ Mantenha a lista atualizada a cada fase. Os itens novos entram na seção corres
 - [ ] Os valores da tabela `shipping_zones` e o frete grátis acima de R$ 299 são **fictícios** (marcados `is_demo`). Definir os reais.
 - [ ] Pedir CPF no checkout quando houver emissão de nota fiscal (hoje não é coletado, por minimização de dados).
 - [ ] Enviar e-mails de confirmação e de mudança de status do pedido (hoje o cliente acompanha só pelo link).
-- [ ] Cupons de desconto: ainda não implementados (o campo `discount_cents` já existe no pedido).
+- [ ] Cupom de demonstração `BEMVINDA10` (10% a partir de R$ 150, teto R$ 100), marcado `is_demo`: desativar ou substituir pelas campanhas reais.
+- [ ] Cupons: definir se haverá limite por cliente logado (hoje é por e-mail), cupom de frete grátis e cupom restrito a marca/categoria (não implementados).
 - [ ] Cadastrar o peso e as dimensões reais de cada SKU.
 - [ ] Definir prazos de despacho, a política de frete grátis e as regiões atendidas.
 - [ ] Emitir nota fiscal (NF-e) com integração a um ERP ou emissor: **não implementado** neste projeto.

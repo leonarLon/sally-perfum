@@ -29,6 +29,7 @@ export const AUDIT_ENTITY: Record<string, string> = {
   categories: "Categoria",
   user_roles: "Papel de acesso",
   shipping_zones: "Frete",
+  coupons: "Cupom",
 };
 
 export const AUDIT_ACTION = { insert: "criou", update: "alterou", delete: "removeu" } as const;

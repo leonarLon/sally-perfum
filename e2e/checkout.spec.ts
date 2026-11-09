@@ -66,6 +66,28 @@ test.describe("Checkout", () => {
     expect(r.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(" | ")}`)).toEqual([]);
   });
 
+  test("cupom: código inexistente é recusado; o de demonstração aplica o desconto calculado no servidor", async ({ page }) => {
+    await addToCart(page);
+    await page.goto("/checkout");
+    const field = page.getByLabel("Cupom de desconto");
+    await field.fill("NAOEXISTE");
+    await field.press("Enter"); // Enter aplica o cupom, não envia o pedido
+    await expect(page.getByText("Cupom inválido. Confira o código.")).toBeVisible();
+    await expect(page).toHaveURL(/\/checkout$/);
+    await expect(page.getByText(/Desconto/)).toHaveCount(0);
+
+    await field.fill("bemvinda10");
+    await page.getByRole("button", { name: "Aplicar" }).click();
+    await expect(page.getByRole("status").filter({ hasText: /Cupom BEMVINDA10 aplicado: −R\$/ })).toBeVisible();
+    const resumo = page.getByRole("region", { name: "Resumo" });
+    await expect(resumo.getByText("Desconto (cupom BEMVINDA10)")).toBeVisible();
+    const r = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();
+    expect(r.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(" | ")}`)).toEqual([]);
+
+    await page.getByRole("button", { name: /Remover/ }).click();
+    await expect(resumo.getByText(/Desconto/)).toHaveCount(0);
+  });
+
   test("webhook de pagamento recusa chamada sem assinatura válida", async ({ request }) => {
     const body = { id: "evt_forjado123456", type: "payment.approved", created: 1, data: { provider_ref: `fake_pix_${"a".repeat(24)}`, amount_cents: 100 } };
     expect((await request.post("/api/webhooks/payments", { data: body })).status()).toBe(401);
@@ -101,12 +123,16 @@ test.describe("Compra completa com reserva e cancelamento", () => {
     await page.getByLabel("Estado", { exact: true }).selectOption("SP");
     await page.getByLabel(/Li e aceito/).check();
     await expect(page.getByText(/São Paulo \(capital e região\)/)).toBeVisible();
+    await page.getByLabel("Cupom de desconto").fill("BEMVINDA10");
+    await page.getByRole("button", { name: "Aplicar" }).click();
+    await expect(page.getByText(/Cupom BEMVINDA10 aplicado/)).toBeVisible();
     await page.getByRole("button", { name: "Concluir pedido" }).click();
 
     await expect(page).toHaveURL(/\/pedido\/[0-9a-f]{64}\?novo=1$/, { timeout: 20_000 });
     await expect(page.getByText("Pedido recebido!")).toBeVisible();
     await expect(page.getByRole("heading", { level: 1 }).locator("..").getByText("Aguardando pagamento")).toBeVisible();
     const number = (await page.getByRole("heading", { level: 1 }).textContent())!.match(/#(\d+)/)![1];
+    await expect(page.getByText("Desconto (cupom BEMVINDA10)")).toBeVisible();
     await expect(cartLink(page)).not.toContainText(/\d/);
 
     // Pagamento simulado: cartão recusado, depois aprovado (o webhook confirma e baixa o estoque).
@@ -134,10 +160,40 @@ test.describe("Compra completa com reserva e cancelamento", () => {
     await page.getByRole("button", { name: "Entrar" }).click();
     await page.getByRole("link", { name: `#${number}` }).click();
     await expect(page.getByRole("heading", { level: 1, name: `Pedido #${number}` })).toBeVisible();
+    await expect(page.getByText("Desconto (cupom BEMVINDA10)")).toBeVisible();
     await expect(page.getByText("Recusado", { exact: true })).toBeVisible();
     await expect(page.getByText("Aprovado", { exact: true })).toBeVisible();
     await page.getByRole("button", { name: "Cancelar e devolver ao estoque" }).click();
     await expect(page.getByText("Cancelado").first()).toBeVisible();
     await expect(page.getByText("Estornado", { exact: true })).toBeVisible();
+  });
+});
+
+test.describe("Cupom expirado", () => {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  test.skip(process.env.E2E_CHECKOUT_WRITE !== "1" || !url || !key, "Defina E2E_CHECKOUT_WRITE=1 para rodar (cria e apaga um cupom temporário).");
+  const code = `E2E-VENCIDO-${Date.now().toString(36).toUpperCase()}`;
+  const rest = (path: string, init: RequestInit = {}) =>
+    fetch(`${url}/rest/v1/${path}`, { ...init, headers: { apikey: key!, authorization: `Bearer ${key}`, "content-type": "application/json", ...init.headers } });
+
+  test.beforeAll(async () => {
+    const r = await rest("coupons", {
+      method: "POST",
+      body: JSON.stringify({ code, kind: "percent", percent_off: 10, ends_at: "2020-01-01T00:00:00Z", description: "Teste E2E (apagado ao final)" }),
+    });
+    expect(r.status).toBe(201);
+  });
+  test.afterAll(async () => {
+    await rest(`coupons?code=eq.${code}`, { method: "DELETE" });
+  });
+
+  test("cupom vencido mostra a mensagem e não dá desconto", async ({ page }) => {
+    await addToCart(page);
+    await page.goto("/checkout");
+    await page.getByLabel("Cupom de desconto").fill(code);
+    await page.getByRole("button", { name: "Aplicar" }).click();
+    await expect(page.getByText("Este cupom expirou.")).toBeVisible();
+    await expect(page.getByRole("region", { name: "Resumo" }).getByText(/Desconto/)).toHaveCount(0);
   });
 });

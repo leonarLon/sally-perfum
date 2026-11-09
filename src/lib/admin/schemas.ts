@@ -229,6 +229,7 @@ export function fieldErrors(error: z.ZodError): Record<string, string> {
 export function dbErrorMessage(error: { code?: string; message?: string } | null): string {
   switch (error?.code) {
     case "23505":
+      if (/coupons_code/i.test(error.message ?? "")) return "Já existe um cupom com esse código.";
       return /sku/i.test(error.message ?? "") ? "Já existe uma variante com esse SKU." : "Já existe um registro com esse slug.";
     case "23514":
       return error.message?.includes("reservada") ? error.message : "Os valores não passaram na validação do banco.";
@@ -255,3 +256,113 @@ export function detectImageType(bytes: Uint8Array): { mime: string; ext: string 
 
 export const IMAGE_MIN_BYTES = 5 * 1024;
 export const IMAGE_MAX_BYTES = 5 * 1024 * 1024;
+
+/** "2026-11-30T23:59" (horário de Brasília, sem horário de verão desde 2019) → ISO com fuso. */
+export function brtLocalToIso(v: string): string | null {
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(v)) return null;
+  const d = new Date(`${v}:00-03:00`);
+  return Number.isNaN(d.getTime()) ? null : d.toISOString();
+}
+
+/** ISO → valor de <input type="datetime-local"> em horário de Brasília. */
+export function isoToBrtLocal(iso: string | null): string {
+  if (!iso) return "";
+  const d = new Date(new Date(iso).getTime() - 3 * 60 * 60_000);
+  return d.toISOString().slice(0, 16);
+}
+
+const optionalMoney = (label: string) =>
+  z
+    .string()
+    .trim()
+    .default("")
+    .transform((v, ctx) => {
+      if (v === "") return null;
+      try {
+        const cents = parseBRLToCents(v);
+        if (cents <= 0) throw new Error();
+        return cents;
+      } catch {
+        ctx.addIssue({ code: "custom", message: `${label} inválido. Use o formato 150,00.` });
+        return z.NEVER;
+      }
+    });
+
+const optionalDate = z
+  .string()
+  .trim()
+  .default("")
+  .transform((v, ctx) => {
+    if (v === "") return null;
+    const iso = brtLocalToIso(v);
+    if (!iso) {
+      ctx.addIssue({ code: "custom", message: "Data inválida." });
+      return z.NEVER;
+    }
+    return iso;
+  });
+
+export const couponSchema = z
+  .object({
+    code: z
+      .string()
+      .default("")
+      .transform((v) => v.replace(/\s+/g, "").toUpperCase())
+      .pipe(z.string().regex(/^[A-Z0-9][A-Z0-9-]{2,31}$/, "Código: 3 a 32 caracteres, letras, números e hífens.")),
+    description: optionalText(200),
+    kind: z.enum(["percent", "fixed"], "Escolha o tipo de desconto."),
+    value: z.string().trim().min(1, "Informe o valor do desconto."),
+    max_discount: optionalMoney("Teto"),
+    min_subtotal: optionalMoney("Valor mínimo"),
+    starts_at: optionalDate,
+    ends_at: optionalDate,
+    max_uses: optionalInt(1, 1_000_000, "O limite de usos"),
+    once_per_email: checkbox,
+    is_active: checkbox,
+  })
+  .transform((c, ctx) => {
+    let percent_off: number | null = null;
+    let amount_off_cents: number | null = null;
+    if (c.kind === "percent") {
+      const n = Number(c.value.replace("%", "").trim());
+      if (!Number.isInteger(n) || n < 1 || n > 90) {
+        ctx.addIssue({ code: "custom", path: ["value"], message: "Percentual: número inteiro de 1 a 90." });
+        return z.NEVER;
+      }
+      percent_off = n;
+    } else {
+      try {
+        amount_off_cents = parseBRLToCents(c.value);
+        if (amount_off_cents <= 0) throw new Error();
+      } catch {
+        ctx.addIssue({ code: "custom", path: ["value"], message: "Valor inválido. Use o formato 30,00." });
+        return z.NEVER;
+      }
+      if (c.max_discount !== null) {
+        ctx.addIssue({ code: "custom", path: ["max_discount"], message: "O teto vale só para desconto percentual." });
+        return z.NEVER;
+      }
+    }
+    if (c.starts_at && c.ends_at && c.ends_at <= c.starts_at) {
+      ctx.addIssue({ code: "custom", path: ["ends_at"], message: "O fim precisa ser depois do início." });
+      return z.NEVER;
+    }
+    return {
+      code: c.code,
+      description: c.description,
+      kind: c.kind,
+      percent_off,
+      amount_off_cents,
+      max_discount_cents: c.max_discount,
+      min_subtotal_cents: c.min_subtotal ?? 0,
+      starts_at: c.starts_at,
+      ends_at: c.ends_at,
+      max_uses: c.max_uses,
+      once_per_email: c.once_per_email,
+      is_active: c.is_active,
+    };
+  });
+
+export const COUPON_FIELDS = [
+  "code", "description", "kind", "value", "max_discount", "min_subtotal", "starts_at", "ends_at", "max_uses", "once_per_email", "is_active",
+] as const;

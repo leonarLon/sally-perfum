@@ -11,6 +11,7 @@ import { cart, useCart, useHydrated } from "@/lib/cart/store";
 import { PAYMENT_METHODS, UFS } from "@/lib/checkout/schemas";
 import { formatBRL } from "@/lib/money";
 import { CEP_KEY } from "./cart-view";
+import { CouponField } from "./coupon-field";
 import { OrderSummary } from "./order-summary";
 import { useQuote } from "./use-quote";
 
@@ -28,7 +29,8 @@ export function CheckoutForm({ defaults }: { defaults?: CheckoutDefaults | null 
   const idempotencyKey = useRef<string | null>(null);
   const [cep, setCep] = useState(() => saved[0]?.cep ?? (typeof window === "undefined" ? "" : (sessionStorage.getItem(CEP_KEY) ?? "")));
   const cepDigits = cep.replace(/\D/g, "");
-  const { quote, loading } = useQuote(items, cepDigits.length === 8 ? cepDigits : undefined);
+  const [coupon, setCoupon] = useState("");
+  const { quote, loading } = useQuote(items, cepDigits.length === 8 ? cepDigits : undefined, coupon || undefined);
   const [state, formAction, pending] = useActionState<CheckoutState, FormData>(placeOrder, {});
 
   useEffect(() => {
@@ -67,6 +69,8 @@ export function CheckoutForm({ defaults }: { defaults?: CheckoutDefaults | null 
       }}
     >
       <input type="hidden" name="items" value={JSON.stringify(items)} />
+      {/* Só vai no pedido o cupom que o servidor aceitou; o banco revalida ao criar o pedido. */}
+      <input type="hidden" name="coupon" value={quote?.coupon?.ok ? coupon : ""} />
 
       <div className="space-y-8">
         <FormMessage state={s} />
@@ -169,6 +173,7 @@ export function CheckoutForm({ defaults }: { defaults?: CheckoutDefaults | null 
             ))}
           </ul>
         )}
+        <CouponField applied={coupon} onApply={setCoupon} quote={quote} loading={loading} />
         <OrderSummary quote={quote} loading={loading}>
           <Button type="submit" size="lg" className="w-full" disabled={pending || blocked || state.ok}>
             {pending || state.ok ? "Enviando pedido…" : "Concluir pedido"}

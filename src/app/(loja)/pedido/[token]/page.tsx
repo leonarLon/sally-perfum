@@ -30,6 +30,7 @@ type PublicOrder = {
   subtotal_cents: number;
   shipping_cents: number;
   discount_cents: number;
+  coupon_code: string | null;
   total_cents: number;
   is_demo: boolean;
   payment: (NonNullable<PublicPayment> & { amount_cents: number }) | null;
@@ -122,6 +123,12 @@ async function OrderDetails({ params, searchParams }: PageProps<"/pedido/[token]
             <dt>Frete ({o.shipping_label})</dt>
             <dd className="tabular-nums">{o.shipping_cents === 0 ? "Grátis" : formatBRL(o.shipping_cents)}</dd>
           </div>
+          {o.discount_cents > 0 && (
+            <div className="flex justify-between">
+              <dt>Desconto{o.coupon_code ? ` (cupom ${o.coupon_code})` : ""}</dt>
+              <dd className="tabular-nums text-success">−{formatBRL(o.discount_cents)}</dd>
+            </div>
+          )}
           <div className="flex justify-between border-t border-border pt-2 text-base font-semibold">
             <dt>Total</dt>
             <dd className="tabular-nums">{formatBRL(o.total_cents)}</dd>

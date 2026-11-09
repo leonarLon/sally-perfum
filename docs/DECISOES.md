@@ -54,3 +54,6 @@
 | 09/11/2026 | Técnica | Trava `STORE_MODE=commercial` + `PAYMENT_PROVIDER=fake` → build/servidor falham | Engenharia |
 | 09/11/2026 | Correção | Os números de grupo nos nomes dos testes não seguiam a numeração do briefing; foram removidos e a rastreabilidade passou a viver em `docs/TESTES.md` | Engenharia |
 | 09/11/2026 | Correção | Falhas intermitentes nos E2E de login: a URL do login termina com o `returnTo`, e a checagem por regex passava antes do login concluir. Trocada por comparação do caminho | Engenharia |
+| 09/11/2026 | D17 | **Autorizado** pelo usuário: cupons de desconto (grupos 24 e 25). Migration `20261108000700_coupons.sql` | Usuário |
+| 09/11/2026 | Técnica | Códigos de cupom não são legíveis pela API pública; a validação roda só com service role, chamada por ação com limite de 30 tentativas a cada 10 min por IP (evita descobrir códigos por força bruta) | Engenharia |
+| 09/11/2026 | Técnica | Desconto só sobre os produtos; frete grátis avaliado sobre o valor com desconto; pedido nunca abaixo de R$ 1,00 em produtos. Usos contam pedidos não cancelados nem expirados | Engenharia |

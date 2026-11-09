@@ -95,6 +95,12 @@ Preenchida **só por trigger** (`audit_row_change`, `SECURITY DEFINER`) em `bran
 - `payment_events`: eventos do provedor, únicos por `(provider, event_id)` (idempotência), com o resultado da aplicação.
 - Trigger `orders_sync_payments`: cancelar pedido pago estorna a cobrança aprovada; cancelar/expirar encerra a pendente.
 
+### Cupons
+- `coupons`: `code` único (maiúsculas, 3–32), `kind` `percent` (1–90%, com teto opcional `max_discount_cents`) ou `fixed` (`amount_off_cents`), `min_subtotal_cents`, `starts_at`/`ends_at`, `max_uses`, `once_per_email`, `is_active`, `is_demo`. `CHECK` impede combinações incoerentes. Auditada por trigger; não se apaga (desativa).
+- `orders.coupon_id` / `coupon_code`: cupom usado no pedido (o código fica como retrato mesmo se o cupom mudar).
+- Usos = pedidos com o cupom que não foram cancelados nem expiraram: cancelar ou deixar expirar devolve o uso.
+- O desconto incide só sobre os produtos; o frete grátis é avaliado sobre o valor com desconto; o pedido fica com pelo menos R$ 1,00 em produtos.
+
 ## View e funções (RPC)
 | Objeto | Descrição |
 |---|---|
@@ -108,7 +114,10 @@ Preenchida **só por trigger** (`audit_row_change`, `SECURITY DEFINER`) em `bran
 | `admin_dashboard_stats()` | Contagens do dashboard |
 | `quote_cart(items, cep)` | Cotação pública: preço atual, disponibilidade (limitada ao máximo por item), subtotal e frete |
 | `shipping_quote(cep, subtotal)` | Frete da região, com frete grátis acima do valor configurado |
-| `create_order(...)` | **Só service role.** Trava o estoque em ordem fixa, recusa venda acima do disponível, recalcula preço e frete, reserva e é idempotente (advisory lock pela chave) |
+| `create_order(...)` | **Só service role.** Trava o estoque em ordem fixa, recusa venda acima do disponível, recalcula preço, desconto e frete, reserva e é idempotente (advisory lock pela chave). Revalida o cupom travando a linha dele (limite de usos vale com pedidos simultâneos) |
+| `quote_cart_coupon(items, cep, code)` | **Só service role** (chamada por ação com limite de tentativas). Cotação com o desconto do cupom e o motivo da recusa (`CUPOM_INVALIDO`, `CUPOM_EXPIRADO`, `CUPOM_NAO_INICIADO`, `CUPOM_ESGOTADO`, `CUPOM_MINIMO:<centavos>`, `CUPOM_JA_USADO`) |
+| `evaluate_coupon(...)` | Interna (sem execução pela API): regra única usada pela cotação e pelo pedido |
+| `admin_list_coupons()` | Cupons com usos e desconto concedido em pedidos pagos |
 | `get_order_public(token)` | Pedido pelo link: sem `user_id`, rua ou token; CEP mascarado |
 | `admin_update_order_status(order, status)` | Transições válidas com efeito no estoque (pago baixa, cancelado libera ou devolve) |
 | `admin_release_expired_reservations()` / `release_expired_reservations()` | Expira pedidos vencidos e devolve a reserva |
@@ -131,6 +140,7 @@ As RPCs do catálogo são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem c
 | audit_logs | — | Leitura (escrita só por trigger) |
 | orders, order_items, order_events | Cliente lê os próprios (sem token); visitante nada | Leitura; mudança só por RPC |
 | shipping_zones, store_settings | Leitura pública | Escrita |
+| coupons | — (códigos não são públicos) | Leitura, criação e edição; sem exclusão |
 | profiles, customer_addresses, favorites | Só o próprio dono | — (sem acesso) |
 | storage `product-images` | Leitura pública pela URL | Upload, leitura via API, atualização e remoção |
 
@@ -146,6 +156,7 @@ As RPCs do catálogo são `SECURITY INVOKER`, ou seja, respeitam a RLS de quem c
 | `20261108000500_customers.sql` | Perfil, endereços, favoritos; `inventory_movements.actor_id` com `on delete set null` |
 | `20261108000400_orders.sql` | Frete, configurações, pedidos, itens, histórico, RPCs de compra e de status |
 | `20261108000300_admin.sql` | `audit_logs` e triggers, RPCs `admin_*`, policy de leitura do Storage para admin |
+| `20261108000700_coupons.sql` | Cupons, `create_order` com cupom (8 parâmetros), cotação com cupom, lista do painel, cupom de demonstração `BEMVINDA10` |
 
 ## Seed
 `supabase/seed/catalog.seed.sql` (gerado) é idempotente: upsert por `seed_key` e `sku`. Ele **não sobrescreve** preço confirmado (`price_is_reference = false`), conteúdo revisado (`commercial_review = 'approved'`) nem estoque existente. Detalhes em [PRODUCT_CATALOG.md](PRODUCT_CATALOG.md).

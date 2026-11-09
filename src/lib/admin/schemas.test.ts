@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { safeAdminReturnTo } from "@/lib/auth/session";
-import { dbErrorMessage, detectImageType, productSchema, slugify, stockSchema, variantSchema } from "./schemas";
+import { brtLocalToIso, couponSchema, dbErrorMessage, detectImageType, isoToBrtLocal, productSchema, slugify, stockSchema, variantSchema } from "./schemas";
 
 const UUID = "4b1f6a1e-2c3d-4e5f-8a9b-0c1d2e3f4a5b";
 const baseProduct = { name: "Água de Rosas Nº 5", brand_id: UUID, category_id: UUID, gender: "feminino", origin: "nacional" };
@@ -89,5 +89,43 @@ describe("admin: segurança", () => {
     expect(dbErrorMessage({ code: "23505", message: 'duplicate key value violates unique constraint "product_variants_sku_key"' })).toMatch(/SKU/);
     expect(dbErrorMessage({ code: "42501", message: "permission denied for table products" })).toBe("Você não tem permissão para esta ação.");
     expect(dbErrorMessage({ code: "XX000", message: "internal: relation secret" })).not.toMatch(/secret/);
+  });
+});
+
+describe("couponSchema (painel)", () => {
+  const base = { code: " bem vinda10 ", kind: "percent", value: "10", is_active: "on" };
+
+  it("normaliza o código e converte percentual, teto e mínimo para centavos", () => {
+    const r = couponSchema.parse({ ...base, max_discount: "100,00", min_subtotal: "150,00", max_uses: "50" });
+    expect(r).toMatchObject({
+      code: "BEMVINDA10", kind: "percent", percent_off: 10, amount_off_cents: null,
+      max_discount_cents: 10000, min_subtotal_cents: 15000, max_uses: 50, is_active: true, once_per_email: false,
+    });
+  });
+
+  it("valor fixo em reais vira centavos e não aceita teto", () => {
+    expect(couponSchema.parse({ ...base, kind: "fixed", value: "30,00" })).toMatchObject({ amount_off_cents: 3000, percent_off: null });
+    const r = couponSchema.safeParse({ ...base, kind: "fixed", value: "30,00", max_discount: "10,00" });
+    expect(r.success).toBe(false);
+  });
+
+  it("recusa percentual fora de 1 a 90, código inválido e fim antes do início", () => {
+    for (const bad of [
+      { ...base, value: "95" },
+      { ...base, value: "0" },
+      { ...base, value: "10.5" },
+      { ...base, code: "a" },
+      { ...base, code: "CÓDIGO" },
+      { ...base, starts_at: "2030-01-02T10:00", ends_at: "2030-01-01T10:00" },
+      { ...base, ends_at: "amanhã" },
+    ]) {
+      expect(couponSchema.safeParse(bad).success, JSON.stringify(bad)).toBe(false);
+    }
+  });
+
+  it("datas do formulário são horário de Brasília", () => {
+    expect(brtLocalToIso("2026-12-31T23:59")).toBe("2027-01-01T02:59:00.000Z");
+    expect(isoToBrtLocal("2027-01-01T02:59:00.000Z")).toBe("2026-12-31T23:59");
+    expect(brtLocalToIso("31/12/2026")).toBeNull();
   });
 });

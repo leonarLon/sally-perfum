@@ -104,6 +104,12 @@ export default async function OrderDetailPage({ params }: PageProps<"/admin/pedi
             <dt>Frete</dt>
             <dd className="tabular-nums">{formatBRL(o.shipping_cents)}</dd>
           </div>
+          {o.discount_cents > 0 && (
+            <div className="flex justify-between">
+              <dt>Desconto{o.coupon_code ? ` (cupom ${o.coupon_code})` : ""}</dt>
+              <dd className="tabular-nums text-success">−{formatBRL(o.discount_cents)}</dd>
+            </div>
+          )}
           <div className="flex justify-between border-t border-border pt-1 font-semibold">
             <dt>Total</dt>
             <dd className="tabular-nums">{formatBRL(o.total_cents)}</dd>

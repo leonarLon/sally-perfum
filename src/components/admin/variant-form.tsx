@@ -3,14 +3,8 @@ import { useActionState } from "react";
 import { Button } from "@/components/ui/button";
 import type { AdminVariant } from "@/lib/admin/queries";
 import type { FormState } from "@/lib/admin/schemas";
+import { centsToInput } from "@/lib/money";
 import { CheckboxField, Field, FormMessage, keepValuesOnSubmit, type FormAction } from "./form-kit";
-
-/** Centavos → "1.299,90" para edição (sem float). */
-function centsToInput(cents: number | null | undefined) {
-  if (cents == null) return "";
-  const reais = Math.trunc(cents / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  return `${reais},${String(cents % 100).padStart(2, "0")}`;
-}
 
 export function VariantForm({ action, variant, suggestedSku }: { action: FormAction; variant?: AdminVariant; suggestedSku?: string }) {
   const [state, formAction, pending] = useActionState<FormState, FormData>(action, {});

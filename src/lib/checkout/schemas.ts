@@ -1,3 +1,4 @@
+import { formatBRL } from "@/lib/money";
 import { z } from "@/lib/zod";
 
 export const UFS = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"] as const;
@@ -6,6 +7,13 @@ export const PAYMENT_METHODS = { pix: "Pix", card: "Cartão de crédito", boleto
 const digits = (v: string) => v.replace(/\D/g, "");
 const text = (min: number, max: number, label: string) =>
   z.string(`Informe ${label}.`).trim().min(min, `Informe ${label}.`).max(max, `Máximo de ${max} caracteres.`);
+
+/** Código de cupom digitado: maiúsculas, sem espaços. Vazio = sem cupom. */
+export const couponCodeSchema = z
+  .string()
+  .default("")
+  .transform((v) => v.replace(/\s+/g, "").toUpperCase())
+  .refine((v) => v === "" || /^[A-Z0-9][A-Z0-9-]{2,31}$/.test(v), "Cupom inválido.");
 
 export const cartItemsSchema = z
   .array(z.object({ variantId: z.uuid(), quantity: z.number().int().min(1).max(10) }))
@@ -29,6 +37,7 @@ export const checkoutSchema = z.object({
   city: text(2, 80, "a cidade"),
   state: z.enum(UFS, "Escolha o estado."),
   payment_method: z.enum(["pix", "card", "boleto"], "Escolha a forma de pagamento."),
+  coupon: couponCodeSchema,
   privacy: z.literal("on", "É preciso aceitar a política de privacidade para concluir."),
   items: z
     .string()
@@ -47,12 +56,25 @@ export type CheckoutInput = z.output<typeof checkoutSchema>;
 
 export const CHECKOUT_FIELDS = [
   "idempotency_key", "name", "email", "phone", "cep", "street", "number", "complement",
-  "district", "city", "state", "payment_method", "privacy", "items",
+  "district", "city", "state", "payment_method", "coupon", "privacy", "items",
 ] as const;
 
+/** Motivo da recusa de um cupom (evaluate_coupon) → mensagem para o cliente. */
+export function couponErrorMessage(error: string | undefined): string {
+  const e = error ?? "";
+  const min = /CUPOM_MINIMO:(\d+)/.exec(e);
+  if (min) return `Este cupom vale para compras a partir de ${formatBRL(Number(min[1]))} em produtos.`;
+  if (e.includes("CUPOM_EXPIRADO")) return "Este cupom expirou.";
+  if (e.includes("CUPOM_NAO_INICIADO")) return "Este cupom ainda não está valendo.";
+  if (e.includes("CUPOM_ESGOTADO")) return "Este cupom atingiu o limite de usos.";
+  if (e.includes("CUPOM_JA_USADO")) return "Este cupom já foi usado com este e-mail.";
+  return "Cupom inválido. Confira o código.";
+}
+
 /** Erros do create_order → mensagem para o cliente. */
-export function orderErrorMessage(message: string | undefined): { message: string; outOfStock?: string } {
+export function orderErrorMessage(message: string | undefined): { message: string; outOfStock?: string; couponError?: boolean } {
   const m = message ?? "";
+  if (/CUPOM_/.test(m)) return { message: couponErrorMessage(m), couponError: true };
   const stock = /ESTOQUE_INSUFICIENTE:([^:]+):(\d+)/.exec(m);
   if (stock) {
     const left = Number(stock[2]);
@@ -90,4 +112,7 @@ export type Quote = {
   shipping: { label: string; price_cents: number; days_min: number; days_max: number; free: boolean; free_over_cents: number | null } | null;
   free_shipping_over_cents: number | null;
   max_qty_per_item: number;
+  /** Só na cotação com cupom (quote_cart_coupon). */
+  discount_cents?: number;
+  coupon?: { ok: boolean; error?: string; code?: string; description?: string | null; discount_cents?: number } | null;
 };

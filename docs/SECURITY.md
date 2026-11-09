@@ -33,6 +33,7 @@ Revisão da Fase 10 (09/11/2026). Projeto de estudo: o que muda antes do uso com
 - `create_order`: trava o estoque em ordem fixa, nunca vende além do disponível, idempotente por chave (advisory lock), reserva por 30 min.
 - Pagamento só é confirmado por **webhook com HMAC-SHA256** (`t=…,v1=…`, tolerância de 5 min contra replay), comparação em tempo constante, limite de corpo (16 KB) e de requisições.
 - `apply_payment_event` é idempotente pelo id do evento e confere o valor; divergência vai para revisão; pagamento após expiração fica marcado para estorno.
+- Cupons: os códigos não são legíveis pela API pública; a validação só roda com service role, por uma ação com limite de tentativas (sem força bruta pela chave pública). O navegador manda só o código: desconto, mínimo, validade e limite de usos são conferidos no banco, de novo ao criar o pedido, com a linha do cupom travada.
 - Cartão tokenizado no navegador; os campos do cartão não têm `name` (nem um envio sem JavaScript os transmite).
 - Trava de configuração: com `STORE_MODE=commercial`, build e servidor se recusam a subir com o provedor simulado.
 

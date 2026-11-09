@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { rateLimit } from "@/lib/rate-limit";
-import { checkoutSchema, orderErrorMessage } from "./schemas";
+import { checkoutSchema, couponErrorMessage, orderErrorMessage } from "./schemas";
 
 const valid = {
   idempotency_key: "4b1f6a1e-2c3d-4e5f-8a9b-0c1d2e3f4a5b",
@@ -54,5 +54,22 @@ describe("checkout: validação", () => {
     for (let i = 0; i < 3; i++) expect(rateLimit("teste:a", 3, 60_000, t).ok).toBe(true);
     expect(rateLimit("teste:a", 3, 60_000, t).ok).toBe(false);
     expect(rateLimit("teste:a", 3, 60_000, t + 60_001).ok).toBe(true);
+  });
+});
+
+describe("cupom no checkout", () => {
+  it("código opcional, normalizado; formato impossível é recusado", () => {
+    expect(checkoutSchema.parse(valid).coupon).toBe("");
+    expect(checkoutSchema.parse({ ...valid, coupon: " bemvinda10 " }).coupon).toBe("BEMVINDA10");
+    expect(checkoutSchema.safeParse({ ...valid, coupon: "<script>" }).success).toBe(false);
+  });
+
+  it("motivos de recusa viram mensagens claras", () => {
+    expect(couponErrorMessage("CUPOM_EXPIRADO")).toBe("Este cupom expirou.");
+    expect(couponErrorMessage("CUPOM_MINIMO:15000")).toMatch(/a partir de R\$\s150,00/);
+    expect(couponErrorMessage("CUPOM_ESGOTADO")).toMatch(/limite de usos/);
+    expect(couponErrorMessage("CUPOM_JA_USADO")).toMatch(/já foi usado/);
+    expect(couponErrorMessage("CUPOM_INVALIDO")).toMatch(/inválido/);
+    expect(orderErrorMessage("CUPOM_EXPIRADO")).toEqual({ message: "Este cupom expirou.", couponError: true });
   });
 });

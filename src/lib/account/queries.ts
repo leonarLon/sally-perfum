@@ -71,7 +71,7 @@ export async function getMyOrder(id: string) {
   const [o, items, events] = await Promise.all([
     supabase
       .from("orders")
-      .select("id, number, status, customer_name, ship_street, ship_number, ship_complement, ship_district, ship_city, ship_state, ship_cep, shipping_label, shipping_days_min, shipping_days_max, payment_method, subtotal_cents, shipping_cents, discount_cents, total_cents, reserved_until, created_at")
+      .select("id, number, status, customer_name, ship_street, ship_number, ship_complement, ship_district, ship_city, ship_state, ship_cep, shipping_label, shipping_days_min, shipping_days_max, payment_method, subtotal_cents, shipping_cents, discount_cents, coupon_code, total_cents, reserved_until, created_at")
       .eq("id", id)
       .maybeSingle(),
     supabase.from("order_items").select("id, sku, product_name, brand_name, product_slug, volume_ml, unit_price_cents, quantity, line_total_cents").eq("order_id", id).order("id"),

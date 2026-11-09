@@ -223,7 +223,7 @@ export async function getDashboardStats() {
 // Pedidos (Fase 6)
 // ---------------------------------------------------------------------------
 const ORDER_COLUMNS =
-  "id, number, user_id, status, customer_name, customer_email, customer_phone, ship_cep, ship_street, ship_number, ship_complement, ship_district, ship_city, ship_state, shipping_label, shipping_days_min, shipping_days_max, payment_method, subtotal_cents, shipping_cents, discount_cents, total_cents, reserved_until, is_demo, created_at, updated_at";
+  "id, number, user_id, status, customer_name, customer_email, customer_phone, ship_cep, ship_street, ship_number, ship_complement, ship_district, ship_city, ship_state, shipping_label, shipping_days_min, shipping_days_max, payment_method, subtotal_cents, shipping_cents, discount_cents, coupon_code, total_cents, reserved_until, is_demo, created_at, updated_at";
 
 export type AdminOrder = {
   id: string;
@@ -247,6 +247,7 @@ export type AdminOrder = {
   subtotal_cents: number;
   shipping_cents: number;
   discount_cents: number;
+  coupon_code: string | null;
   total_cents: number;
   reserved_until: string | null;
   is_demo: boolean;
@@ -318,4 +319,43 @@ export async function getOrder(id: string) {
     events: (events.data ?? []) as AdminOrderEvent[],
     payments: (payments.data ?? []) as AdminPayment[],
   };
+}
+
+export type AdminCoupon = {
+  id: string;
+  code: string;
+  description: string | null;
+  kind: "percent" | "fixed";
+  percent_off: number | null;
+  amount_off_cents: number | null;
+  max_discount_cents: number | null;
+  min_subtotal_cents: number;
+  starts_at: string | null;
+  ends_at: string | null;
+  max_uses: number | null;
+  once_per_email: boolean;
+  is_active: boolean;
+  is_demo: boolean;
+  created_at: string;
+  uses: number;
+  discount_given_cents: number;
+  /** Situação no momento da consulta. */
+  state: "active" | "inactive" | "expired" | "scheduled" | "exhausted";
+};
+
+function couponState(c: Omit<AdminCoupon, "state">, now: number): AdminCoupon["state"] {
+  if (!c.is_active) return "inactive";
+  if (c.ends_at && new Date(c.ends_at).getTime() <= now) return "expired";
+  if (c.starts_at && new Date(c.starts_at).getTime() > now) return "scheduled";
+  if (c.max_uses && c.uses >= c.max_uses) return "exhausted";
+  return "active";
+}
+
+export async function listCoupons() {
+  const { supabase } = await requireRole();
+  await releaseExpired(supabase); // usos de pedidos vencidos voltam a valer
+  const { data, error } = await supabase.rpc("admin_list_coupons");
+  if (error) throw new Error("Falha ao carregar cupons.");
+  const now = Date.now();
+  return ((data ?? []) as Omit<AdminCoupon, "state">[]).map((c) => ({ ...c, state: couponState(c, now) }));
 }

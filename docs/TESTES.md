@@ -8,7 +8,7 @@ Mapa de cada grupo de testes do briefing (seção "Testes automatizados") e de c
 | `npm run check` | Lint, tipos e Vitest: unitários, componentes e **banco** (Postgres real em PGlite, com todas as migrations e o seed) |
 | `npm run e2e` | Playwright em desktop e mobile sobre o build de produção, contra o Supabase do `.env.local`. Não grava nada |
 | `E2E_CHECKOUT_WRITE=1 E2E_ACCOUNT_WRITE=1 E2E_ADMIN_WRITE=1 npm run e2e` | Inclui os fluxos que **gravam** no Supabase e desfazem o que criam (exige autorização) |
-| `node --env-file=.env.local scripts/catalog/verify-remote.mjs` | Conferência do Supabase real como visitante (28 checagens) |
+| `node --env-file=.env.local scripts/catalog/verify-remote.mjs` | Conferência do Supabase real como visitante (33 checagens) |
 | `node scripts/perf/lighthouse.mjs` | Lighthouse com mediana ([LIGHTHOUSE.md](LIGHTHOUSE.md)) |
 
 Relatórios: JUnit em `test-results/vitest-junit.xml`, HTML do Playwright em `playwright-report/`, traces de falhas em `test-results/`. A suíte não chama serviços pagos.
@@ -42,8 +42,8 @@ Legenda: ✅ coberto · ◐ parcial (motivo ao lado) · ⏸️ não se aplica no
 | 21 | Atualização de estoque | ✅ | `tests/db/admin.db.test.ts` (contagem, entrada, mínimo, reservado, permissões) |
 | 22 | Preço alterado | ✅ | `orders.db` (preço do banco, nunca o enviado), `e2e/admin-escrita` (loja reflete), `e2e/checkout` (sacola adulterada) |
 | 23 | Produto esgotado | ✅ | `orders.db` (`ESTOQUE_INSUFICIENTE`), `catalog-components.test` (botão esgotado), `quote_cart` |
-| 24 | Cupom inválido | ❌ | Cupons não implementados (`PENDENCIAS_COMERCIAIS.md` §4) |
-| 25 | Cupom expirado | ❌ | Idem |
+| 24 | Cupom inválido | ✅ | `tests/db/coupons.db.test.ts` (inexistente, inativo, formato, injeção, abaixo do mínimo, esgotado, já usado no e-mail), `checkout/schemas.test`, `admin/schemas.test`, `e2e/checkout` (mensagem na tela, sem desconto) |
+| 25 | Cupom expirado | ✅ | `coupons.db` (vencido e ainda não iniciado; pedido recusado sem reservar estoque), `e2e/checkout` (cupom vencido temporário, opt-in) |
 | 26 | Checkout | ✅ | `src/lib/checkout/schemas.test.ts`, `e2e/checkout` |
 | 27 | Pagamento pendente | ✅ | `tests/db/payments.db.test.ts`, `e2e/checkout` |
 | 28 | Pagamento aprovado | ✅ | `payments.db`, `e2e/checkout` |
@@ -70,7 +70,7 @@ Legenda: ✅ coberto · ◐ parcial (motivo ao lado) · ⏸️ não se aplica no
 | 49 | Sem informações olfativas completas | ✅ | `e2e/catalogo`, `catalog-components.test` |
 | 50 | Estoque demo × confirmado | ✅ | `catalog.db` (seed demo), `admin.db` (contagem conferida tira a marca) |
 
-**Resumo:** 40 ✅, 3 ◐, 5 ⏸️ (IA e merge de carrinho por decisão), 2 ❌ (cupons).
+**Resumo:** 42 ✅, 3 ◐, 5 ⏸️ (IA e merge de carrinho por decisão).
 
 ## Testes de segurança (seção 20)
 
@@ -80,7 +80,7 @@ Legenda: ✅ coberto · ◐ parcial (motivo ao lado) · ⏸️ não se aplica no
 | Cliente alterando o próprio papel | ✅ | `catalog.db` (`user_roles` sem escrita para clientes) |
 | Pedido de outra pessoa | ✅ | `orders.db` (RLS por dono, token nunca legível) |
 | Pedido por identificador previsível | ✅ | `orders.db` (token de 64 hex; número sequencial não dá acesso; injeção no token) |
-| Alterar preço pelo frontend | ✅ | `orders.db`, `checkout/schemas.test`, `e2e/checkout` (sacola adulterada), `verify-remote` |
+| Alterar preço pelo frontend | ✅ | `orders.db`, `checkout/schemas.test`, `e2e/checkout` (sacola adulterada), `verify-remote`. Desconto também: o navegador manda só o código, o banco calcula (`coupons.db`) |
 | Comprar produto esgotado | ✅ | `orders.db` |
 | Quantidade além do estoque | ✅ | `orders.db`, `quote_cart` |
 | Upload de arquivo inválido | ✅ | `admin/schemas.test` (SVG, GIF e texto recusados pela assinatura) |

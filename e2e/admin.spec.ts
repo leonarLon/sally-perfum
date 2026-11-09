@@ -61,6 +61,12 @@ test.describe("Painel: com login de administrador", () => {
 
     await page.goto("/admin/estoque?status=low_stock");
     await expect(page.getByRole("heading", { level: 1, name: "Estoque" })).toBeVisible();
+    await page.goto("/admin/cupons");
+    await expect(page.getByRole("heading", { level: 1, name: "Cupons" })).toBeVisible();
+    await expect(page.getByText("BEMVINDA10", { exact: true })).toBeVisible();
+    r = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();
+    expect(r.violations.map((v) => v.id), "cupons").toEqual([]);
+
     await page.goto("/admin");
     await expect(page.getByRole("heading", { name: "Atividade recente" })).toBeVisible();
 

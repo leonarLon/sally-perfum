@@ -17,6 +17,7 @@ E-commerce de perfumes com identidade rosa e branca e painel administrativo.
 | 7. Área do cliente | ✅ Cadastro, login, recuperação de senha, Meus pedidos, endereços, favoritos, perfil, troca de senha, exportação de dados e exclusão de conta (LGPD); checkout preenchido para quem está logado. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
 | 8. Pagamentos (simulado) | ✅ Pix, boleto e cartão de teste por um provedor simulado atrás de interface independente de gateway; cartão tokenizado no navegador; webhook com assinatura HMAC, idempotente e com conferência de valor; estorno no cancelamento. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
 | 10. Segurança e qualidade | ✅ Revisão de segurança ([SECURITY.md](docs/SECURITY.md)), CSP e cabeçalhos, cookies de sessão `httpOnly`, trava do pagamento simulado em modo comercial, varredura de segredos no bundle, matriz de testes ([TESTES.md](docs/TESTES.md)) e Lighthouse com mediana ([LIGHTHOUSE.md](docs/LIGHTHOUSE.md)) |
+| Cupons | ✅ Cupons percentuais e de valor fixo, com mínimo, validade, limite de usos e uso único por e-mail; validados só no banco; tela no painel (`/admin/cupons`) |
 | 11. Documentação final e publicação | ⏳ Planejada (publicação só com autorização) |
 | 9. IA (Consultor de Fragrâncias e RAG) | ⏸️ Suspensa até a venda do projeto; ver [PENDENCIAS_COMERCIAIS.md §6](docs/PENDENCIAS_COMERCIAIS.md) |
 
@@ -102,7 +103,7 @@ docs/                diagnóstico, decisões e pendências comerciais
 ## Limitações atuais
 - Os E2E do catálogo rodam contra o Supabase configurado no `.env.local`, não contra um banco local. A suíte de banco (PGlite) é a parte determinística.
 - Os testes de banco usam PGlite com um shim de `auth`/`storage` (`tests/db/supabase-shim.sql`). Eles validam o SQL, a RLS e o seed, mas não substituem um teste no Supabase real.
-- Pagamentos são **simulados** (`PAYMENT_PROVIDER=fake`): nada é cobrado. Cupons, clientes, relatórios e configurações do painel ainda não existem.
+- Pagamentos são **simulados** (`PAYMENT_PROVIDER=fake`): nada é cobrado. Clientes, relatórios e configurações do painel ainda não existem.
 - O checkout depende de JavaScript (a sacola fica no `localStorage`).
 - Com o projeto dentro do OneDrive, arquivos antigos de `.next` às vezes viram atalhos de nuvem e travam o build. Por isso o `npm run build` apaga `.next` antes (`scripts/dev/clean-next.mjs`).
 - E-mails de confirmação e de recuperação de senha dependem do SMTP gratuito do Supabase, com limite baixo de envios.

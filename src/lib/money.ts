@@ -85,3 +85,10 @@ export function maxInstallments(total: Cents, minInstallment: Cents, cap = 10): 
   if (minInstallment <= 0) return cap;
   return Math.max(1, Math.min(cap, Math.floor(total / minInstallment)));
 }
+
+/** Centavos → texto para campo de formulário ("1.234,50"); vazio quando nulo. */
+export function centsToInput(cents: number | null | undefined) {
+  if (cents == null) return "";
+  const reais = Math.trunc(cents / 100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return `${reais},${String(cents % 100).padStart(2, "0")}`;
+}
