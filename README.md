@@ -18,17 +18,17 @@ E-commerce de perfumes com identidade rosa e branca e painel administrativo.
 | 8. Pagamentos (simulado) | ✅ Pix, boleto e cartão de teste por um provedor simulado atrás de interface independente de gateway; cartão tokenizado no navegador; webhook com assinatura HMAC, idempotente e com conferência de valor; estorno no cancelamento. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
 | 10. Segurança e qualidade | ✅ Revisão de segurança ([SECURITY.md](docs/SECURITY.md)), CSP e cabeçalhos, cookies de sessão `httpOnly`, trava do pagamento simulado em modo comercial, varredura de segredos no bundle, matriz de testes ([TESTES.md](docs/TESTES.md)) e Lighthouse com mediana ([LIGHTHOUSE.md](docs/LIGHTHOUSE.md)) |
 | Cupons | ✅ Cupons percentuais e de valor fixo, com mínimo, validade, limite de usos e uso único por e-mail; validados só no banco; tela no painel (`/admin/cupons`) |
-| 11. Documentação final e publicação | ⏳ Planejada (publicação só com autorização) |
+| 11. Documentação final | ✅ Arquitetura ([ARCHITECTURE.md](docs/ARCHITECTURE.md)), estimativa de custos ([COST_ESTIMATE.md](docs/COST_ESTIMATE.md)), README revisado. **Não publicado**: a publicação na Vercel depende de autorização |
 | 9. IA (Consultor de Fragrâncias e RAG) | ⏸️ Suspensa até a venda do projeto; ver [PENDENCIAS_COMERCIAIS.md §6](docs/PENDENCIAS_COMERCIAIS.md) |
 
-As rotas ainda não implementadas exibem um aviso explícito ("Esta área ainda não foi implementada"), com a fase prevista. Nada simula uma funcionalidade inexistente.
+As telas do painel fora desta versão (Clientes, Relatórios, Configurações) exibem um aviso explícito dizendo onde está a informação hoje. Nada simula uma funcionalidade inexistente.
 
 ## Stack
 - Next.js 16 (App Router, Cache Components, `proxy.ts`), React 19, TypeScript
 - Tailwind CSS v4, com design tokens em `src/app/globals.css`
-- Supabase (Postgres, Auth, Storage, RLS, pgvector) com `@supabase/ssr` (sessão em cookies httpOnly)
-- Zod e TanStack Query
-- Testes: Vitest + Testing Library + MSW (unitário e integração), Playwright + axe-core (E2E e acessibilidade), PGlite (banco em testes, sem Docker)
+- Supabase (Postgres, Auth, Storage, RLS) com `@supabase/ssr` (sessão em cookies httpOnly); regras de dinheiro e estoque em funções SQL transacionais
+- Zod (validação no servidor), lucide-react (ícones)
+- Testes: Vitest + Testing Library (unitário e componentes), PGlite (banco em testes com as migrations reais, sem Docker), Playwright + axe-core (E2E e acessibilidade), Lighthouse
 
 ## Requisitos
 - Node.js ≥ 20.9 (desenvolvido com Node 24)
@@ -52,7 +52,8 @@ Ver [.env.example](.env.example). Sem as variáveis do Supabase, a aplicação s
 | `NEXT_PUBLIC_SITE_URL` | URLs absolutas e SEO | Não |
 | `SUPABASE_DB_URL` | Somente CLI (migrations e seed); nunca usada pela aplicação | **Sim** |
 | `PAYMENT_PROVIDER` | `fake` (simulado) | Não |
-| `PAYMENT_WEBHOOK_SECRET` | Somente servidor: assinatura HMAC do webhook de pagamentos | **Sim** |
+| `PAYMENT_WEBHOOK_SECRET` | Somente servidor: assinatura HMAC do webhook de pagamentos (32+ caracteres) | **Sim** |
+| `STORE_MODE` | `demo` (padrão). Com `commercial`, build e servidor se recusam a subir com o pagamento simulado | Não |
 | `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Somente o script `create-owner.mjs` e o E2E do painel; nunca usadas pela aplicação | **Sim** (senha) |
 
 ## Comandos
@@ -79,26 +80,30 @@ Ver [.env.example](.env.example). Sem as variáveis do Supabase, a aplicação s
 ## Estrutura
 ```
 src/
-  app/(loja)/        loja pública (layout com header e footer)
-  app/admin/(painel) painel administrativo (layout próprio com sidebar)
-  app/admin/login    login administrativo (fora do layout do painel)
-  components/ui      design system (Button, Input, Badge, Card…)
-  components/layout  header, footer, logo
-  components/admin   navegação do painel
-  lib/               money (centavos), env, clientes Supabase
-  proxy.ts           renovação de sessão e redirecionamento por UX
-e2e/                 testes Playwright
-docs/                diagnóstico, decisões e pendências comerciais
+  app/(loja)/          loja: catálogo, sacola, checkout, pedido, conta, login e cadastro
+  app/admin/(painel)/  painel: produtos, estoque, pedidos, cupons, marcas, categorias
+  app/admin/login/     login administrativo (fora do layout do painel)
+  app/api/webhooks/    webhook de pagamento (HMAC)
+  components/          ui (design system), catalog, cart, account, admin, layout
+  lib/                 domínio e dados: catalog, checkout, payments, auth, admin, account, security, supabase, money
+  proxy.ts             renovação de sessão e redirecionamento por UX
+supabase/migrations/   0100 catálogo … 0700 cupons
+supabase/seed/         carga inicial dos 45 produtos
+scripts/               carga de imagens, conferência remota, criação do owner, Lighthouse
+tests/db/              testes de banco (PGlite)
+e2e/                   testes Playwright
+docs/                  documentação
 ```
+Detalhes em [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Documentação
+- [Arquitetura](docs/ARCHITECTURE.md) · [Estimativa de custos](docs/COST_ESTIMATE.md)
 - [Diagnóstico e plano (Fase 1)](docs/FASE-1-DIAGNOSTICO.md)
 - [Registro de decisões](docs/DECISOES.md)
 - [Pendências para operação comercial](docs/PENDENCIAS_COMERCIAIS.md)
 - [Modelo de dados](docs/DATA_MODEL.md)
 - [Catálogo inicial e fontes](docs/PRODUCT_CATALOG.md)
 - [Segurança](docs/SECURITY.md) · [Matriz de testes](docs/TESTES.md) · [Lighthouse](docs/LIGHTHOUSE.md)
-- ARCHITECTURE.md e COST_ESTIMATE.md serão criados na Fase 11.
 
 ## Limitações atuais
 - Os E2E do catálogo rodam contra o Supabase configurado no `.env.local`, não contra um banco local. A suíte de banco (PGlite) é a parte determinística.
@@ -108,5 +113,7 @@ docs/                diagnóstico, decisões e pendências comerciais
 - Com o projeto dentro do OneDrive, arquivos antigos de `.next` às vezes viram atalhos de nuvem e travam o build. Por isso o `npm run build` apaga `.next` antes (`scripts/dev/clean-next.mjs`).
 - E-mails de confirmação e de recuperação de senha dependem do SMTP gratuito do Supabase, com limite baixo de envios.
 - Enviar um formulário do painel antes de o JavaScript carregar mostra uma tela em branco (limitação do Next com Cache Components em páginas dinâmicas). O login não tem esse problema.
+- Não está publicado. Para uso comercial, os planos gratuitos não servem (a Vercel Hobby proíbe uso comercial; o Supabase Free pausa sem uso e não tem backup): ver [COST_ESTIMATE.md](docs/COST_ESTIMATE.md).
+- Limite de tentativas em memória e liberação de reservas sob demanda (sem agendador): adequados à demonstração, a trocar com tráfego real.
 - O painel não tem recuperação de senha nem 2FA (ver `PENDENCIAS_COMERCIAIS.md` §7). O histórico mostra o autor pelo id curto, não pelo e-mail.
 - A CSP permite scripts inline (exigência do Next com pré-renderização parcial); ver [SECURITY.md](docs/SECURITY.md).

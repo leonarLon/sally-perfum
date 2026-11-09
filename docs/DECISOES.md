@@ -57,3 +57,5 @@
 | 09/11/2026 | D17 | **Autorizado** pelo usuário: cupons de desconto (grupos 24 e 25). Migration `20261108000700_coupons.sql` | Usuário |
 | 09/11/2026 | Técnica | Códigos de cupom não são legíveis pela API pública; a validação roda só com service role, chamada por ação com limite de 30 tentativas a cada 10 min por IP (evita descobrir códigos por força bruta) | Engenharia |
 | 09/11/2026 | Técnica | Desconto só sobre os produtos; frete grátis avaliado sobre o valor com desconto; pedido nunca abaixo de R$ 1,00 em produtos. Usos contam pedidos não cancelados nem expirados | Engenharia |
+| 09/11/2026 | D18 | Fase 11 autorizada pelo usuário: documentação final (ARCHITECTURE, COST_ESTIMATE, README). Sem migrations. **Publicação não autorizada**: o projeto segue só local | Usuário |
+| 09/11/2026 | Técnica | Removidas dependências sem uso (`@tanstack/react-query`, `msw`) e pastas vazias das rotas antigas de checkout. As telas Clientes, Relatórios e Configurações dizem que estão fora desta versão (antes citavam fases já concluídas) | Engenharia |

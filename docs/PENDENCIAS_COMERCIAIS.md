@@ -50,6 +50,8 @@ Mantenha a lista atualizada a cada fase. Os itens novos entram na seção corres
 - [ ] Emitir nota fiscal (NF-e) com integração a um ERP ou emissor: **não implementado** neste projeto.
 
 ## 5. Infraestrutura (sai do plano gratuito)
+Custos detalhados em [COST_ESTIMATE.md](COST_ESTIMATE.md).
+
 - [ ] **Vercel:** migrar de Hobby para Pro (o Hobby proíbe uso comercial). Valor de referência: US$ 20/mês (pesquisa de 08/11/2026).
 - [ ] **Supabase:** migrar de Free para Pro (o Free pausa o projeto após 1 semana de inatividade). Valor de referência: US$ 25/mês. Ativar backups e point-in-time recovery, se o volume justificar.
 - [ ] **E-mail transacional:** conta própria (ex.: Resend) com domínio verificado.
@@ -93,3 +95,8 @@ O que implementar:
 - [ ] Rodar o Lighthouse em mobile e desktop nas páginas principais.
 - [ ] Fazer um pentest leve ou revisão de segurança independente.
 - [ ] Fazer um teste de carga no checkout e na reserva de estoque.
+
+## 9. Telas do painel fora desta versão
+- [ ] Clientes: lista de clientes com pedidos (respeitando a LGPD; hoje o admin busca pedidos por e-mail).
+- [ ] Relatórios: vendas por período, produtos mais vendidos, uso de cupons.
+- [ ] Configurações: editar frete por região, frete grátis e tempo de reserva (hoje só no banco).
