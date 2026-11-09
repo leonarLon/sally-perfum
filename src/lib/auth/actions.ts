@@ -28,7 +28,10 @@ export async function signIn(_prev: AuthState, formData: FormData): Promise<Auth
     if (error.status === 429) return { message: TOO_MANY, email };
     return { message: "E-mail ou senha incorretos.", email };
   }
-  redirect(safeStoreReturnTo(formData.get("returnTo")));
+  // Conta de administrador vai direto para o painel. O papel vem do banco (has_role), com a
+  // sessão que acabou de ser criada; o painel confere de novo no servidor (requireRole).
+  const { data: isAdmin } = await supabase.rpc("has_role", { required: "admin" });
+  redirect(isAdmin === true ? "/admin" : safeStoreReturnTo(formData.get("returnTo")));
 }
 
 export async function signUp(_prev: AuthState, formData: FormData): Promise<AuthState> {

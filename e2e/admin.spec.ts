@@ -79,5 +79,13 @@ test.describe("Painel: com login de administrador", () => {
     await expect(page).toHaveURL(/\/admin\/login/);
     await page.goto("/admin");
     await expect(page).toHaveURL(/\/admin\/login/);
+
+    // Login pela tela da loja: conta de administrador vai direto para o painel.
+    await page.goto("/login");
+    await page.getByLabel("E-mail", { exact: true }).fill(email!);
+    await page.getByLabel("Senha", { exact: true }).fill(password!);
+    await page.getByRole("button", { name: "Entrar" }).click();
+    await expect(page).toHaveURL((u) => u.pathname === "/admin");
+    await expect(page.getByRole("heading", { name: "Atividade recente" })).toBeVisible();
   });
 });

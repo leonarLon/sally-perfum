@@ -59,3 +59,4 @@
 | 09/11/2026 | Técnica | Desconto só sobre os produtos; frete grátis avaliado sobre o valor com desconto; pedido nunca abaixo de R$ 1,00 em produtos. Usos contam pedidos não cancelados nem expirados | Engenharia |
 | 09/11/2026 | D18 | Fase 11 autorizada pelo usuário: documentação final (ARCHITECTURE, COST_ESTIMATE, README). Sem migrations. **Publicação não autorizada**: o projeto segue só local | Usuário |
 | 09/11/2026 | Técnica | Removidas dependências sem uso (`@tanstack/react-query`, `msw`) e pastas vazias das rotas antigas de checkout. As telas Clientes, Relatórios e Configurações dizem que estão fora desta versão (antes citavam fases já concluídas) | Engenharia |
+| 09/11/2026 | Técnica | Pedido do usuário: o login da loja leva conta de administrador direto para `/admin` (papel conferido no banco); sem link público para o painel. "Minha conta" mostra um atalho ao painel só para administradores | Usuário / Engenharia |

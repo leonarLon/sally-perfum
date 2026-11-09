@@ -17,7 +17,6 @@ const groups = [
       { href: "/login", label: "Entrar" },
       { href: "/cadastro", label: "Criar conta" },
       { href: "/minha-conta/pedidos", label: "Meus pedidos" },
-      { href: "/admin/login", label: "Área do lojista" },
     ],
   },
 ];
