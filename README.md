@@ -2,6 +2,8 @@
 
 E-commerce de perfumes com identidade rosa e branca e painel administrativo.
 
+> **Demonstração:** https://sally-perfum.vercel.app
+>
 > **Projeto de estudo e demonstração.** Não é uma loja oficial e não realiza vendas reais. Pagamentos são simulados, e preços, estoques e imagens servem apenas para demonstração. O que muda numa operação real está em [docs/PENDENCIAS_COMERCIAIS.md](docs/PENDENCIAS_COMERCIAIS.md).
 
 ## Status por fase
@@ -18,7 +20,7 @@ E-commerce de perfumes com identidade rosa e branca e painel administrativo.
 | 8. Pagamentos (simulado) | ✅ Pix, boleto e cartão de teste por um provedor simulado atrás de interface independente de gateway; cartão tokenizado no navegador; webhook com assinatura HMAC, idempotente e com conferência de valor; estorno no cancelamento. Migration aplicada no Supabase em 08/11/2026 (autorizado) |
 | 10. Segurança e qualidade | ✅ Revisão de segurança ([SECURITY.md](docs/SECURITY.md)), CSP e cabeçalhos, cookies de sessão `httpOnly`, trava do pagamento simulado em modo comercial, varredura de segredos no bundle, matriz de testes ([TESTES.md](docs/TESTES.md)) e Lighthouse com mediana ([LIGHTHOUSE.md](docs/LIGHTHOUSE.md)) |
 | Cupons | ✅ Cupons percentuais e de valor fixo, com mínimo, validade, limite de usos e uso único por e-mail; validados só no banco; tela no painel (`/admin/cupons`) |
-| 11. Documentação final | ✅ Arquitetura ([ARCHITECTURE.md](docs/ARCHITECTURE.md)), estimativa de custos ([COST_ESTIMATE.md](docs/COST_ESTIMATE.md)), README revisado. **Não publicado**: a publicação na Vercel depende de autorização |
+| 11. Documentação final | ✅ Arquitetura ([ARCHITECTURE.md](docs/ARCHITECTURE.md)), estimativa de custos ([COST_ESTIMATE.md](docs/COST_ESTIMATE.md)), README revisado. **Publicado** em https://sally-perfum.vercel.app (Vercel Hobby, demonstração) |
 | 9. IA (Consultor de Fragrâncias e RAG) | ⏸️ Suspensa até a venda do projeto; ver [PENDENCIAS_COMERCIAIS.md §6](docs/PENDENCIAS_COMERCIAIS.md) |
 
 As telas do painel fora desta versão (Clientes, Relatórios, Configurações) exibem um aviso explícito dizendo onde está a informação hoje. Nada simula uma funcionalidade inexistente.
@@ -113,7 +115,7 @@ Detalhes em [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 - Com o projeto dentro do OneDrive, arquivos antigos de `.next` às vezes viram atalhos de nuvem e travam o build. Por isso o `npm run build` apaga `.next` antes (`scripts/dev/clean-next.mjs`).
 - E-mails de confirmação e de recuperação de senha dependem do SMTP gratuito do Supabase, com limite baixo de envios.
 - Enviar um formulário do painel antes de o JavaScript carregar mostra uma tela em branco (limitação do Next com Cache Components em páginas dinâmicas). O login não tem esse problema.
-- Não está publicado. Para uso comercial, os planos gratuitos não servem (a Vercel Hobby proíbe uso comercial; o Supabase Free pausa sem uso e não tem backup): ver [COST_ESTIMATE.md](docs/COST_ESTIMATE.md).
+- Publicado só como demonstração (Vercel Hobby + Supabase Free). Para uso comercial, os planos gratuitos não servem (a Vercel Hobby proíbe uso comercial; o Supabase Free pausa sem uso e não tem backup): ver [COST_ESTIMATE.md](docs/COST_ESTIMATE.md).
 - Limite de tentativas em memória e liberação de reservas sob demanda (sem agendador): adequados à demonstração, a trocar com tráfego real.
 - O painel não tem recuperação de senha nem 2FA (ver `PENDENCIAS_COMERCIAIS.md` §7). O histórico mostra o autor pelo id curto, não pelo e-mail.
 - A CSP permite scripts inline (exigência do Next com pré-renderização parcial); ver [SECURITY.md](docs/SECURITY.md).

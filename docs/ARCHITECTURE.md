@@ -128,8 +128,9 @@ docs/                esta documentação
 Matriz completa em [TESTES.md](TESTES.md).
 
 ## Hospedagem
-- **Hoje:** roda localmente (`npm run build && npm start`) contra o Supabase Free (us-west-2). Não está publicado.
-- **Publicação prevista:** Vercel. Variáveis em `.env.example`; `STORE_MODE=commercial` impede subir com o pagamento simulado. Custos em [COST_ESTIMATE.md](COST_ESTIMATE.md).
+- **Publicado** em https://sally-perfum.vercel.app (Vercel Hobby), ligado ao repositório: cada push na `main` publica. Funções na região `pdx1` (`vercel.json`), perto do Supabase Free (us-west-2); páginas estáticas e de produto saem da CDN.
+- Variáveis cadastradas na Vercel (as secretas como *Sensitive*); `SUPABASE_DB_URL` e a senha do admin ficam só na máquina local. `STORE_MODE=commercial` impede subir com o pagamento simulado. Custos em [COST_ESTIMATE.md](COST_ESTIMATE.md).
+- Páginas de produto pré-geradas no build (`generateStaticParams`); as demais do catálogo usam cache com tags invalidadas pelo painel.
 - O Supabase não está ligado ao repositório: migrations são aplicadas com `supabase db push`, sempre com autorização.
 
 ## Limites conhecidos da arquitetura

@@ -100,7 +100,7 @@ Itens reprovados em SEO/Boas práticas (qualquer execução): ${[...new Set(resu
 
 ## Leitura dos resultados
 - **SEO 63 em Sacola e Checkout:** reprova só \`is-crawlable\`, porque essas páginas são marcadas \`noindex\` de propósito (não faz sentido indexar sacola e checkout).
-- **SEO 92 no detalhe do produto (\`meta-description\`):** a descrição existe, mas o Next 16 envia o metadata de páginas dinâmicas por *streaming* no \`<body>\` e o React o move para o \`<head>\` no navegador. O Google interpreta corretamente; robôs que não executam JavaScript recebem o metadata no \`<head>\` (\`htmlLimitedBots\`). Não desligamos o streaming só para subir a nota.
+- **Detalhe do produto:** as páginas dos produtos publicados são pré-geradas no build (\`generateStaticParams\`), com descrição no \`<head>\` e sem esqueleto que troca de tamanho (CLS 0). Produtos publicados depois são gerados na primeira visita.
 - **LCP do detalhe no mobile:** a foto principal já carrega com prioridade; o tempo inclui a otimização da imagem, que busca o original no Storage do Supabase nos EUA, sob emulação de 4G lento.
 - Nenhuma funcionalidade ou imagem foi removida para elevar pontuações.
 `,

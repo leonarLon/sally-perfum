@@ -8,7 +8,7 @@ Preços consultados em 09/11/2026 nas páginas oficiais ([Supabase](https://supa
 | Banco (Postgres) | 13 MB | Quase tudo é estrutura do próprio Postgres; as tabelas da loja somam menos de 1 MB |
 | Storage (imagens) | 7,2 MB em 128 arquivos | Média de 56 KB por imagem |
 | Usuários (Auth) | Só contas de teste | — |
-| Hospedagem | Local | Ainda não publicado |
+| Hospedagem | Vercel Hobby | Publicado em 09/11/2026 (demonstração) |
 
 ## Cenário 1 — Demonstração (situação atual): US$ 0/mês
 | Serviço | Plano | Limites relevantes |
